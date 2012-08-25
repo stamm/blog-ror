@@ -36,5 +36,5 @@ ZagirovName::Application.configure do
   config.assets.debug = true
 
   config.middleware.use "Rack::Bug",
-      :secret_key => "asdfasndofasdn#@$#noasdf"
+      :secret_key => "asdfasndofasdn@$noasdf"
 end
