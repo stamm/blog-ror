@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.text :content_display
-      t.integer :status
+      t.integer :status, :tinyint
       t.integer :post_time
       t.integer :author_id
       t.string :url
