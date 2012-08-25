@@ -1,4 +1,6 @@
 ZagirovName::Application.routes.draw do
+  resources :posts
+
   resource :posts
   # The priority is based upon order of creation:
   # first created -> highest priority.
