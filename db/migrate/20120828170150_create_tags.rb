@@ -4,7 +4,6 @@ class CreateTags < ActiveRecord::Migration
       t.string :name
       t.integer :frequency
 
-      t.timestamps
     end
   end
 end

@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(:version => 20120828170150) do
   end
 
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.integer  "frequency"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string  "name"
+    t.integer "frequency"
   end
 
 end
