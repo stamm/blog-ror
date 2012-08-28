@@ -2,14 +2,13 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Content display</th>
-    <th>Status</th>
-    <th>Post time</th>
-    <th>Author</th>
-    <th>Url</th>
-    <th>Short url</th>
+    <th><%= Post.human_attribute_name(:title) %></th>
+    <th><%= Post.human_attribute_name(:content) %></th>
+    <th><%= Post.human_attribute_name(:status) %></th>
+    <th><%= Post.human_attribute_name(:post_time) %></th>
+    <th><%= Post.human_attribute_name(:author) %></th>
+    <th><%= Post.human_attribute_name(:url) %></th>
+    <th><%= Post.human_attribute_name(:short_url) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,8 +18,7 @@
   <tr>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
-    <td><%= post.content_display %></td>
-    <td><%= post.status %></td>
+    <td><%= t('.' + post.get_status.to_s) %></td>
     <td><%= post.post_time %></td>
     <td><%= post.author_id %></td>
     <td><%= post.url %></td>

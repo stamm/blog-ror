@@ -1,0 +1,6 @@
+<ul>
+<% @posts.each do |post| %>
+  <li><%= post.title %></li>
+<% end %>
+<p><%= will_paginate @posts, next_label: '', previous_label: '' %></p>
+</ul>

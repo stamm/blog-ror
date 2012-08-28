@@ -1,0 +1,28 @@
+ru:
+  hello: 'Привет, мир'
+  update: 'Обновить'
+  show: 'Показать'
+  back: 'Назад'
+
+  #title: 'Заголовок'
+
+  activerecord:
+    models:
+      post: 'Пост'
+    attributes:
+      post:
+        title: 'Заголовок'
+        content: 'Текст'
+        status: 'Статус'
+        post_time: 'Время публикации'
+
+  posts:
+    form:
+      draft: 'Черновик'
+      publish: 'Опубликовано'
+      archive: 'В архиве'
+
+  time:
+    formats:
+      russian: '%F %T'
+

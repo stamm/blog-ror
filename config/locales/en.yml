@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+
+  posts:
+    form:
+      draft: 'Draft'
+      publish: 'Publish'
+      archive: 'In archive'

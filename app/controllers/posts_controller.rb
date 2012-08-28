@@ -10,6 +10,16 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts/main
+  def main
+    @posts = Post.published.paginate page: params[:page], order: 'post_time desc',
+      per_page: 1
+
+    respond_to do |format|
+      format.html # main.html.erb
+    end
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
