@@ -7,6 +7,13 @@ gem 'rails', '3.2.7'
 
 gem 'mysql2'
 
+group :development, :test do
+  gem 'rspec-rails', '2.10.0'
+end
+
+group :test do
+  gem 'capybara', '1.1.2'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
