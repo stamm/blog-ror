@@ -1,0 +1,8 @@
+<%= @post.title %>
+<%= Date.strptime(@post.post_time.to_s, '%s').strftime('%Y-%m-%d') %>
+<%= @post.content_display.html_safe %>
+
+<%= @post.tags.map { |tag| content_tag(:a, tag.name,
+          class: 'tags', href: "/tag/#{tag.name}") }
+    .join(', ').html_safe %>
+

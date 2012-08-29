@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   # GET /posts/main
   def main
     @posts = Post.published.paginate page: params[:page], order: 'post_time desc',
-      per_page: 1
+      per_page: 2
 
     respond_to do |format|
       format.html # main.html.erb

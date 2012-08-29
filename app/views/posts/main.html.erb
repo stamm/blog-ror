@@ -1,6 +1,10 @@
 <ul>
 <% @posts.each do |post| %>
-  <li><%= post.title %></li>
+  <li><%= link_to post.title, article_path(post.url)  %> <%= Date.strptime(post.post_time.to_s, '%s').strftime('%Y-%m-%d') %>
+    <%= post.tags.map { |tag| content_tag(:a, tag.name,
+            class: 'tags', href: "/tag/#{tag.name}") }
+        .join(', ').html_safe %>
+    </li>
 <% end %>
 <p><%= will_paginate @posts, next_label: '', previous_label: '' %></p>
 </ul>

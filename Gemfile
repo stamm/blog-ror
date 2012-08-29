@@ -41,3 +41,7 @@ gem 'jquery-rails'
 gem 'rack-bug', :require => 'rack/bug', :git => 'git://github.com/brynary/rack-bug.git', :branch => 'rails3'
 
 gem 'will_paginate'
+
+gem 'newrelic_rpm'
+
+gem 'RedCloth'
