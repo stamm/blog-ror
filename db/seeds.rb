@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Post.create({title: 'test',
+             content: 'content',
+             content_display: 'content',
+             status: Post::STATUS_TYPES.index(:publish) + 1,
+             post_time: Time.now.to_i,
+             url: 'test',
+            })
+
+
+
+Tag.create({name: 'test'})

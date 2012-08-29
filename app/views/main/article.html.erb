@@ -1,3 +1,4 @@
+<% title @post.title %>
 <div class="hero-unit">
 <%= @post.title %>
 <%= Date.strptime(@post.post_time.to_s, '%s').strftime('%Y-%m-%d') %>

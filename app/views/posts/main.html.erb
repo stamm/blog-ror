@@ -1,3 +1,4 @@
+<% title  "Posts" %>
 <ul>
 <% @posts.each do |post| %>
   <li><%= link_to post.title, article_path(post.url)  %> <%= Date.strptime(post.post_time.to_s, '%s').strftime('%Y-%m-%d') %>
