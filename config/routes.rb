@@ -1,13 +1,12 @@
 ZagirovName::Application.routes.draw do
 
 
-  root to: 'posts#main'
-  resources :posts
-
-  #match "/posts/page/1" => "/"
-
-
+  root to: 'posts#main', page: 1
   match "/posts/page/:page" => "posts#main"
+  match "/tag/:tag" => "posts#main", page: 1
+  match "/tag/:tag/:page" => "posts#main"
+
+  resources :posts
 
   match ":url" => "main#article", as: :article
   # The priority is based upon order of creation:

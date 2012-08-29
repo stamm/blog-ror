@@ -25,8 +25,12 @@
     prompt: 'Выберите статус'%>
   </div>
   <div class="field">
-    <%= f.label :post_time %><br />
-    <%= f.text_field :post_time, value: l(Time.now, format: :russian) %>
+    <%= f.label :post_time_string %><br />
+    <%= f.text_field :post_time_string %>
+  </div>
+    <div class="field">
+    <%= f.label :tag_list %><br />
+    <%= f.text_field :tag_list %>
   </div>
   <div class="field">
     <%= f.label :url %><br />

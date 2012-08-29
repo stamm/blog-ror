@@ -12,7 +12,11 @@ class PostsController < ApplicationController
 
   # GET /posts/main
   def main
-    @posts = Post.published.paginate page: params[:page], order: 'post_time desc',
+    @posts = Post.published
+    if params[:tag]
+      @posts = @posts.scope_tag(params[:tag])
+    end
+    @posts = @posts.paginate page: params[:page], order: 'post_time desc',
       per_page: 2
 
     respond_to do |format|
@@ -52,6 +56,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
 
+    @post.post_time_string ||= l(Time.now, format: :russian)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
