@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <title>Zagirov | <%= yield(:title) %></title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -7,11 +7,28 @@
   <meta name="author" content="Загиров Рустам"/>
   <!--  Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", controller.controller_name, :media => "all" %>
+  <%= javascript_include_tag "application", controller.controller_name %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %>">
-<%= yield %>
+
+  <%= nav_bar brand: "Zagirov" do %>
+      <% menu_group do %>
+          <%= menu_item "Home", root_path %>
+          <%= menu_item "Test", article_path('test') %>
+      <% end %>
+  <% end %>
+
+<div class="container">
+
+  <%= yield %>
+
+  <footer>
+    <p>Zagirov</p>
+  </footer>
+
+</div>
+
 </body>
 </html>

@@ -2,6 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.posts {
-  font-size: 200%;
+
+@import "_variables";
+
+
+#posts {
+  h2.inline {
+    display: inline;
+  }
+
+  .hint {
+    font-size: xx-small;
+    font-weight: normal;
+  }
+
+  .tags {
+    clear: both;
+    margin-top: -10px;
+    a {
+      color: $tag_color;
+      &:hover {
+        color: $link_color;
+      }
+    }
+  }
 }

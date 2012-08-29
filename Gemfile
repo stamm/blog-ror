@@ -47,6 +47,9 @@ gem 'jquery-rails'
 gem 'rack-bug', :require => 'rack/bug', :git => 'git://github.com/brynary/rack-bug.git', :branch => 'rails3'
 
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
+gem 'rails_bootstrap_navbar'
 
 gem 'newrelic_rpm'
 

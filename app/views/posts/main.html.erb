@@ -1,11 +1,12 @@
 <% title  "Posts" %>
-<ul>
+<ul id="posts">
 <% @posts.each do |post| %>
-  <li><%= link_to post.title, article_path(post.url)  %> <%= Date.strptime(post.post_time.to_s, '%s').strftime('%Y-%m-%d') %>
-    <%= post.tags.map { |tag| content_tag(:a, tag.name,
-            class: 'tags', href: "/tag/#{tag.name}") }
+  <li><h2 class="inline"><%= link_to post.title, article_path(post.url)  %> <span class="hint"><%= Date.strptime(post.post_time.to_s, '%s').strftime('%Y-%m-%d') %></span></h2>
+    <div class="tags"><%= post.tag_array.map { |tag| content_tag(:a, tag,
+            class: 'tag', href: "/tag/#{tag}") }
         .join(', ').html_safe %>
+        </div>
     </li>
 <% end %>
-<p><%= will_paginate @posts, next_label: '', previous_label: '' %></p>
+<p><%= will_paginate @posts, next_label: '→', previous_label: '←', :renderer => BootstrapPagination::Rails %></p>
 </ul>

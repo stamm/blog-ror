@@ -49,6 +49,9 @@ class Post < ActiveRecord::Base
     self.tags = tag_names.map { |name| Tag.where('name = ?', name).first or Tag.create(name: name)}
   end
 
+  def tag_array
+    self.tags.map { |t| t.name }
+  end
 
 
 

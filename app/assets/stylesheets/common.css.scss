@@ -1,0 +1,12 @@
+@import "bootstrap";
+
+@import "_variables";
+
+a {
+  text-decoration: underline;
+  color: $link_color;
+  &:hover {
+    //color: darken($link_color, 20%);
+    color: $link_color_hover;
+  }
+}
