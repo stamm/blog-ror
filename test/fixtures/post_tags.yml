@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: post_tags
+#
+#  id      :integer          not null, primary key
+#  post_id :integer          default(0), not null
+#  tag_id  :integer          default(0), not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
