@@ -13,7 +13,9 @@ class PostsController < ApplicationController
   # GET /posts/main
   def main
     @posts = Post.published
+    @title = 'All posts'
     if params[:tag]
+      @title += " with tag #{params[:tag]}"
       @posts = @posts.scope_tag(params[:tag])
     end
     @posts = @posts.paginate page: params[:page], order: 'post_time desc',
