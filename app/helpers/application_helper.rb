@@ -1,5 +1,11 @@
 module ApplicationHelper
-  def title(page_title)
-    content_for :title, page_title.to_s
+  # Return a title on a per-page basis.
+  def title
+    base_title = "Zagirov"
+    if @title.nil?
+      base_title
+    else
+      "#{base_title} | #{@title}"
+    end
   end
 end

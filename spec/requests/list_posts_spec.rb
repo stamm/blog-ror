@@ -11,14 +11,21 @@ describe "ListPosts" do
       #response.status.should be(200)
       visit root_path
       page.should have_content('test')
-      page.should have_selector('title', text: "#{base_title} | Posts")
+      page.should have_selector('title', text: "#{base_title} | All posts")
       page.should have_selector('a', text: 'test')
     end
   end
 
   describe 'test post' do
+
     it "should have title" do
       visit article_path 'test'
+      page.should have_selector('title', text: "#{base_title} | test")
+    end
+
+    it "should have list" do
+      visit root_path
+      click_link "test"
       page.should have_selector('title', text: "#{base_title} | test")
     end
   end

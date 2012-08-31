@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,6 +13,7 @@ end
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'spork'
 end
 
 # Gems used only for assets and not required
@@ -30,7 +31,7 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -54,4 +55,4 @@ gem 'rails_bootstrap_navbar'
 gem 'newrelic_rpm'
 
 gem 'RedCloth'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 2.0.4'

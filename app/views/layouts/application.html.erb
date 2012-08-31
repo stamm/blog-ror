@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <title>Zagirov | <%= yield(:title) %></title>
+  <title><%= title %></title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <meta name="google-site-verification" content="G-94qq2Tf9OhT35Qjxp7v8sCpGjMycS2eGK6_Ge_3zk" />
   <meta name="author" content="Загиров Рустам"/>
@@ -29,6 +29,6 @@
   </footer>
 
 </div>
-
+  <%= debug(params) if Rails.env.development? %>
 </body>
 </html>
