@@ -36,4 +36,8 @@ ActiveRecord::Schema.define(:version => 20120828170749) do
     t.integer "frequency", :default => 0, :null => false
   end
 
+  create_table "test", :primary_key => "user_id", :force => true do |t|
+    t.text "label", :null => false
+  end
+
 end
