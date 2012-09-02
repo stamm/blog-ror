@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828170749) do
+ActiveRecord::Schema.define(:version => 20120902215821) do
 
   create_table "post_tags", :force => true do |t|
     t.integer "post_id", :default => 0, :null => false
@@ -36,8 +36,11 @@ ActiveRecord::Schema.define(:version => 20120828170749) do
     t.integer "frequency", :default => 0, :null => false
   end
 
-  create_table "test", :primary_key => "user_id", :force => true do |t|
-    t.text "label", :null => false
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

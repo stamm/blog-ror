@@ -1,8 +1,18 @@
 ZagirovName::Application.routes.draw do
 
 
-  root to: 'posts#main', page: 1
-  match "/posts/page/:page" => "posts#main"
+  get "admin" => 'admin#index'
+
+  #resources :users
+
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  root to: 'main#posts', page: 1
+  match "/posts/page/:page" => "main#posts"
   match "/tag/:tag" => "posts#main", page: 1
   match "/tag/:tag/:page" => "posts#main"
 

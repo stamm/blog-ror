@@ -10,21 +10,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/main
-  def main
-    @posts = Post.published
-    @title = 'All posts'
-    if params[:tag]
-      @title += " with tag #{params[:tag]}"
-      @posts = @posts.scope_tag(params[:tag])
-    end
-    @posts = @posts.paginate page: params[:page], order: 'post_time desc',
-      per_page: 2
 
-    respond_to do |format|
-      format.html # main.html.erb
-    end
-  end
 
   # GET /posts/1
   # GET /posts/1.json

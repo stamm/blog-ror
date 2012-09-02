@@ -160,9 +160,9 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  bcrypt-ruby (~> 3.0.0)
   annotate
-  bootstrap-sass
+  bcrypt-ruby (~> 3.0.0)
+  bootstrap-sass (~> 2.0.4)
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.2)
   jquery-rails
