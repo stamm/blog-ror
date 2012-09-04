@@ -6,15 +6,19 @@ ZagirovName::Application.routes.draw do
   #resources :users
 
   controller :sessions do
-    get 'login' => :new
+    get 'login' => :new, as: 'login'
     post 'login' => :create
-    delete 'logout' => :destroy
+    delete 'logout' => :destroy, as: 'logout'
+  end
+
+  controller :main do
+    match "/tags" => :tags
   end
 
   root to: 'main#posts', page: 1
   match "/posts/page/:page" => "main#posts"
-  match "/tag/:tag" => "posts#main", page: 1
-  match "/tag/:tag/:page" => "posts#main"
+  match "/tag/:tag" => "main#posts", page: 1
+  match "/tag/:tag/:page" => "main#posts"
 
   resources :posts
 

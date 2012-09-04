@@ -56,4 +56,5 @@ gem 'rails_bootstrap_navbar'
 gem 'newrelic_rpm'
 
 gem 'RedCloth'
-gem 'bootstrap-sass', '~> 2.0.4'
+gem 'bootstrap-sass', '~> 2.0.4.1'
+gem 'markitup-rails'

@@ -26,4 +26,8 @@ class MainController < ApplicationController
       format.json { render json: @post }
     end
   end
+
+  def tags
+    @tags = Tag.all
+  end
 end

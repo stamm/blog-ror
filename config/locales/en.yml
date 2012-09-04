@@ -3,6 +3,9 @@
 
 en:
   hello: "Hello world"
+  home: 'Home'
+  admin: 'Admin'
+  select_status: 'Select status'
 
   posts:
     form:

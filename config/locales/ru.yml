@@ -3,8 +3,20 @@ ru:
   update: 'Обновить'
   show: 'Показать'
   back: 'Назад'
+  home: 'Главная'
+  admin: 'Админка'
 
+  draft: 'Черновик'
+  publish: 'Опубликовано'
+  archive: 'В архиве'
   #title: 'Заголовок'
+
+
+  select_status: 'Выберите статус'
+
+  new_post: 'Новый пост'
+
+  logout: 'Выйти'
 
   activerecord:
     models:
@@ -15,12 +27,8 @@ ru:
         content: 'Текст'
         status: 'Статус'
         post_time: 'Время публикации'
+        post_time_string: 'Время публикации'
 
-  posts:
-    form:
-      draft: 'Черновик'
-      publish: 'Опубликовано'
-      archive: 'В архиве'
 
   time:
     formats:

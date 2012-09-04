@@ -13,3 +13,7 @@ h1 {
 a.tag {
   color: $tag_color;
 }
+
+ul#tags li {
+  display: inline;
+}

@@ -1,7 +1,7 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+/*
+ *= require markitup
+ *= require markitup-markdown
+ */
 
 @import "_variables";
 
@@ -26,4 +26,9 @@
       }
     }
   }
+}
+
+
+textarea#post_content {
+  width: 100% !important;
 }

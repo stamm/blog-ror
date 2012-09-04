@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th><%= Post.human_attribute_name(:title) %></th>
-    <th><%= Post.human_attribute_name(:content) %></th>
     <th><%= Post.human_attribute_name(:status) %></th>
     <th><%= Post.human_attribute_name(:post_time) %></th>
     <th><%= Post.human_attribute_name(:author) %></th>
@@ -17,9 +16,8 @@
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.title %></td>
-    <td><%= post.content %></td>
-    <td><%= t('.' + post.get_status.to_s) %></td>
-    <td><%= post.post_time %></td>
+    <td><%= t(post.get_status.to_s) %></td>
+    <td><%= post.post_date %></td>
     <td><%= post.author_id %></td>
     <td><%= post.url %></td>
     <td><%= post.short_url %></td>

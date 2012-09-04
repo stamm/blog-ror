@@ -25,6 +25,7 @@ class Post < ActiveRecord::Base
   attr_accessible :tag_list, :post_time_string
 
   validates :title, :content, :post_time, :url, :status, presence: true
+  validates :url, uniqueness: true
 
   before_save :convert_content
   #before_save :convert_post_time

@@ -28,6 +28,8 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
 
+    @post.post_time = Time.now().to_i
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

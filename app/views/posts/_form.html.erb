@@ -17,12 +17,12 @@
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content, size: '150x30' %>
+    <%= f.text_area :content, size: '150x20' %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select :status, Post::STATUS_TYPES.collect {|d| [t('.' + d.to_s), Post::STATUS_TYPES.index(d) + 1]},
-    prompt: 'Выберите статус'%>
+    <%= f.select :status, Post::STATUS_TYPES.collect {|d| [t(d.to_s), Post::STATUS_TYPES.index(d) + 1]},
+    prompt: t(:select_status)%>
   </div>
   <div class="field">
     <%= f.label :post_time_string %><br />
