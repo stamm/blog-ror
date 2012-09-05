@@ -1,6 +1,8 @@
 ZagirovName::Application.routes.draw do
 
 
+  resources :comments
+
   get "admin" => 'admin#index'
 
   #resources :users
