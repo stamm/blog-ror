@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902215821) do
+ActiveRecord::Schema.define(:version => 20120905000055) do
 
-  create_table "post_tags", :force => true do |t|
-    t.integer "post_id", :default => 0, :null => false
-    t.integer "tag_id",  :default => 0, :null => false
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "status"
+    t.string   "author"
+    t.string   "email"
+    t.string   "url"
+    t.integer  "post_id"
+    t.string   "ip"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "posts", :force => true do |t|
@@ -29,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20120902215821) do
     t.string   "short_url",                    :default => "", :null => false
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
+  end
+
+  create_table "posts_tags", :force => true do |t|
+    t.integer "post_id", :default => 0, :null => false
+    t.integer "tag_id",  :default => 0, :null => false
   end
 
   create_table "tags", :force => true do |t|

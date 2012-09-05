@@ -16,8 +16,8 @@
 #
 
 class Post < ActiveRecord::Base
-  has_many :post_tags
-  has_many :tags, through: :post_tags
+  has_and_belongs_to_many :tags
+  has_many :comments
   STATUS_TYPES = [ :draft, :publish, :archive ]
   #STATUS_TYPES = [ 'test']
   attr_accessible :author_id, :content, :content_display, :post_time, :short_url, :status, :title, :url

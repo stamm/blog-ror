@@ -4,9 +4,9 @@ class CreateComments < ActiveRecord::Migration
       t.text :content
       t.integer :status
       t.string :author
-      t.string, :email
-      t.string, :url
-      t.integer, :post_id
+      t.string :email
+      t.string :url
+      t.integer :post_id
       t.string :ip
 
       t.timestamps
