@@ -58,3 +58,5 @@ gem 'newrelic_rpm'
 gem 'RedCloth'
 gem 'bootstrap-sass', '~> 2.0.4.1'
 gem 'markitup-rails'
+
+gem 'email_validator'

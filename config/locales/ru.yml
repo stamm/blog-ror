@@ -18,6 +18,13 @@ ru:
 
   logout: 'Выйти'
 
+  comments: 'Комментарии'
+  add_comment: 'Добавить комментарий'
+
+  send: 'Отправить'
+
+  wrong_email: 'некорректный'
+
   activerecord:
     models:
       post: 'Пост'
@@ -28,6 +35,15 @@ ru:
         status: 'Статус'
         post_time: 'Время публикации'
         post_time_string: 'Время публикации'
+      comment:
+        author: 'Имя'
+        content: 'Текст'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        invalid: 'не верное'
+      models:
+        comment:
 
 
   time:

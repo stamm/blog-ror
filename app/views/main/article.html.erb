@@ -29,18 +29,35 @@
   <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="Stammru" data-lang="ru">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
 </div>
+<h2><%= t(:comments) %></h2>
 
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'zagirovrustam'; // required: replace example with your forum shortname
+<%= render 'comments' %>
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<h2><a name="add_comment"></a><%= t(:add_comment) %>:</h2>
+<%= form_for(@comment, url: article_path(@post.url) + '#add_comment') do |f| %>
+    <% if @comment.errors.any? %>
+        <div id="error_explanation">
+            Возникли ошибки
+          <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :author %><br />
+      <%= f.text_field :author %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.text_area :content %>
+    </div>
+    <div class="actions">
+      <%= f.submit t(:send) %>
+    </div>
+<% end %>

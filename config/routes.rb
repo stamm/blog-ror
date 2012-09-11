@@ -1,7 +1,6 @@
 ZagirovName::Application.routes.draw do
 
 
-  resources :comments
 
   get "admin" => 'admin#index'
 
@@ -22,9 +21,8 @@ ZagirovName::Application.routes.draw do
   match "/tag/:tag" => "main#posts", page: 1
   match "/tag/:tag/:page" => "main#posts"
 
-  resources :posts
 
-  match ":url" => "main#article", as: :article
+  match "/:url" => "main#article", as: :article
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

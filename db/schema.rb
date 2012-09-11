@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905000055) do
+ActiveRecord::Schema.define(:version => 20120905000824) do
 
   create_table "comments", :force => true do |t|
-    t.text     "content"
-    t.integer  "status"
-    t.string   "author"
-    t.string   "email"
-    t.string   "url"
-    t.integer  "post_id"
-    t.string   "ip"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "content",                    :null => false
+    t.integer  "status",     :default => 0,  :null => false
+    t.string   "author",     :default => "", :null => false
+    t.string   "email",      :default => "", :null => false
+    t.string   "url",        :default => "", :null => false
+    t.integer  "post_id",    :default => 0,  :null => false
+    t.string   "ip",         :default => "", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "posts", :force => true do |t|
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(:version => 20120905000055) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "name",            :default => "", :null => false
+    t.string   "password_digest", :default => "", :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end

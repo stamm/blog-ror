@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 @import "_variables";
 
 
@@ -16,4 +15,39 @@ a.tag {
 
 ul#tags li {
   display: inline;
+}
+
+ol.comments {
+  list-style: none;
+
+  li.comment {
+    overflow: hidden;
+    position: relative;
+    padding-left: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #C7C7C7;
+
+    .link {
+      display: block;
+    }
+    .date {
+      font-size: 70%;
+      color: #666;
+      display: block;
+    }
+    .content {
+      margin-top: 20px;
+    }
+  }
+
+  li.first {
+    border: none;
+  }
+
+  .avatar {
+    position: absolute;
+    left: 0;
+    top: 20px;
+  }
+
 }

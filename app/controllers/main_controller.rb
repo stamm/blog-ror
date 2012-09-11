@@ -14,12 +14,24 @@ class MainController < ApplicationController
                              per_page: 2
 
     respond_to do |format|
-      format.html # main.html.erb
+      format.html # posts.html.erb
     end
   end
 
   def article
     @post = Post.find_by_url(params[:url]) || not_found
+
+    if params[:comment]
+      @comment = create_comment
+    else
+      @comment = Comment.new
+    end
+
+    unless @comment.new_record?
+      redirect_to article_path(@post.url)
+      return
+    end
+
     @title = @post.title
     respond_to do |format|
       format.html # show.html.erb
@@ -30,4 +42,19 @@ class MainController < ApplicationController
   def tags
     @tags = Tag.all
   end
+
+private
+
+  def create_comment
+    post = Post.published.find_by_url(params[:url])
+    if post
+      comment_params = params[:comment].merge({
+                                                  ip: request.ip,
+                                                  status: Comment::get_status(:approve)
+                                              })
+      comment = post.comments.create(comment_params)
+      return comment
+    end
+  end
+
 end
