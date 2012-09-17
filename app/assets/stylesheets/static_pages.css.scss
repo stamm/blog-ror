@@ -1,0 +1,19 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+dl {
+  clear:left;
+}
+dl dt {
+  width: 4em;
+  float: left;
+  text-align: right;
+}
+dl dd {
+  float: left;
+  text-align: left;
+  margin: 0 0 0 10px;
+  padding: 0;
+}

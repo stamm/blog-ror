@@ -2,6 +2,8 @@ ZagirovName::Application.routes.draw do
 
 
 
+  get "static_pages/about"
+
   get "admin" => 'admin#index'
 
   #resources :users
