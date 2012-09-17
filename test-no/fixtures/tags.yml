@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id        :integer          not null, primary key
+#  name      :string(255)      not null
+#  frequency :integer          default(0), not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  frequency: 1
+
+two:
+  name: MyString
+  frequency: 1
