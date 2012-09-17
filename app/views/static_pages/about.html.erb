@@ -1,2 +1,159 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<% @title = I18n.t(:about_me) %>
+<div class="vcard" itemscope itemtype="http://schema.org/Person">
+  <h1><span class="fn"><span class="family-name" itemprop="name">Загиров</span> <span class="given-name">Рустам</span></span><span style="font-size: 50%"> — <span class="title" itemprop="jobTitle">веб-программист</span></span></h1>
+  <div class="adr">
+    <span class="locality">г. Москва</span>, <span class="locality">г. Иваново</span>
+  </div>
+  <p><a href="http://www.zend.com/en/yellow-pages#show-ClientCandidateID=ZEND017665">Сертифицированный специалист по PHP (Zend PHP 5.3 Certification)</a></p>
+  <a href="http://www.zend.com/en/yellow-pages#show-ClientCandidateID=ZEND017665" style="float:right;"><img src="http://www.zend.com/img/yellowpages/zce_php5-3_logo.gif" alt="zend" /></a>
+  <p>Хорошо знаю: PHP, MySQL, немного JavaScript (в частности Jquery), memcached, sphinx. Git-мастер. Немного знаю PostgreSQL. Знаком с поверхностным администрированием и работой в Linux-системе (Debian-подобных), поднимая сервер с нуля. Консоль уважаю и не боюсь её. Имел опыт работы с движками: MediaWiki, phpBB, TBDev. Для них писал свои дополнения. Много изменений сделал в движке TBDev под нужды локального трекера. Использовал фреймворк CodeIgniter, сейчас использую Yii.</p>
+  <p>
+    Ники: <span class="nickname">Stamm</span>, Stammru
+  </p>
+  <p></p>
+  <h3>Контактные данные</h3>
+  <div>
+    <dl>
+      <dt>Сайт:</dt>
+      <dd class="url" itemprop="url">http://zagirov.name</dd>
+    </dl>
+    <dl>
+      <dt>Email:</dt>
+      <dd><a href="mailto:rustam@zagirov.name" class="email">rustam@zagirov.name</a></dd>
+    </dl>
+    <dl>
+      <dt>Jabber:</dt>
+      <dd><a href="xmpp:rustam@zagirov.name" class="jabber">rustam@zagirov.name</a></dd>
+    </dl>
+    <dl>
+      <dt>Icq:</dt>
+      <dd><a href="http://wwp.icq.com/scripts/contact.dll?msgto=3228262" class="url icq">322-82-62</a></dd>
+    </dl>
+    <dl>
+      <dt>Skype:</dt>
+      <dd><a href="skype:stamm_ru?call" class="skype">stamm_ru</a></dd>
+    </dl>
+    <dl>
+      <dt>Twitter:</dt>
+      <dd><a href="https://twitter.com/#!/Stammru" class="twitter url">stammru</a></dd>
+    </dl>
+    <dl>
+      <dt>github:</dt>
+      <dd><a href="https://github.com/Stamm" class="github url">Stamm</a></dd>
+    </dl>
+    <dl>
+      <dt>Google+:</dt>
+      <dd><a href="https://plus.google.com/102994584805048026218?prsrc=3&rel=author" rel="me">102994584805048026218</a><span class="hint"> — вот такой вот набор цифр</span></dd>
+    </dl>
+
+  </div>
+
+  <div class="note">
+    <img src="http://cs9919.vkontakte.ru/u3903784/a_321fb700.jpg" alt="Фото" width="0" height="0" class="photo" />
+  </div>
+</div>
+
+
+<br/><br/><br/><br/>
+<div>
+  Мои проекты:
+  <ul>
+    <li><a href="https://chrome.google.com/webstore/detail/aegemfnepncjfdnlphmlpmfaninhgafg">Плагин умных цитат для Google Chrome</a></li>
+    <li><a href="https://github.com/Stamm/wp2e2">Конвертер постов из wordpress в Эгею</a></li>
+  </ul>
+</div>
+
+<div style="padding-top:20px;">
+  <h2>Что могу?</h2>
+  Подсмотрел на одном блоге список скилов познаний. Заодно решил сделать некоторый подытог, что же я знаю.
+
+  Со временем будет пополняться.
+  <ul>
+    <li><strong><em>Linux и системное администрирование:</em></strong>
+      <ol>
+        <li><strong>Linux:</strong>
+          <ol>
+            <li><strong>Ubuntu</strong> – использую в качестве основной ОС на десктопе/рабочей станции.li>
+            <li><strong>Debian</strong> – настраивал и использую на всех серверах.</li>
+          </ol>
+        </li>
+        <li><strong>LAMP (Linux, Apache, MySQL, PHP)</strong>: ставил, настраивал, виртуалхосты, PHP отладчики и кешеры.</li>
+        <li><strong>Nginx</strong>: с апачем на бэкенде или php-fpm,<strong> </strong>виртуалхосты, url-rewrite</li>
+        <li><strong>Memcached</strong></li>
+        <li><strong>Git, Gitosis, Gitolite</strong>: установка, настройка, разграничение доступа</li>
+        <li><strong>bind9 (named)</strong>: установка, простейшая настройка</li>
+        <li><strong>SphinxSearch</strong>: установка, настройка.</li>
+        <li><strong>Windows</strong>: разбираюсь, но почти не пользуюсь, только в исключительных случаях</li>
+      </ol>
+    </li>
+    <li><strong><em>Программирование</em></strong> (работаю в phpStorm под Ubuntu):
+      <ol>
+        <li><strong>PHP</strong>: очень много всего на нем писал и продолжаю писать.
+          <ol>
+            <li>ООП</li>
+            <li>Архитектура Контроллер – Модель – Представление (MVC)</li>
+            <li>Smarty</li>
+            <li>SOAP</li>
+            <li>GD2, Image Magick</li>
+            <li>PDO, MySQL, Memcache</li>
+            <li>SphinxSearch</li>
+          </ol>
+        </li>
+        <li><strong>JavaScript</strong>:
+          <ol>
+            <li>FireBug</li>
+            <li>jQuery (предпочтительно)</li>
+            <li>AJAX – бэкэнды на PHP</li>
+          </ol>
+        </li>
+        <li><strong>SQL</strong>: есть опыт работы с MySQL и немного в PostgreSQL
+          <ol>
+            <li>Настройка</li>
+            <li>Обычные (и не очень) запросы, индексы</li>
+            <li>Хранимые процедуры</li>
+            <li>Транзакции</li>
+            <li>Представления (Views)</li>
+          </ol>
+        </li>
+        <li><strong>Bash</strong>: люблю, но без фанатизма ;)</li>
+        <li><strong>Регулярные выражения</strong></li>
+      </ol>
+    </li>
+    <li><em><strong>Командная работа и контроль версий</strong></em>
+      <ol>
+        <li>GIT репозиторий, <del datetime="2011-03-12T19:49:08+00:00">gitosis</del>, gitolite</li>
+        <li>SVN</li>
+        <li>Redmine: установка (nginx + thin)</li>
+      </ol>
+    </li>
+    <li><em><strong>Верстка</strong></em>
+      <ol>
+        <li>Валидный HTML/XHTML, CSS. Не люблю верстать.</li>
+      </ol>
+    </li>
+    <li><em><strong>Фреймворки/CMS:</strong></em>
+      <ol>
+        <li>Codeigniter</li>
+        <li><strong>Yii</strong></li>
+        <li>PhpBB</li>
+        <li>TBDev - очень много изменений в движке + оптимизация</li>
+        <li>Wiki</li>
+        <li>WordPress - поверхностно</li>
+      </ol>
+    </li>
+    <li><em><strong>Разное:</strong></em>
+      <ol>
+        <li>Piwik - статистика (локальный аналог <a href="http://www.google.com/analytics/">Google Analytics</a>)</li>
+      </ol>
+    </li><li><em><strong>Планы на будущее:</strong></em>
+    <ol>
+      <li>XSLT</li>
+      <li>Изучить Python</li>
+      <li>Научиться пользоваться каким-нибудь JavaScript, CSS упаковщиком</li>
+      <li><em>Глубже изучить PostgreSQL</em></li>
+      <li>+Node JS</li> <!-- 2010.09.01 -->
+      <li>+Redis</li> <!-- 2010.09.01 -->
+      <li>+MongoDB</li> <!-- 2010.09.01 -->
+    </ol>
+  </li>
+  </ul></div>

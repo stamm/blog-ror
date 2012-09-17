@@ -27,6 +27,12 @@ ru:
 
 
   recaptcha_error: 'Ошибка в капче'
+
+
+  about_me: 'О Загирове Рустаме'
+
+
+
   activerecord:
     models:
       post: 'Пост'
