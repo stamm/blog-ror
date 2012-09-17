@@ -8,7 +8,7 @@ gem 'rails', '3.2.8'
 gem 'mysql2', '0.3.11'
 
 group :development, :test do
-  gem 'rspec-rails', '2.10.0'
+  gem 'rspec-rails', '2.11.0'
   gem 'annotate', '2.5.0'
 end
 
