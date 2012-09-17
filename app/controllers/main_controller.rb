@@ -49,11 +49,14 @@ private
     post = Post.published.find_by_url(params[:url])
     if post
       comment_params = params[:comment].merge({
-                                                  ip: request.ip,
-                                                  status: Comment::get_status(:approve)
-                                              })
-      comment = post.comments.create(comment_params)
-      return comment
+          ip: request.ip,
+          status: Comment::get_status(:approve)
+      })
+      comment = post.comments.build(comment_params)
+      if comment.valid? and verify_recaptcha(model: comment, message: I18n.t(:recaptcha_error))
+        comment.save
+      end
+      comment
     end
   end
 

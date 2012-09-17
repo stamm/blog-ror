@@ -1,15 +1,15 @@
 <article>
 <%= content_tag :h1, @post.title %>
-<div class="meta"><%= @post.tag_array.map { |tag|
-    content_tag(:a, tag, class: 'tag', href: "/tag/#{tag}")
-    }.join(', ').html_safe %>
+<% tags = @post.tag_array.map { |tag|
+  content_tag(:a, tag, class: 'tag', href: "/tag/#{tag}")
+}.join(', ').html_safe %>
+<div class="meta">
+    <%= tags %>
 </div>
 <%= Date.strptime(@post.post_time.to_s, '%s').strftime('%Y-%m-%d') %>
 <%= content_tag :div, @post.content_display.html_safe, class: 'content' %>
 
-<%= @post.tags.map { |tag| content_tag(:a, tag.name,
-          class: 'tags', href: "/tag/#{tag.name}") }
-    .join(', ').html_safe %>
+<%= tags %>
 </article>
 <div id="social-buttons">
 
@@ -56,6 +56,9 @@
     <div class="field">
       <%= f.label :content %><br />
       <%= f.text_area :content %>
+    </div>
+    <div class="field">
+      <%= recaptcha_tags %>
     </div>
     <div class="actions">
       <%= f.submit t(:send) %>

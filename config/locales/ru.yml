@@ -19,12 +19,14 @@ ru:
   logout: 'Выйти'
 
   comments: 'Комментарии'
-  add_comment: 'Добавить комментарий'
+  add_comment: 'Оставить комментарий'
 
   send: 'Отправить'
 
   wrong_email: 'некорректный'
 
+
+  recaptcha_error: 'Ошибка в капче'
   activerecord:
     models:
       post: 'Пост'
