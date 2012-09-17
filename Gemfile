@@ -5,34 +5,34 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', '0.3.11'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
-  gem 'annotate'
+  gem 'annotate', '2.5.0'
 end
 
 group :test do
   gem 'capybara', '1.1.2'
-  gem 'spork'
+  gem 'spork', '0.9.2'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.5'
-  gem 'coffee-rails', '~> 3.2.2'
+  gem 'sass-rails',   '3.2.5'
+  gem 'coffee-rails', '3.2.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.2.3'
+  gem 'uglifier', '1.3.0'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.0.2'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '3.0.1'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -46,17 +46,19 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'debugger'
 
-gem 'rack-bug', :require => 'rack/bug', :git => 'git://github.com/brynary/rack-bug.git', :branch => 'rails3'
+gem 'rack-bug', '0.3.0', require: 'rack/bug', git: 'git://github.com/brynary/rack-bug.git', branch: 'rails3'
 
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate', '3.0.3'
+gem 'will_paginate-bootstrap', '0.2.1'
 
-gem 'rails_bootstrap_navbar'
+gem 'rails_bootstrap_navbar', '0.1.5beta'
 
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '3.4.1'
 
-gem 'RedCloth'
-gem 'bootstrap-sass', '~> 2.0.4.1'
-gem 'markitup-rails'
+gem 'RedCloth', '4.2.9'
+gem 'bootstrap-sass', '2.0.4.2'
+gem 'markitup-rails', '0.2.2'
 
-gem 'email_validator'
+gem 'email_validator', '1.3.0'
+
+gem "recaptcha", '0.3.4', require: "recaptcha/rails"
