@@ -28,6 +28,11 @@ describe "Static pages" do
       page.should have_selector('h1', text: 'Загиров Рустам — веб-программист')
     end
 
+    it "should have email" do
+      visit '/static_pages/about'
+      page.should have_content('rustam@zagirov.name')
+    end
+
   end
 
 end
