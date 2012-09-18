@@ -2,7 +2,7 @@ ZagirovName::Application.routes.draw do
 
 
 
-  get "static_pages/about"
+  match "/about" => "static_pages#about"
 
   get "admin" => 'admin#index'
 
