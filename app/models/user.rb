@@ -1,5 +1,22 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)      default(""), not null
+#  password_digest :string(255)      default(""), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ActiveRecord::Base
   attr_accessible :name, :password_digest, :password, :password_confirmation
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true,
+                   uniqueness: { case_sensitive: false },
+                   length: { maximum: 255 }
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
   has_secure_password
+
+  before_save { |user| user.name = name.downcase }
 end

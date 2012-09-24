@@ -11,7 +11,7 @@ class MainController < ApplicationController
       @posts = @posts.scope_tag(params[:tag])
     end
     @posts = @posts.paginate page: params[:page], order: 'post_time desc',
-                             per_page: 2
+                             per_page: 20
 
     respond_to do |format|
       format.html # posts.html.erb

@@ -1,6 +1,6 @@
 <ul id="posts">
 <% @posts.each do |post| %>
-  <li><h2 class="inline"><%= link_to post.title, article_path(post.url)  %> <span class="hint"><%= Date.strptime(post.post_time.to_s, '%s').strftime('%Y-%m-%d') %></span></h2>
+  <li><h2 class="inline"><%= link_to post.title, article_path(post.url)  %> <span class="hint"><%= post.post_date %></span></h2>
     <div class="tags"><%= post.tag_array.map { |tag| content_tag(:a, tag,
             class: 'tag', href: "/tag/#{tag}") }
         .join(', ').html_safe %>

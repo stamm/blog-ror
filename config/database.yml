@@ -28,3 +28,10 @@ production:
   password: zagirov.name
   host: localhost
 
+
+old:
+  adapter: mysql2
+  database: www.zagirov.name
+  username: zagirov.name
+  password: zagirov.name
+  host: localhost

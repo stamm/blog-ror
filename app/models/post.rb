@@ -46,12 +46,12 @@ class Post < ActiveRecord::Base
 
 
   def post_date
-    Time.at(self.post_time).strftime('%F')
+    Time.zone.at(self.post_time).strftime('%F')
   end
 
 
   def post_time_string
-    Time.at(self.post_time).strftime('%F %T')
+    Time.zone.at(self.post_time).strftime('%F %T')
   end
 
   def post_time_string=(value)
