@@ -11,6 +11,9 @@
   <%= javascript_include_tag "application", controller.controller_name %>
   <%= content_for :javascripts %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body class="<%= controller.controller_name %>">
 

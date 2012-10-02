@@ -1,3 +1,4 @@
 My first project on Ruby on Rails. Of course this is blog.
 
 Don't use this code. This code smell bad =)
+
