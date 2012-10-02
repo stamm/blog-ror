@@ -1,0 +1,20 @@
+language: ruby
+rvm:
+  - 1.9.3
+env:
+  - DB=sqlite
+  - DB=mysql
+#  - DB=postgresql
+script: "rspec spec/"
+before_script:
+  - mysql -e 'create database zagirov.name_test'
+  - mysql -e "CREATE USER 'zagirov.name'@'localhost' IDENTIFIED BY 'zagirov.name';"
+  - mysql -e "GRANT ALL PRIVILEGES ON zagirov.name_test.* TO 'zagirov.name'@'localhost' WITH GRANT OPTION;"
+  - bundle
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+before_install:
+  - gem install bundler
+
+notifications:
+  email:
+    - rustam@zagirov.name
