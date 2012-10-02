@@ -6,8 +6,8 @@ FactoryGirl.define do
   #end
 
 
-  factory :post do |u|
-    u.title  "Title #1"
+  factory :post do
+    title  "Title #1"
     content "*content*"
     #content_display "<b>content</b>"
     status 2

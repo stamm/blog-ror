@@ -11,8 +11,7 @@ describe "Static pages" do
     it { should have_content('Загиров Рустам') }
     it { should have_content('Сертифицированный специалист') }
     it {
-      @title = "О Загирове Рустаме"
-      should have_selector('title', text: "О Загирове Рустаме | Zagirov" )
+      should have_selector('title', text: "Zagirov | О Загирове Рустаме" )
     }
     it { should have_selector('h1', text: 'Загиров Рустам — веб-программист') }
     it { should have_content('rustam@zagirov.name') }
