@@ -7,7 +7,7 @@ env:
 #  - DB=postgresql
 script: "rspec spec/"
 before_script:
-  - mysql uroot -e 'create database `zagirov.name_test`'
+  - mysql -uroot -e 'create database `zagirov.name_test`'
   - mysql -uroot -e "GRANT ALL ON `zagirov.name_test`.* TO 'zagirov.name'@localhost IDENTIFIED BY 'zagirov.name'; FLUSH PRIVILEGES;"
 #  - bundle
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
