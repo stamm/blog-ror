@@ -4,7 +4,7 @@ require 'capistrano_colors'
 
 default_run_options[:pty] = true
 
-set :application, "ror-unicorn"
+set :application, "blog-ror"
 set :repository,  "git://github.com/Stamm/ror-unicorn.git"
 
 
@@ -13,17 +13,17 @@ set :using_rvm, true
 set :rvm_type, :user
 
 
-server "50.17.209.45", :web, :app
+server "174.129.240.218", :web, :app
 set :user, 'www-data'
 set :use_sudo, false
 
 
 set :scm, :git
 set :scm_verbose, true
-#set :deploy_via, :remote_cache
+set :deploy_via, :remote_cache
 set :branch, "master"
 set :keep_releases, 4
-set :deploy_to, '/var/www/{#application}'
+set :deploy_to, "/var/www/#{application}"
 
 
 after "deploy:update", "deploy:cleanup"
@@ -40,6 +40,7 @@ before 'deploy:setup', 'rvm:install_rvm', 'rvm:install_ruby'
 
 ##set :rvm_ruby_string, 'ree' # Это указание на то, какой Ruby интерпретатор мы будем использовать.
 #set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+set :rvm_ruby_string, 'ruby-1.9.3-p194@gemset'
 
 
 after 'deploy:update_code', :roles => :app do
