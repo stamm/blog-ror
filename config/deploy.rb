@@ -5,7 +5,7 @@ require 'capistrano_colors'
 default_run_options[:pty] = true
 
 set :application, "blog-ror"
-set :repository,  "git://github.com/Stamm/ror-unicorn.git"
+set :repository,  "git://github.com/Stamm/blog-ror.git"
 
 
 set :rails_env, "production"
