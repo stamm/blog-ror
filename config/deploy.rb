@@ -2,44 +2,63 @@ require "rvm/capistrano"
 require 'bundler/capistrano'
 require 'capistrano_colors'
 
+default_run_options[:pty] = true
+
 set :application, "ror-unicorn"
 set :repository,  "git://github.com/Stamm/ror-unicorn.git"
 
-set :scm, :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-server "50.17.209.45", :web, :app
-default_run_options[:pty] = true
+set :rails_env, "production"
 set :using_rvm, true
 set :rvm_type, :user
-set :scm_verbose, true
-#set :deploy_via, :remote_cache
+
+
+server "50.17.209.45", :web, :app
 set :user, 'www-data'
 set :use_sudo, false
-#set :stack, :passenger
-after "deploy:update", "deploy:cleanup"
+
+
+set :scm, :git
+set :scm_verbose, true
+#set :deploy_via, :remote_cache
 set :branch, "master"
 set :keep_releases, 4
-set :deploy_to, '/var/www/test.am.zagirov.name'
+set :deploy_to, '/var/www/{#application}'
+
+
+after "deploy:update", "deploy:cleanup"
 set :bundle_without, [:test, :development]
 
 
+set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
+set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
-#role :app, "50.17.209.45"                          # This may be the same as your `Web` server
-#role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-#role :db,  "your slave db-server here"
+# интеграция rvm с capistrano настолько хороша, что при выполнении cap deploy:setup установит себя и указанный в rvm_ruby_string руби.
+before 'deploy:setup', 'rvm:install_rvm', 'rvm:install_ruby'
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+####################
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+##set :rvm_ruby_string, 'ree' # Это указание на то, какой Ruby интерпретатор мы будем использовать.
+#set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+
+after 'deploy:update_code', :roles => :app do
+  # Здесь для примера вставлен только один конфиг с приватными данными - database.yml.
+  # Обычно для таких вещей создают папку /srv/myapp/shared/config и кладут файлы туда.
+  # При каждом деплое создаются ссылки на них в нужные места приложения.
+  run "rm -f #{current_release}/config/database.yml"
+  run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
+end
+
+# Далее идут правила для перезапуска unicorn. Их стоит просто принять на веру - они работают.
+namespace :deploy do
+  task :restart do
+    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
+  end
+  task :start do
+    run "bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
+  end
+  task :stop do
+    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+  end
+end

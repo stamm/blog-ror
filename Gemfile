@@ -15,6 +15,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "capistrano"
+  gem "rvm-capistrano"
   gem 'annotate', '2.5.0'
 end
 
@@ -70,3 +72,5 @@ gem 'markitup-rails', '0.2.2'
 gem 'email_validator', '1.3.0'
 
 gem "recaptcha", '0.3.4', require: "recaptcha/rails"
+
+gem 'unicorn'
