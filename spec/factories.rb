@@ -1,9 +1,11 @@
 FactoryGirl.define do
-  #factory :user do
-  #  name "Rustam"
-  #  password "foobar"
-  #  password_confirmation "foobar"
-  #end
+
+
+  factory :user do
+    name "test"
+    password "test_password"
+    password_confirmation "test_password"
+  end
 
 
   factory :post do
