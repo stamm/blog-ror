@@ -2,19 +2,24 @@ require 'spec_helper'
 
 describe User do
 
+  subject { @user }
+
   before do
+    User.delete_all name: "Example User"
     @user = User.new(name: "Example User", password: '123456', password_confirmation: '123456')
   end
 
-  subject { @user }
 
-  it { should respond_to(:name) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:authenticate) }
 
-  it { should be_valid }
+  describe "model test valid" do
+    it { should respond_to(:name) }
+    it { should respond_to(:password_digest) }
+    it { should respond_to(:password) }
+    it { should respond_to(:password_confirmation) }
+    it { should respond_to(:authenticate) }
+
+    it { should be_valid }
+  end
 
   describe "when name is not present" do
     before { @user.name = " " }

@@ -2,7 +2,7 @@ FactoryGirl.define do
 
 
   factory :user do
-    name "test"
+    sequence(:name) { |n| "foo#{n}" }
     password "test_password"
     password_confirmation "test_password"
   end
@@ -15,6 +15,6 @@ FactoryGirl.define do
     status 2
     post_time Time.now.to_i
     author_id 1
-    url "post_1"
+    sequence(:url) {|n| "post_#{n}"}
   end
 end

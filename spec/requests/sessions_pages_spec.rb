@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Sessions page" do
   subject { page }
 
-  describe "login page" do
+  describe "login" do
     before { visit login_path }
 
     let(:submit) { "Login" }
@@ -22,7 +22,7 @@ describe "Sessions page" do
         fill_in "Name", with: user.name
         fill_in "Password", with: user.name
       end
-      it "should not login" do
+      it "not login" do
         should_not have_content(user.name)
         click_button submit
         current_path.should == login_path
@@ -36,7 +36,7 @@ describe "Sessions page" do
           fill_in "Name", with: user.name
           fill_in "Password", with: "test_password"
       end
-      it "should login" do
+      it "login" do
         should_not have_content(user.name)
         click_button submit
         current_path.should == admin_path
