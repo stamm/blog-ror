@@ -22,7 +22,7 @@ describe "Sessions page" do
         fill_in "Name", with: user.name
         fill_in "Password", with: user.name
       end
-      it "not login" do
+      it do
         should_not have_content(user.name)
         click_button submit
         current_path.should == login_path
@@ -36,7 +36,7 @@ describe "Sessions page" do
           fill_in "Name", with: user.name
           fill_in "Password", with: "test_password"
       end
-      it "login" do
+      it do
         should_not have_content(user.name)
         click_button submit
         current_path.should == admin_path
