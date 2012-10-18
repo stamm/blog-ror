@@ -26,6 +26,8 @@ group :test do
   gem 'rb-fsevent', '0.9.2', require: false
   gem 'terminal-notifier-guard', '1.5.3'
   gem 'factory_girl_rails', '4.1.0'
+  gem 'cucumber-rails', '1.3.0'
+  gem 'database_cleaner', '0.9.1'
 end
 
 # Gems used only for assets and not required
