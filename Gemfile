@@ -11,7 +11,7 @@ group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '2.1.0'
   gem 'guard-spork', '1.2.1'
-  gem 'guard-cucumber'
+  gem 'guard-cucumber', '1.2.0'
   gem 'spork', '0.9.2'
   gem "fuubar", "~> 1.1.0"
 end
@@ -27,7 +27,7 @@ group :test do
   gem 'rb-fsevent', '0.9.2', require: false
   gem 'terminal-notifier-guard', '1.5.3'
   gem 'factory_girl_rails', '4.1.0'
-  gem 'cucumber-rails', '1.3.0'
+  gem 'cucumber-rails', '1.2.1'
   gem 'database_cleaner', '0.9.1'
 end
 

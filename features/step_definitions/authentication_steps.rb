@@ -13,7 +13,11 @@ end
 
 
 Given /^the user has an account$/ do
-  @user = FactoryGirl.create(:user)
+  @user = FactoryGirl.build(:user)
+  User.delete_all name: @user.name
+
+  @user.save
+  @user.should be_valid
 end
 
 When /^the user submits valid login information$/ do
