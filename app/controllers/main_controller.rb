@@ -23,8 +23,15 @@ class MainController < ApplicationController
 
     if params[:comment]
       @comment = create_comment
+      cookies[:comment] = {
+          value: @comment.author + '~' + @comment.email,
+          expires: Time.now + 31536000
+      }
     else
       @comment = Comment.new
+      if cookies[:comment]
+        @comment.author, @comment.email = cookies[:comment].split('~')
+      end
     end
 
     unless @comment.new_record?

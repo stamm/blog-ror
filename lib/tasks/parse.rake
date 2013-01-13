@@ -3,14 +3,21 @@ task parse: :environment do
   configs = ActiveRecord::Base.configurations
 
   class Old < ActiveRecord::Base
-
   end
   Old.establish_connection(configs["old"])
 
+
+  Post.delete_all
+
   Old.connection.select_all('select * from tbl_post').each do |e|
+    content = e["content"].gsub(/<code>(.*?)<\/code>/im,'```\1```')
+    content = content.gsub(/<code lang="([^"]+)">[\r\n]*(.*?)[\r\n]*<\/code>/im,'``` \1
+\2
+```')
+
     Post.create(
         title:   e["title"],
-        content: e["content"],
+        content: content,
         status:  e["status"],
         post_time:  e["post_time"],
         author_id:  e["author_id"],

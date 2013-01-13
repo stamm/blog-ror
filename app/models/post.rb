@@ -41,7 +41,8 @@ class Post < ActiveRecord::Base
 
   def convert_content
     return if self.content.nil?
-    self.content_display = RedCloth.new(self.content).to_html
+    markdown = Redcarpet::Markdown.new(AlbinoHTML, fenced_code_blocks: true)
+    self.content_display = markdown.render self.content
   end
 
 

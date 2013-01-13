@@ -1,0 +1,51 @@
+.markItUpEditor {
+  clear: none;
+  padding: 0 0 0 10px;
+  width: 100%;
+  background: white;
+}
+
+.markItUpContainer {
+  border: none;
+  padding:5px 20px 2px 5px;
+  background: none;
+}
+
+.markItUpEditor {
+  border: 1px solid #DCDFE6;
+}
+
+.markItUp {
+  margin: 0;
+  width: 500px;
+  border: none;
+
+
+  .markItUpButton1 a {
+    background-image:url(<%= image_path "markitup/bold.png" %>);
+  }
+  .markItUpButton2 a {
+    background-image:url(<%= image_path "markitup/italic.png" %>);
+  }
+
+  .markItUpButton3 a {
+    background-image:url(<%= image_path "markitup/list-bullet.png" %>);
+  }
+  .markItUpButton4 a {
+    background-image:url(<%= image_path "markitup/list-numeric.png" %>);
+  }
+
+  .markItUpButton5 a {
+    background-image:url(<%= image_path "markitup/link.png" %>);
+  }
+
+  .markItUpButton6 a	{
+    background-image:url(<%= image_path "markitup/quotes.png" %>);
+  }
+  .markItUpButton7 a	{
+    background-image:url(<%= image_path "markitup/code.png" %>);
+  }
+  .markItUpButton8 a {
+    background-image:url(<%= image_path "markitup/preview.png" %>);
+  }
+}
