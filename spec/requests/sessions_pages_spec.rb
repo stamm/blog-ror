@@ -33,7 +33,7 @@ describe "Sessions page" do
       should_not have_content(user.name)
       within 'form' do
         fill_in "Name", with: user.name
-        fill_in "Password", with: "test_password"
+        fill_in "Password", with: 123456
         click_button submit
       end
 

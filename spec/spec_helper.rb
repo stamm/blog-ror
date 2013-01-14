@@ -33,6 +33,7 @@ Spork.prefork do
     config.mock_with :rspec
 
     config.include Capybara::DSL
+    config.include FactoryGirl::Syntax::Methods
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -45,6 +46,10 @@ Spork.prefork do
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
+    # Use the fail_fast option to tell RSpec to abort the run on first failure
+    config.fail_fast = true
+    # If set true set symbols without value to true
+    config.treat_symbols_as_metadata_keys_with_true_values = true
   end
 
 end

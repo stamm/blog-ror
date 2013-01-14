@@ -3,13 +3,13 @@ FactoryGirl.define do
 
   factory :user do
     sequence(:name) { |n| "foo#{n}" }
-    password "test_password"
-    password_confirmation "test_password"
+    password "123456"
+    password_confirmation { password}
   end
 
 
   factory :post do
-    title  "Title #1"
+    sequence(:title) { |n| "Title #{n}" }
     content "*content*"
     #content_display "<b>content</b>"
     status 2

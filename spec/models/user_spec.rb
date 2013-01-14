@@ -2,78 +2,93 @@ require 'spec_helper'
 
 describe User do
 
+
+  let!(:user) { build :user }
+  before {
+    @user = user
+    User.delete_all name: @user.name
+  }
   subject { @user }
 
-  before do
-    User.delete_all name: "Example User"
-    @user = User.new(name: "Example User", password: '123456', password_confirmation: '123456')
-  end
-
-
-
-  describe "model test valid" do
+  describe "Associations" do
     it { should respond_to(:name) }
     it { should respond_to(:password_digest) }
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
     it { should respond_to(:authenticate) }
-
-    it { should be_valid }
   end
 
-  describe "when name is not present" do
-    before { @user.name = " " }
-    it { should_not be_valid }
+  describe "Validation" do
+    it { should validate_presence_of(:name) }
+    it { should validate_uniqueness_of(:name).case_insensitive }
+    it { should ensure_length_of(:name).is_at_most(255) }
+    it { should validate_presence_of(:password) }
+    it { should ensure_length_of(:password).is_at_least(6) }
+
   end
 
-  describe "when name is too long" do
-    before { @user.name = "a" * 256 }
-    it { should_not be_valid }
+  it "downcase name" do
+    subject.name = "TEST"
+    subject.save
+    subject.name.should == 'test'
   end
 
-  describe "when name is already taken" do
-    before do
-      user_with_same_name = @user.dup
-      user_with_same_name.name = @user.name.upcase
+  describe "should not be valid" do
+    it "without name" do
+      subject.name = " "
+      should_not be_valid
+    end
+
+    it "when name is too long" do
+      subject.name = "a" * 256
+      should_not be_valid
+    end
+
+    it "when name is already taken" do
+      user_with_same_name = subject.dup
+      user_with_same_name.name = subject.name.upcase
       user_with_same_name.save
+      should_not be_valid
     end
 
-    it { should_not be_valid }
-  end
+    context "problem with password" do
+      it "without password" do
+        subject.password = subject.password_confirmation = " "
+        should_not be_valid
+      end
 
-  describe "when password is not present" do
-    before { @user.password = @user.password_confirmation = " " }
-    it { should_not be_valid }
-  end
+      it "when password doesn't match confirmation" do
+        subject.password_confirmation = "mismatch"
+        should_not be_valid
+      end
 
-  describe "when password doesn't match confirmation" do
-    before { @user.password_confirmation = "mismatch" }
-    it { should_not be_valid }
-  end
+      it "when password confirmation is nil" do
+        subject.password_confirmation = nil
+        should_not be_valid
+      end
 
-  describe "when password confirmation is nil" do
-    before { @user.password_confirmation = nil }
-    it { should_not be_valid }
-  end
-
-  describe "return value of authenticate method" do
-    before { @user.save }
-    let(:found_user) { User.find_by_name(@user.name) }
-
-    describe "with valid password" do
-      it { should == found_user.authenticate(@user.password) }
-    end
-
-    describe "with invalid password" do
-      let(:user_for_invalid_password) { found_user.authenticate("invalid") }
-
-      it { should_not == user_for_invalid_password }
-      specify { user_for_invalid_password.should be_false }
+      it "with a password that's too short" do
+        subject.password = subject.password_confirmation = "a" * 5
+        should be_invalid
+      end
     end
   end
 
-  describe "with a password that's too short" do
-    before { @user.password = @user.password_confirmation = "a" * 5 }
-    it { should be_invalid }
+  describe "authenticate" do
+
+    before { subject.save }
+
+    let(:found_user) { User.find_by_name(subject.name) }
+    let(:user_for_invalid_password) { found_user.authenticate("invalid") }
+
+    it "with valid password" do
+      should == found_user.authenticate(subject.password)
+    end
+
+    it "with invalid password" do
+      should_not == user_for_invalid_password
+      user_for_invalid_password.should be_false
+    end
   end
+
 end
