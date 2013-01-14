@@ -31,12 +31,9 @@ class Post < ActiveRecord::Base
   #before_save :convert_post_time
 
 
-  scope :published, where(:status => STATUS_TYPES.index(:publish) + 1)
+  scope :published, -> { where(:status => STATUS_TYPES.index(:publish) + 1) }
 
-
-  def self.scope_tag(tag)
-    joins(:tags).where('tags.name = ?', tag)
-  end
+  scope :scope_tag, lambda { |tag| joins(:tags).where('tags.name = ?', tag) }
 
 
   def convert_content
