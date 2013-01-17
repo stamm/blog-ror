@@ -9,11 +9,12 @@ gem 'mysql2', '0.3.11'
 
 group :development, :test do
   gem 'rspec-rails', '2.12.2'
-  gem 'guard-rspec', '2.3.3'
+  gem 'guard-rspec', '2.4.0'
   gem 'guard-spork', '1.4.1'
-  gem 'guard-cucumber', '1.3.1'
+  gem 'guard-cucumber', '1.3.2'
   gem 'spork', '0.9.2'
   gem "fuubar", "~> 1.1.0"
+  gem 'quiet_assets'
 end
 
 group :development do
