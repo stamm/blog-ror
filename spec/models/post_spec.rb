@@ -90,7 +90,8 @@ describe Post do
 
 
   describe 'scope' do
-    before {
+    before do
+      Post.delete_all
       @post1 = create(:post, status: 2)
       @post1.tag_list = 'tag1, tag2'
       @post2 = create(:post, status: 2)
@@ -99,7 +100,7 @@ describe Post do
       @post3.tag_list = 'tag3'
       @post4 = create(:post, status: 3)
       @post4.tag_list = 'tag5'
-    }
+    end
     it 'published' do
       Post.published.should have(2).post
       Post.published.should  == [@post1, @post2]
