@@ -6,6 +6,7 @@ env:
 #  - DB=sqlite
   - DB=mysql
 #  - DB=postgresql
+bundler_args: "--without development"
 script: "rspec spec/"
 before_script:
   - mysql -uroot -e 'create database `zagirov.name_test`'
