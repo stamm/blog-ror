@@ -58,6 +58,17 @@ Spork.prefork do
     config.fail_fast = true
     # If set true set symbols without value to true
     config.treat_symbols_as_metadata_keys_with_true_values = true
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
 
 end

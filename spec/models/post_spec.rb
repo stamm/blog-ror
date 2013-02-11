@@ -86,6 +86,10 @@ describe Post do
       subject.save
       subject.content_display.should == "<p><strong>test</strong></p>\n"
     end
+    it 'content_display' do
+      subject.content = '__test__'
+      subject.content_display.should == "<p><strong>test</strong></p>\n"
+    end
   end
 
 
@@ -133,4 +137,6 @@ describe Post do
       subject.tag_list.should == tags.join(', ')
     end
   end
+
+
 end

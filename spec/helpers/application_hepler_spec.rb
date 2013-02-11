@@ -14,7 +14,7 @@ describe ApplicationHelper do
     end
   end
 
-  it "parse gravatar" do
+  it "gravatar" do
     img = gravatar_for('stammru@gmail.com', 'stamm')
     img.should == image_tag("https://secure.gravatar.com/avatar/cf206824414647c8613541f09ec34176", alt: "stamm", class: "gravatar")
   end

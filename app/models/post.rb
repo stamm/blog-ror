@@ -38,7 +38,7 @@ class Post < ActiveRecord::Base
 
   def content_display
     attr = self.read_attribute(:content_display)
-    return attr if attr
+    return attr unless attr.blank?
     convert_content
   end
 
