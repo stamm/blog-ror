@@ -32,6 +32,7 @@ group :test do
   gem 'cucumber-rails', '1.3.0'
   gem 'database_cleaner', '0.9.1'
   gem 'shoulda-matchers', '1.4.2'
+  gem 'coveralls', '0.5.5', require: false
 end
 
 # Gems used only for assets and not required
