@@ -1,9 +1,9 @@
 ZagirovName::Application.routes.draw do
-
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
 
   match "/about" => "static_pages#about"
-  match "/ajax/markitup" => "ajax#markitup"
+  match "/markitup/preview" => "markitup#preview"
 
   get "admin" => 'admin#index'
 

@@ -1,5 +1,5 @@
-class AjaxController < ApplicationController
-  def markitup
+class MarkitupController < ApplicationController
+  def preview
     require 'coderay'
     require 'coderay/for_redcloth'
     @html = RedCloth.new(params[:data]).to_html

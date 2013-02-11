@@ -16,6 +16,7 @@
 #
 
 class Post < ActiveRecord::Base
+
   has_and_belongs_to_many :tags
   has_many :comments
   STATUS_TYPES = [ :draft, :publish, :archive ]
@@ -35,11 +36,16 @@ class Post < ActiveRecord::Base
 
   scope :scope_tag, lambda { |tag| joins(:tags).where('tags.name = ?', tag) }
 
+  def content_display
+    attr = self.read_attribute(:content_display)
+    return attr if attr
+    convert_content
+  end
+
 
   def convert_content
     return if self.content.nil?
-    markdown = Redcarpet::Markdown.new(AlbinoHTML, fenced_code_blocks: true)
-    self.content_display = markdown.render self.content
+    self.content_display = MarkdownRenderer.markdown self.content
   end
 
 
@@ -74,4 +80,5 @@ class Post < ActiveRecord::Base
   def get_status
     STATUS_TYPES[status-1]
   end
+
 end

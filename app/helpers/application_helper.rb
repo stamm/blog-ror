@@ -1,4 +1,6 @@
+# encoding: UTF-8
 module ApplicationHelper
+
   # Return a title on a per-page basis.
   def title
     base_title = "Zagirov"
@@ -16,14 +18,5 @@ module ApplicationHelper
     image_tag(gravatar_url, alt: name, class: "gravatar")
   end
 
-  def markdown(text)
 
-    render = Redcarpet::Render::HTML.new :filter_html
-    extensions = [:fenced_code_blocks, :autolink]
-
-    markdown = Redcarpet::Markdown.new render, *extensions
-
-    return markdown.render text
-
-  end
 end

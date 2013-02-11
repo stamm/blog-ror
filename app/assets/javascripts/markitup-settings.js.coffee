@@ -1,7 +1,7 @@
 
 window.markitup_settings =
   previewInWindow: 'width=800, height=600, resizable=yes, scrollbars=yes'
-  previewParserPath: "/ajax/markitup"
+  previewParserPath: "/markitup/preview"
   onShiftEnter:
     keepDefault: false
     openWith: '\n\n'

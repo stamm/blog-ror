@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /*
- *= require markitup
- *= require markitup-markdown
+ *= require markitup/skins/markitup/style
  *= require markitup-my
+ *= require coderay
  */
 
 @import "_variables";
