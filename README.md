@@ -7,3 +7,5 @@ Don't use this code. This code smell bad =)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/Stamm/blog-ror)
 
 [![Code dependency](https://gemnasium.com/Stamm/blog-ror.png)](https://gemnasium.com/Stamm/blog-ror)
+
+[![Coverage status](https://coveralls.io/repos/Stamm/blog-ror/badge.png?branch=master)](https://coveralls.io/repos/Stamm/blog-ror)
