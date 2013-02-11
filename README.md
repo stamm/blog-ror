@@ -8,4 +8,4 @@ Don't use this code. This code smell bad =)
 
 [![Code dependency](https://gemnasium.com/Stamm/blog-ror.png)](https://gemnasium.com/Stamm/blog-ror)
 
-[![Coverage status](https://coveralls.io/repos/Stamm/blog-ror/badge.png?branch=master)](https://coveralls.io/repos/Stamm/blog-ror)
+[![Coverage status](https://coveralls.io/repos/Stamm/blog-ror/badge.png?branch=master)](https://coveralls.io/r/Stamm/blog-ror)
