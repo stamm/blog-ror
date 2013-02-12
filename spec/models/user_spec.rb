@@ -45,10 +45,11 @@ describe User do
     end
 
     it "when name is already taken" do
-      user_with_same_name = subject.dup
-      user_with_same_name.name = subject.name.upcase
-      user_with_same_name.save
+      User.delete_all name: subject.name
+      user_with_same_name = User.new({name: subject.name.upcase, password: "123456", password_confirmation: "123456"})
+      user_with_same_name.save!
       should_not be_valid
+
     end
 
     context "problem with password" do
