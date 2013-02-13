@@ -2,10 +2,12 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
+  - rbx-19mode
+  - jruby-19mode
 env:
 #  - DB=sqlite
   - DB=mysql
-#  - DB=postgresql
+  - DB=postgresql
 bundler_args: "--without development"
 script: "rspec spec/"
 before_script:
