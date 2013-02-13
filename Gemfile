@@ -21,7 +21,7 @@ group :development do
   gem "capistrano", '2.14.2'
   gem "rvm-capistrano", '1.2.7'
   gem 'annotate', '2.5.0'
-  gem "brakeman", '1.9.1'
+  #gem "brakeman", '1.9.1'
   gem 'better_errors', '0.5.0'
   gem 'binding_of_caller', '0.6.8'
   gem 'meta_request', '0.2.1'
@@ -92,3 +92,5 @@ gem 'email_validator', '1.3.0'
 gem "recaptcha", '0.3.4', require: "recaptcha/rails"
 
 gem 'unicorn', '4.6.0'
+
+gem 'haml', '4.0.0'

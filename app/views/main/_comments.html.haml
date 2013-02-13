@@ -1,0 +1,16 @@
+%ol.comments
+  - @post.comments.each do |comment|
+    %li.comment{id: "c#{comment.id}"}
+      %div.head
+        %span.link
+          - if comment.url.blank?
+            = comment.author
+          - else
+            = link_to comment.author, comment.url
+          = link_to '#', article_path(@post.url, anchor: 'c' + comment.id.to_s), class: 'cid'
+        %div.avatar
+          %img{src: "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(comment.email)}/?s=36", alt: comment.author}/
+        %span.date
+          [#{comment.created_at}]
+      %div.content
+        = comment.content
