@@ -1,18 +1,19 @@
 require 'rubygems'
 require 'spork'
 
-if ENV['TRAVIS']
-  require 'coveralls'
-  Coveralls.wear! 'rails'
-else
-  require 'simplecov'
-  SimpleCov.start 'rails'
-end
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
 
 Spork.prefork do
+
+  if ENV['TRAVIS']
+    require 'coveralls'
+    Coveralls.wear! 'rails'
+  elsif ! ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
@@ -76,6 +77,10 @@ end
 Spork.each_run do
   # This code will be run each time you run your specs.
   FactoryGirl.reload
+  if ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
 end
 
 # --- Instructions ---

@@ -10,8 +10,8 @@ describe MainController do
     it 'have post title' do
       @post.save
       get '/'
-      Post.all.size.should == 1
-      assigns(:posts).should eq([@post])
+      #Post.all.size.should == 1
+      assigns(:posts).should include(@post)
       assigns(:title).should == "All posts"
       response.should render_template("posts")
       expect(response.body).to include(@post.title)

@@ -26,7 +26,7 @@ describe PostsController do
       request.session[:user_id].should == @user.id
       @post.save
       get :index
-      assigns(:posts).should eq([@post])
+      assigns(:posts).should include(@post)
       response.should render_template("index")
     end
   end
@@ -60,8 +60,10 @@ describe PostsController do
       @user.save
       request.session[:user_id] = @user.id
       request.session[:user_id].should == @user.id
-      get :new
-      assigns(:post).attributes.should == Post.new({post_time: Time.now.to_i}).attributes
+      Timecop.freeze do
+        get :new
+        assigns(:post).attributes.should == Post.new({post_time: Time.now.to_i}).attributes
+      end
       response.should render_template("new")
     end
   end
