@@ -7,6 +7,8 @@ require 'spork'
 
 Spork.prefork do
 
+  puts "#{RUBY_VERSION}: #{RUBY_PLATFORM}"
+
   if ENV['TRAVIS']
     require 'coveralls'
     Coveralls.wear! 'rails'
