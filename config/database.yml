@@ -18,25 +18,25 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: zagirov.name
+  database: zagirov_name
 
 staging:
   <<: *defaults
-  database: zagirov.name
+  database: zagirov_name
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
   <<: *defaults
-  database: zagirov.name_test
+  database: zagirov_name_test
 
 cucumber:
   <<: *test
 
 production:
   <<: *defaults
-  database: zagirov.name_prod
+  database: zagirov_name_prod
 
 # Old database on yii
 old:
