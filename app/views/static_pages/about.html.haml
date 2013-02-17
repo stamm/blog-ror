@@ -1,0 +1,199 @@
+- @title = I18n.t(:about_me)
+.vcard{:itemscope => "", :itemtype => "http://schema.org/Person"}
+  %h1
+    %span.fn
+      %span.family-name{:itemprop => "name"} Загиров
+      %span.given-name Рустам
+    %span{:style => "font-size: 50%"}
+      —
+      %span.title{:itemprop => "jobTitle"} веб-программист
+  .adr
+    %span.locality> г. Москва
+    ,
+    %span.locality г. Иваново
+  %p
+    %a{:href => "http://www.zend.com/en/yellow-pages#show-ClientCandidateID=ZEND017665"} Сертифицированный специалист по PHP (Zend PHP 5.3 Certification)
+  %a{:href => "http://www.zend.com/en/yellow-pages#show-ClientCandidateID=ZEND017665", :style => "float:right;"}
+    %img{:alt => "zend", :src => "http://www.zend.com/img/yellowpages/zce_php5-3_logo.gif"}/
+  %p Хорошо знаю: PHP, MySQL, немного JavaScript (в частности Jquery), memcached, sphinx. Git-мастер. Немного знаю PostgreSQL. Знаком с поверхностным администрированием и работой в Linux-системе (Debian-подобных), поднимая сервер с нуля. Консоль уважаю и не боюсь её. Имел опыт работы с движками: MediaWiki, phpBB, TBDev. Для них писал свои дополнения. Много изменений сделал в движке TBDev под нужды локального трекера. Использовал фреймворк CodeIgniter, сейчас использую Yii.
+  %p
+    Ники:
+    = succeed "," do
+      %span.nickname Stamm
+    Stammru
+  %p
+  %h3 Контактные данные
+  %div
+    %dl
+      %dt Сайт:
+      %dd.url{:itemprop => "url"} http://zagirov.name
+    %dl
+      %dt Email:
+      %dd
+        %a.email{:href => "mailto:rustam@zagirov.name"} rustam@zagirov.name
+    %dl
+      %dt Jabber:
+      %dd
+        %a.jabber{:href => "xmpp:rustam@zagirov.name"} rustam@zagirov.name
+    %dl
+      %dt Icq:
+      %dd
+        %a.url.icq{:href => "http://wwp.icq.com/scripts/contact.dll?msgto=3228262"} 322-82-62
+    %dl
+      %dt Skype:
+      %dd
+        %a.skype{:href => "skype:stamm_ru?call"} stamm_ru
+    %dl
+      %dt Twitter:
+      %dd
+        %a.twitter.url{:href => "https://twitter.com/#!/Stammru"} stammru
+    %dl
+      %dt github:
+      %dd
+        %a.github.url{:href => "https://github.com/Stamm"} Stamm
+    %dl
+      %dt Google+:
+      %dd
+        %a{:href => "https://plus.google.com/102994584805048026218?prsrc=3&rel=author", :rel => "me"} 102994584805048026218
+        %span.hint — вот такой вот набор цифр
+  .note
+    %img.photo{:alt => "Фото", :height => "0", :src => "http://cs9919.vkontakte.ru/u3903784/a_321fb700.jpg", :width => "0"}/
+%br/
+%br/
+%br/
+%br/
+%div
+  Мои проекты:
+  %ul
+    %li
+      %a{:href => "https://chrome.google.com/webstore/detail/aegemfnepncjfdnlphmlpmfaninhgafg"} Плагин умных цитат для Google Chrome
+    %li
+      %a{:href => "https://github.com/Stamm/wp2e2"} Конвертер постов из wordpress в Эгею
+%div{:style => "padding-top:20px;"}
+  %h2 Что могу?
+  Подсмотрел на одном блоге список скилов познаний. Заодно решил сделать некоторый подытог, что же я знаю.
+  
+  Со временем будет пополняться.
+  %ul
+    %li
+      %strong
+        %em Linux и системное администрирование:
+      %ol
+        %li
+          %strong Linux:
+          %ol
+            %li
+              %strong Ubuntu
+              – использую в качестве основной ОС на десктопе/рабочей станции.li>
+            %li
+              %strong Debian
+              – настраивал и использую на всех серверах.
+        %li
+          %strong> LAMP (Linux, Apache, MySQL, PHP)
+          \: ставил, настраивал, виртуалхосты, PHP отладчики и кешеры.
+        %li
+          %strong> Nginx
+          \: с апачем на бэкенде или php-fpm,
+          %strong>
+          виртуалхосты, url-rewrite
+        %li
+          %strong Memcached
+        %li
+          %strong> Git, Gitosis, Gitolite
+          \: установка, настройка, разграничение доступа
+        %li
+          %strong> bind9 (named)
+          \: установка, простейшая настройка
+        %li
+          %strong> SphinxSearch
+          \: установка, настройка.
+        %li
+          %strong> Windows
+          \: разбираюсь, но почти не пользуюсь, только в исключительных случаях
+    %li
+      %strong
+        %em Программирование
+      (работаю в phpStorm под Ubuntu):
+      %ol
+        %li
+          %strong> PHP
+          \: очень много всего на нем писал и продолжаю писать.
+          %ol
+            %li ООП
+            %li Архитектура Контроллер – Модель – Представление (MVC)
+            %li Smarty
+            %li SOAP
+            %li GD2, Image Magick
+            %li PDO, MySQL, Memcache
+            %li SphinxSearch
+        %li
+          %strong> JavaScript
+          \:
+          %ol
+            %li FireBug
+            %li jQuery (предпочтительно)
+            %li AJAX – бэкэнды на PHP
+        %li
+          %strong> SQL
+          \: есть опыт работы с MySQL и немного в PostgreSQL
+          %ol
+            %li Настройка
+            %li Обычные (и не очень) запросы, индексы
+            %li Хранимые процедуры
+            %li Транзакции
+            %li Представления (Views)
+        %li
+          %strong> Bash
+          \: люблю, но без фанатизма ;)
+        %li
+          %strong Регулярные выражения
+    %li
+      %em
+        %strong Командная работа и контроль версий
+      %ol
+        %li
+          GIT репозиторий,
+          = succeed "," do
+            %del{:datetime => "2011-03-12T19:49:08+00:00"} gitosis
+          gitolite
+        %li SVN
+        %li Redmine: установка (nginx + thin)
+    %li
+      %em
+        %strong Верстка
+      %ol
+        %li Валидный HTML/XHTML, CSS. Не люблю верстать.
+    %li
+      %em
+        %strong Фреймворки/CMS:
+      %ol
+        %li Codeigniter
+        %li
+          %strong Yii
+        %li PhpBB
+        %li TBDev - очень много изменений в движке + оптимизация
+        %li Wiki
+        %li WordPress - поверхностно
+    %li
+      %em
+        %strong Разное:
+      %ol
+        %li
+          Piwik - статистика (локальный аналог
+          = succeed ")" do
+            %a{:href => "http://www.google.com/analytics/"} Google Analytics
+    %li
+      %em
+        %strong Планы на будущее:
+      %ol
+        %li XSLT
+        %li Изучить Python
+        %li Научиться пользоваться каким-нибудь JavaScript, CSS упаковщиком
+        %li
+          %em Глубже изучить PostgreSQL
+        %li +Node JS
+        / 2010.09.01
+        %li +Redis
+        / 2010.09.01
+        %li +MongoDB
+        / 2010.09.01

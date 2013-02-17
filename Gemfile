@@ -15,6 +15,7 @@ group :development do
   gem 'binding_of_caller', '0.7.1'
   gem "capistrano", '2.14.2'
   gem "fuubar", "~> 1.1.0"
+  gem "html2haml", "1.0.1"
   gem 'meta_request', '0.2.1'
   gem 'quiet_assets', '1.0.1'
   gem "rvm-capistrano", '1.2.7'
