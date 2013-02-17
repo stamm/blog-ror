@@ -1,11 +1,9 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem "fuubar", "~> 1.1.0"
   gem 'guard-rspec', '2.4.0'
   gem 'guard-spork', '1.4.2'
   gem 'guard-cucumber', '1.3.2'
-  gem 'quiet_assets', '1.0.1'
   gem 'rspec-rails', '2.12.2'
   gem 'spork', '0.9.2'
 end
@@ -16,7 +14,9 @@ group :development do
   gem 'better_errors', '0.6.0'
   gem 'binding_of_caller', '0.7.1'
   gem "capistrano", '2.14.2'
+  gem "fuubar", "~> 1.1.0"
   gem 'meta_request', '0.2.1'
+  gem 'quiet_assets', '1.0.1'
   gem "rvm-capistrano", '1.2.7'
 end
 

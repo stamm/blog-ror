@@ -15,7 +15,7 @@ before_script:
 #  - [ "$DB" = 'postgresql' ] && psql -c 'create database zagirov.name_test;' -U postgres;
 #  - [ "$DB" = 'mysql' ] && mysql -uroot -e 'create database `zagirov.name_test`'
 #  - [ "$DB" = 'mysql' ] && mysql -uroot -e 'GRANT ALL ON `zagirov.name_test`.* TO "zagirov.name"@"localhost" IDENTIFIED BY "zagirov.name"; FLUSH PRIVILEGES;'
-  - psql -c 'create database zagirov.name_test;' -U postgres;
+  - psql -c 'create database "zagirov.name_test";' -U postgres;
   - mysql -uroot -e 'create database `zagirov.name_test`'
   - mysql -uroot -e 'GRANT ALL ON `zagirov.name_test`.* TO "zagirov.name"@"localhost" IDENTIFIED BY "zagirov.name"; FLUSH PRIVILEGES;'
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
