@@ -5,7 +5,7 @@ mysql: &mysql
 
 postgresql: &postgresql
   adapter: postgresql
-  username: postgresql
+  username: postgres
   password:
   min_messages: ERROR
 
