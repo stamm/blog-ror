@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title, null: false
       t.text :content, null: false
       t.text :content_display, null: false
-      t.column :status, :tinyint, null: false
+      t.integer :status, null: false
       t.integer :post_time, null: false, default: 0
       t.integer :author_id, null: false, default: 0
       t.string :url, null: false
