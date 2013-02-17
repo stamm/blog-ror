@@ -14,7 +14,7 @@ group :development do
   gem 'annotate', '2.5.0'
   #gem "brakeman", '1.9.1'
   gem 'better_errors', '0.6.0'
-  gem 'binding_of_caller', '0.6.9'
+  gem 'binding_of_caller', '0.7.1'
   gem "capistrano", '2.14.2'
   gem 'meta_request', '0.2.1'
   gem "rvm-capistrano", '1.2.7'
@@ -22,7 +22,7 @@ end
 
 group :test do
   gem 'capybara', '2.0.2'
-  gem 'coveralls', '0.5.5', require: false
+  gem 'coveralls', '0.5.6', require: false
   gem 'cucumber-rails', '1.3.0'
   gem 'database_cleaner', '0.9.1'
   gem 'factory_girl_rails', '4.2.1'
@@ -52,6 +52,7 @@ gem 'markitup-rails', '1.0.1'
 gem 'mysql2', '0.3.11'
 gem 'newrelic_rpm', '~>3.5'
 gem 'nokogiri', '1.5.6'
+gem 'pg', '0.14.1'
 gem 'pygmentize', '0.0.3'
 gem 'rack-bug', '0.3.0', require: 'rack/bug', git: 'git://github.com/brynary/rack-bug.git', branch: 'rails3'
 gem 'rails_bootstrap_navbar', '0.1.5beta'

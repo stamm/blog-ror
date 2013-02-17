@@ -7,17 +7,18 @@ rvm:
 env:
 #  - DB=sqlite
   - DB=mysql
-#  - DB=postgresql
-bundler_args: "--without development"
-script: "rspec spec/"
-before_script:
-  - mysql -uroot -e 'create database `zagirov.name_test`'
-  - mysql -uroot -e 'GRANT ALL ON `zagirov.name_test`.* TO "zagirov.name"@"localhost" IDENTIFIED BY "zagirov.name"; FLUSH PRIVILEGES;'
-#  - bundle
-  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - DB=postgresql
 before_install:
   - gem install bundler
+bundler_args: "--without development"
+before_script:
+  - RAILS_ENV=test bundle exec rake --trace db:drop db:create db:migrate test
+#  - sh -c "if [ '$DB' = 'postgresql' ]; then psql -c "create database zagirov.name_test;" -U postgres; fi"
+#  - sh -c "if [ '$DB' = 'mysql' ]; then mysql -uroot -e 'create database `zagirov.name_test`'; fi"
+  - sh -c "if [ '$DB' = 'mysql' ]; then mysql -uroot -e 'GRANT ALL ON `zagirov.name_test`.* TO `zagirov.name`@`localhost` IDENTIFIED BY \'zagirov.name\'; FLUSH PRIVILEGES;'; fi"
 
+
+script: "bundle exec rspec spec/"
 notifications:
   email:
     - rustam@zagirov.name
