@@ -19,6 +19,7 @@ before_script:
   - mysql -uroot -e 'create database `zagirov_name_test`'
   - mysql -uroot -e 'GRANT ALL ON `zagirov_name_test`.* TO "zagirov.name"@"localhost" IDENTIFIED BY "zagirov.name"; FLUSH PRIVILEGES;'
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - ruby -e 'puts "#{RUBY_VERSION}: #{RUBY_PLATFORM}"'
 
 
 script: "bundle exec rspec spec/"
