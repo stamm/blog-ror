@@ -7,11 +7,12 @@ require 'spork'
 
 Spork.prefork do
 
-  puts "#{RUBY_VERSION}, #{RUBY_PLATFORM}, #{RUBY_ENGINE}"
-
   if ENV['TRAVIS']
-    require 'coveralls'
-    Coveralls.wear! 'rails'
+    # get stats only on ruby engine, exclude rubinius
+    if RUBY_ENGINE.downcase.to_sym == :ruby
+      require 'coveralls'
+      Coveralls.wear! 'rails'
+    end
   elsif ! ENV['DRB']
     require 'simplecov'
     SimpleCov.start 'rails'
