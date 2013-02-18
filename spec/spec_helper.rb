@@ -7,7 +7,7 @@ require 'spork'
 
 Spork.prefork do
 
-  puts "#{RUBY_VERSION}: #{RUBY_PLATFORM}"
+  puts "#{RUBY_VERSION}, #{RUBY_PLATFORM}, #{RUBY_ENGINE}"
 
   if ENV['TRAVIS']
     require 'coveralls'
