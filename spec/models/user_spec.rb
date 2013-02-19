@@ -30,47 +30,46 @@ describe User do
   it "downcase name" do
     subject.name = "TEST"
     subject.save
-    subject.name.should == 'test'
+    expect(subject.name).to eq('test')
   end
 
   describe "should not be valid" do
     it "without name" do
       subject.name = " "
-      should_not be_valid
+      expect(subject).to have(1).errors_on(:name)
     end
 
     it "when name is too long" do
       subject.name = "a" * 256
-      should_not be_valid
+      expect(subject).to have(1).errors_on(:name)
     end
 
     it "when name is already taken" do
       User.delete_all name: subject.name
       user_with_same_name = User.new({name: subject.name.upcase, password: "123456", password_confirmation: "123456"})
       user_with_same_name.save!
-      should_not be_valid
-
+      expect(subject).to have(1).errors_on(:name)
     end
 
     context "problem with password" do
       it "without password" do
         subject.password = subject.password_confirmation = " "
-        should_not be_valid
+        expect(subject).to have(2).errors_on(:password)
       end
 
       it "when password doesn't match confirmation" do
         subject.password_confirmation = "mismatch"
-        should_not be_valid
+        expect(subject).to have(1).errors_on(:password)
       end
 
       it "when password confirmation is nil" do
         subject.password_confirmation = nil
-        should_not be_valid
+        expect(subject).to have(1).errors_on(:password_confirmation)
       end
 
       it "with a password that's too short" do
         subject.password = subject.password_confirmation = "a" * 5
-        should be_invalid
+        expect(subject).to have(1).errors_on(:password)
       end
     end
   end

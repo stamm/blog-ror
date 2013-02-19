@@ -48,7 +48,7 @@ describe Post do
   end
 
   describe 'get status' do
-    it { subject.should be_valid }
+    it { expect(subject).to be_valid }
     its(:get_status) { should == :publish }
     it 'change status' do
       subject.status = 1

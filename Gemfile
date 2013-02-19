@@ -27,6 +27,7 @@ group :test do
   gem 'cucumber-rails', '1.3.0'
   gem 'database_cleaner', '0.9.1'
   gem 'factory_girl_rails', '4.2.1'
+  gem 'ffaker', '1.15.0'
   gem 'rb-fsevent', '0.9.3', require: false
   gem 'shoulda-matchers', '1.4.2'
   gem 'terminal-notifier-guard', '1.5.3'

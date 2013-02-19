@@ -14,76 +14,96 @@ describe PostsController do
     User.delete_all name: @user.name
   }
 
-  describe "GET index" do
-    it "needing login" do
-      get :index
-      expect(response).to redirect_to("/login")
-    end
-
-    it "assigns @posts" do
-      @user.save
-      request.session[:user_id] = @user.id
-      request.session[:user_id].should == @user.id
+  describe "guest access" do
+    before :each do
       @post.save
-      get :index
-      assigns(:posts).should include(@post)
-      response.should render_template("index")
-    end
-  end
-
-  describe "GET show" do
-    it "needing login" do
-      @post.save
-      get :show, { id: @post.id }
-      expect(response).to redirect_to("/login")
     end
 
-    it "assigns @post" do
-      @user.save
-      request.session[:user_id] = @user.id
-      request.session[:user_id].should == @user.id
-      @post.save
-      get :show, { id: @post.id}
-      assigns(:post).should == @post
-      response.should render_template("show")
-    end
-  end
-
-
-  describe "GET  new" do
-    it "needing login" do
-      get :new
-      expect(response).to redirect_to("/login")
-    end
-
-    it "assigns @post" do
-      @user.save
-      request.session[:user_id] = @user.id
-      request.session[:user_id].should == @user.id
-      Timecop.freeze do
-        get :new
-        assigns(:post).attributes.should == Post.new({post_time: Time.now.to_i}).attributes
+    describe "GET #index" do
+      it "needing login" do
+        get :index
+        expect(response).to redirect_to("/login")
       end
-      response.should render_template("new")
+    end
+
+    describe "GET #show" do
+      it "needing login" do
+        get :show, id: @post
+        expect(response).to redirect_to("/login")
+      end
+    end
+
+
+    describe "GET #new" do
+      it "needing login" do
+        get :new
+        expect(response).to redirect_to("/login")
+      end
+    end
+
+    describe "GET #edit" do
+      it "needing login" do
+        get :edit, id: @post
+        expect(response).to redirect_to("/login")
+      end
     end
   end
 
-  describe "GET edit" do
-    it "needing login" do
-      @post.save
-      get :edit, { id: @post.id }
-      expect(response).to redirect_to("/login")
-    end
 
-    it "assigns @post" do
+  describe 'admin access' do
+    before :each do
       @user.save
       request.session[:user_id] = @user.id
-      request.session[:user_id].should == @user.id
+      expect(request.session[:user_id]).to eq @user.id
       @post.save
-      get :edit, { id: @post.id}
-      assigns(:post).should == @post
-      response.should render_template("edit")
+    end
+
+    describe "GET #index" do
+      it "assigns @posts" do
+        get :index
+        expect(assigns(:posts)).to include @post
+      end
+      it "render the :index view" do
+        get :index
+        expect(response).to render_template :index
+      end
+    end
+
+    describe "GET #show" do
+      it "assigns @post" do
+        get :show, id: @post
+        expect(assigns(:post)).to eq @post
+      end
+      it "render the :show view" do
+        get :show, id: @post
+        expect(response).to render_template :show
+      end
+    end
+
+
+    describe "GET #new" do
+      it "assigns @post" do
+        Timecop.freeze do
+          get :new
+          expect(assigns(:post).attributes).to eq Post.new({post_time: Time.now.to_i}).attributes
+          expect(assigns(:post)).to be_a_new(Post)
+        end
+      end
+      it "render the :new view" do
+        get :new
+        expect(response).to render_template :new
+      end
+    end
+
+    describe "GET #edit" do
+      it "assigns @post" do
+        get :edit, id: @post
+        expect(assigns(:post)).to eq @post
+      end
+      it "render the :edit view" do
+        get :edit, id: @post
+        expect(response).to render_template :edit
+      end
     end
   end
-
 end
