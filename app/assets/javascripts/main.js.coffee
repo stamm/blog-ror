@@ -1,4 +1,5 @@
 //= require markitup
+#//= require markitup/sets/markdown/set
 //= require markitup-settings
 
 $(document).ready ->
