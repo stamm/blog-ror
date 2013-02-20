@@ -5,6 +5,11 @@ ru:
   back: 'Назад'
   home: 'Главная'
   admin: 'Админка'
+  login: 'Войти'
+  logout: 'Выйти'
+
+  name: 'Имя'
+  password: 'Пароль'
 
   draft: 'Черновик'
   publish: 'Опубликовано'
@@ -46,6 +51,9 @@ ru:
       comment:
         author: 'Имя'
         content: 'Текст'
+      user:
+        name: 'Имя'
+        password: 'Пароль'
     errors:
       messages:
         blank: 'не может быть пустым'

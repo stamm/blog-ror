@@ -1,18 +1,21 @@
 require 'database_cleaner'
 
 RSpec.configure do |config|
-  config.before do
-    if example.metadata[:js]
-      DatabaseCleaner.strategy = :truncation
-      Capybara::Selenium::Driver::DEFAULT_OPTIONS[:resynchronize] = true
-    else
-      DatabaseCleaner.strategy = :transaction
-    end
-
+  # set config.use_transactional_fixtures to false
+  config.use_transactional_fixtures = false
+  config.before :suite do
+    DatabaseCleaner.clean_with :truncation
+  end
+  config.before :each do
+    DatabaseCleaner.strategy = :transaction
+  end
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before :each do
     DatabaseCleaner.start
   end
-
-  config.after do
+  config.after :each do
     DatabaseCleaner.clean
   end
 end

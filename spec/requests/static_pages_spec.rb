@@ -5,20 +5,15 @@ require 'spec_helper'
 describe "Static pages" do
   subject { page }
 
-  describe "About page" do
-    before { visit about_path }
-
-
-    it { should have_content 'Загиров Рустам' }
-    it { should have_content 'Сертифицированный специалист' }
-    it {
+  it "About page" do
+    visit about_path
+    should have_content 'Загиров Рустам'
+    should have_content 'Сертифицированный специалист'
       expect(first('title').native.text).to eq "Zagirov | О Загирове Рустаме"
       #should have_xpath "//title" , text: "Zagirov | О Загирове Рустаме"
       #should have_selector('title', text: "Zagirov | О Загирове Рустаме" )
-    }
-    it { should have_selector 'h1', text: 'Загиров Рустам — веб-программист' }
-    it { should have_content 'rustam@zagirov.name' }
-
+    should have_selector 'h1', text: 'Загиров Рустам — веб-программист'
+    should have_content 'rustam@zagirov.name'
   end
 
 end

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :development, :test do
+  gem "capybara-webkit", "0.14.1"
   gem 'guard-rspec', '2.4.0'
   gem 'guard-spork', '1.4.2'
   gem 'guard-cucumber', '1.3.2'
@@ -28,6 +29,7 @@ group :test do
   gem 'database_cleaner', '0.9.1'
   gem 'factory_girl_rails', '4.2.1'
   gem 'ffaker', '1.15.0'
+  gem "launchy", "2.2.0"
   gem 'rb-fsevent', '0.9.3', require: false
   gem 'shoulda-matchers', '1.4.2'
   gem 'terminal-notifier-guard', '1.5.3'

@@ -2,6 +2,6 @@ require "spec_helper"
 
 describe MarkitupController do
   describe "routing" do
-    it { get("/markitup/preview").should route_to("markitup#preview") }
+    it { expect(get("/markitup/preview")).to route_to("markitup#preview") }
   end
 end

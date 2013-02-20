@@ -31,6 +31,7 @@ Spork.prefork do
   require 'capybara/rspec'
   require 'ffaker'
 
+  I18n.default_locale = :ru
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -47,6 +48,8 @@ Spork.prefork do
 
     config.include Capybara::DSL
     config.include FactoryGirl::Syntax::Methods
+
+    config.include LoginMacros
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

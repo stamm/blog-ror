@@ -4,16 +4,16 @@ describe MainController do
   describe "routing" do
 
     it "routes to login" do
-      get("/login").should route_to("sessions#new")
+      expect(get("/login")).to route_to("sessions#new")
     end
 
     it "routes to login" do
-      post("/login").should route_to("sessions#create")
+      expect(post("/login")).to route_to("sessions#create")
     end
 
 
     it "routes to logout" do
-      delete("/logout").should route_to("sessions#destroy")
+      expect(delete("/logout")).to route_to("sessions#destroy")
     end
 
 
