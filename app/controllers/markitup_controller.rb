@@ -1,8 +1,7 @@
 class MarkitupController < ApplicationController
   def preview
-    require 'coderay'
-    require 'coderay/for_redcloth'
-    @html = RedCloth.new(params[:data]).to_html
+
+    @html = MarkdownRenderer.markdown params[:data]
     #markdown = Redcarpet::Markdown.new(AlbinoHTML, fenced_code_blocks: true)
     #@html = markdown.render params[:data]
 

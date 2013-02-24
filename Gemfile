@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem "capybara-webkit", "0.14.1"
-  gem 'guard-rspec', '2.4.0'
+  gem "capybara-webkit", "0.14.2"
+  gem 'guard-rspec', '2.4.1'
   gem 'guard-spork', '1.4.2'
   gem 'guard-cucumber', '1.3.2'
   gem 'rspec-rails', '2.12.2'
@@ -18,7 +18,7 @@ group :development do
   gem "fuubar", "~> 1.1.0"
   gem "html2haml", "1.0.1"
   gem 'meta_request', '0.2.1'
-  gem 'quiet_assets', '1.0.1'
+  gem 'quiet_assets', '1.0.2'
   gem "rvm-capistrano", '1.2.7'
 end
 
@@ -47,8 +47,8 @@ gem 'rails', '3.2.12'
 
 gem 'albino', '1.3.3'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'bootstrap-sass', '2.3.0.0'
-gem 'coderay', '1.0.8'
+gem 'bootstrap-sass', '2.3.0.1'
+gem 'coderay', '1.0.9'
 gem 'email_validator', '1.3.0'
 gem 'haml', '4.0.0'
 gem 'jquery-rails', '2.2.1'
@@ -60,9 +60,9 @@ gem 'pg', '0.14.1'
 gem 'pygmentize', '0.0.3'
 gem 'rack-bug', '0.3.0', require: 'rack/bug', git: 'git://github.com/brynary/rack-bug.git', branch: 'rails3'
 gem 'rails_bootstrap_navbar', '0.1.5beta'
-gem "recaptcha", '0.3.4', require: "recaptcha/rails"
+gem "recaptcha", '0.3.5', require: "recaptcha/rails"
 gem 'redcarpet', '2.2.2'
 gem 'RedCloth', '4.2.9'
-gem 'unicorn', '4.6.0'
+gem 'unicorn', '4.6.1'
 gem 'will_paginate', '3.0.4'
 gem 'will_paginate-bootstrap', '0.2.2'

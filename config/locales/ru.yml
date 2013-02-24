@@ -1,12 +1,13 @@
 ru:
-  hello: 'Привет, мир'
-  update: 'Обновить'
-  show: 'Показать'
-  back: 'Назад'
-  home: 'Главная'
   admin: 'Админка'
+  back: 'Назад'
+  edit: 'Изменить'
+  hello: 'Привет, мир'
+  home: 'Главная'
   login: 'Войти'
   logout: 'Выйти'
+  update: 'Обновить'
+  show: 'Показать'
 
   name: 'Имя'
   password: 'Пароль'
@@ -21,10 +22,9 @@ ru:
 
   new_post: 'Новый пост'
 
-  logout: 'Выйти'
 
-  comments: 'Комментарии'
   add_comment: 'Оставить комментарий'
+  comments: 'Комментарии'
 
   send: 'Отправить'
 
@@ -36,8 +36,6 @@ ru:
 
   about_me: 'О Загирове Рустаме'
 
-
-
   activerecord:
     models:
       post: 'Пост'
@@ -48,6 +46,8 @@ ru:
         status: 'Статус'
         post_time: 'Время публикации'
         post_time_string: 'Время публикации'
+        tag_list: 'Тэги'
+        url: 'УРЛ'
       comment:
         author: 'Имя'
         content: 'Текст'
@@ -61,6 +61,11 @@ ru:
       models:
         comment:
 
+
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      update: "Обновить %{model}"
 
   time:
     formats:

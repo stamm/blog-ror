@@ -1,0 +1,19 @@
+%h1
+  Listing posts
+
+%table.table
+  %tr
+    %th= Post.human_attribute_name(:title)
+    %th= Post.human_attribute_name(:status)
+    %th= Post.human_attribute_name(:post_time)
+    %th
+  - @posts.each do |post|
+    %tr
+      %td= link_to post.title, edit_post_path(post)
+      %td= t(post.get_status.to_s)
+      %td= post.post_date
+      %td= link_to 'x', post, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Post', new_post_path

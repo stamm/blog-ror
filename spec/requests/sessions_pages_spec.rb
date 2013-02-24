@@ -26,7 +26,7 @@ describe "Sessions page" do
   describe "logout" do
     it "work" do
       sign_in user
-      click_link "Выйти"
+      click_link t(:logout)
       current_path.should == root_path
       should_not have_content(user.name)
     end

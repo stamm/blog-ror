@@ -20,7 +20,7 @@ task parse: :environment do
         content: content,
         status:  e["status"],
         post_time:  e["post_time"],
-        author_id:  e["author_id"],
+        user_id:  e["author_id"],
         url:  e["url"],
         short_url:  e["short_url"],
     )

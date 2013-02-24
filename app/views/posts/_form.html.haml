@@ -1,0 +1,36 @@
+= form_for(@post) do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@post.errors.count, "error")
+        prohibited this post from being saved:
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :title
+    %br/
+    = f.text_field :title, size: 100
+  .field
+    = f.label :content
+    %br/
+    = f.text_area :content, size: '150x20'
+  .field
+    = f.label :status
+    %br/
+    = f.select :status, Post::STATUS_TYPES.collect {|d| [t(d.to_s), Post::STATUS_TYPES.index(d) + 1]}, |
+      prompt: t(:select_status)                                                                        |
+  .field
+    = f.label :post_time_string
+    %br/
+    = f.text_field :post_time_string
+  .field
+    = f.label :tag_list
+    %br/
+    = f.text_field :tag_list
+  .field
+    = f.label :url
+    %br/
+    = f.text_field :url
+  .actions
+    = f.submit

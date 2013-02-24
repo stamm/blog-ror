@@ -3,20 +3,12 @@ require 'spec_helper'
 describe PostsController do
 
   let!(:post) { build :post }
-  before {
-    @post = post
-    Post.delete_all title: @post.title
-  }
-
   let!(:user) { build :user }
-  before {
-    @user = user
-    User.delete_all name: @user.name
-  }
+
 
   describe "guest access" do
     before :each do
-      @post.save
+      post.save
     end
 
     describe "GET #index" do
@@ -28,7 +20,7 @@ describe PostsController do
 
     describe "GET #show" do
       it "needing login" do
-        get :show, id: @post
+        get :show, id: post
         expect(response).to redirect_to("/login")
       end
     end
@@ -43,7 +35,7 @@ describe PostsController do
 
     describe "GET #edit" do
       it "needing login" do
-        get :edit, id: @post
+        get :edit, id: post
         expect(response).to redirect_to("/login")
       end
     end
@@ -52,16 +44,15 @@ describe PostsController do
 
   describe 'admin access' do
     before :each do
-      @user.save
-      request.session[:user_id] = @user.id
-      expect(request.session[:user_id]).to eq @user.id
-      @post.save
+      user.save
+      set_user_session user
+      post.save
     end
 
     describe "GET #index" do
       it "assigns @posts" do
         get :index
-        expect(assigns(:posts)).to include @post
+        expect(assigns(:posts)).to include post
       end
       it "render the :index view" do
         get :index
@@ -71,11 +62,11 @@ describe PostsController do
 
     describe "GET #show" do
       it "assigns @post" do
-        get :show, id: @post
-        expect(assigns(:post)).to eq @post
+        get :show, id: post
+        expect(assigns(:post)).to eq post
       end
       it "render the :show view" do
-        get :show, id: @post
+        get :show, id: post
         expect(response).to render_template :show
       end
     end
@@ -97,11 +88,11 @@ describe PostsController do
 
     describe "GET #edit" do
       it "assigns @post" do
-        get :edit, id: @post
-        expect(assigns(:post)).to eq @post
+        get :edit, id: post
+        expect(assigns(:post)).to eq post
       end
       it "render the :edit view" do
-        get :edit, id: @post
+        get :edit, id: post
         expect(response).to render_template :edit
       end
     end

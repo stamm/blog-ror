@@ -1,6 +1,5 @@
 ZagirovName::Application.routes.draw do
-  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
-
+  #mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
   match "/about" => "static_pages#about"
   match "/markitup/preview" => "markitup#preview"
@@ -24,8 +23,10 @@ ZagirovName::Application.routes.draw do
   match "/tag/:tag" => "main#posts", page: 1
   match "/tag/:tag/:page" => "main#posts"
 
-  resources :posts
-  resources :comments
+
+  scope "/admin" do
+    resources :posts, :comments
+  end
 
   match "/:url" => "main#article", as: :article
 
