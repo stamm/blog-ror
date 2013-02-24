@@ -5,14 +5,14 @@ group :development, :test do
   gem 'guard-rspec', '2.4.1'
   gem 'guard-spork', '1.4.2'
   gem 'guard-cucumber', '1.3.2'
-  gem 'rspec-rails', '2.12.2'
+  gem 'rspec-rails', '2.13.0'
   gem 'spork', '0.9.2'
 end
 
 group :development do
   gem 'annotate', '2.5.0'
   #gem "brakeman", '1.9.1'
-  gem 'better_errors', '0.6.0'
+  gem 'better_errors', '0.7.0'
   gem 'binding_of_caller', '0.7.1'
   gem "capistrano", '2.14.2'
   gem "fuubar", "~> 1.1.0"
