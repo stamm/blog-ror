@@ -11,3 +11,4 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require_tree ./global
+//= require ../../../vendor/assets/javascripts/jquery-migrate-1.1.1.js
