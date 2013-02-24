@@ -8,7 +8,7 @@
 #  content_display :text             default(""), not null
 #  status          :integer          not null
 #  post_time       :integer          default(0), not null
-#  author_id       :integer          default(0), not null
+#  user_id       :integer          default(0), not null
 #  url             :string(255)      not null
 #  short_url       :string(255)      default(""), not null
 #  created_at      :datetime         not null
@@ -19,9 +19,10 @@ class Post < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
   has_many :comments
+  belongs_to :user
   STATUS_TYPES = [ :draft, :publish, :archive ]
   #STATUS_TYPES = [ 'test']
-  attr_accessible :author_id, :content, :content_display, :post_time, :short_url, :status, :title, :url
+  attr_accessible :user_id, :content, :content_display, :post_time, :short_url, :status, :title, :url
 
   attr_accessible :tag_list, :post_time_string
 

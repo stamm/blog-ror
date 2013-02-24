@@ -10,6 +10,7 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :posts
   attr_accessible :name, :password_digest, :password, :password_confirmation
   validates :name, presence: true,
                    uniqueness: { case_sensitive: false },

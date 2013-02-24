@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905000824) do
+ActiveRecord::Schema.define(:version => 20130220200344) do
 
   create_table "comments", :force => true do |t|
     t.text     "content",                    :null => false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20120905000824) do
     t.text     "content_display",                              :null => false
     t.integer  "status",          :limit => 1,                 :null => false
     t.integer  "post_time",                    :default => 0,  :null => false
-    t.integer  "author_id",                    :default => 0,  :null => false
+    t.integer  "user_id",                      :default => 0,  :null => false
     t.string   "url",                                          :null => false
     t.string   "short_url",                    :default => "", :null => false
     t.datetime "created_at",                                   :null => false

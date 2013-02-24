@@ -10,7 +10,7 @@ describe Post do
   subject { @post }
 
   describe "Associations" do
-    it { should respond_to(:author_id) }
+    it { should respond_to(:user_id) }
     it { should respond_to(:content) }
     it { should respond_to(:content_display) }
     it { should respond_to(:post_time) }
