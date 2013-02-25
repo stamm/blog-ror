@@ -3,11 +3,6 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.order("created_at DESC")
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
   end
 
 
@@ -16,24 +11,12 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
   end
 
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = Post.new
-
-    @post.post_time = Time.now.to_i
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
+    @post = Post.new post_time: Time.now.to_i
   end
 
   # GET /posts/1/edit
@@ -47,14 +30,10 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     @post.post_time_string ||= l(Time.now, format: :russian)
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to @post, notice: 'Post was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -63,14 +42,10 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update_attributes(params[:post])
+      redirect_to @post, notice: 'Post was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -80,9 +55,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+    redirect_to posts_url
   end
 end
