@@ -23,15 +23,10 @@ class MainController < ApplicationController
 
     if params[:comment]
       @comment = create_comment
-      cookies[:comment] = {
-          value: @comment.author + '~' + @comment.email,
-          expires: Time.now + 31536000
-      }
+      save_cookie @comment
     else
       @comment = Comment.new
-      if cookies[:comment]
-        @comment.author, @comment.email = cookies[:comment].split('~')
-      end
+      get_cookie @comment
     end
 
     unless @comment.new_record?
@@ -41,7 +36,7 @@ class MainController < ApplicationController
 
     @title = @post.title
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @post }
     end
   end
@@ -64,6 +59,19 @@ private
         comment.save
       end
       comment
+    end
+  end
+
+  def save_cookie(comment)
+    cookies[:comment] = {
+        value: comment.author + '~' + comment.email,
+        expires: Time.now + 31536000
+    }
+  end
+
+  def get_cookie(comment)
+    if cookies[:comment]
+      comment.author, comment.email = cookies[:comment].split('~')
     end
   end
 
