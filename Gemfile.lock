@@ -160,9 +160,9 @@ GEM
       treetop (~> 1.4.8)
     markitup-rails (1.0.1)
       rails (>= 3.1)
-    meta_request (0.2.1)
+    meta_request (0.2.2)
       rack-contrib
-      rails
+      railties
     metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.21)
@@ -218,7 +218,7 @@ GEM
     raindrops (0.10.0)
     rake (10.0.3)
     rb-fsevent (0.9.3)
-    rdoc (3.12.1)
+    rdoc (3.12.2)
       json (~> 1.4)
     recaptcha (0.3.5)
     redcarpet (2.2.2)
@@ -325,7 +325,7 @@ DEPENDENCIES
   jquery-rails (= 2.2.1)
   launchy (= 2.2.0)
   markitup-rails (= 1.0.1)
-  meta_request (= 0.2.1)
+  meta_request (= 0.2.2)
   mysql2 (= 0.3.11)
   newrelic_rpm (~> 3.5)
   nokogiri (= 1.5.6)

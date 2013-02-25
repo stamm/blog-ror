@@ -17,7 +17,7 @@ group :development do
   gem "capistrano", '2.14.2'
   gem "fuubar", "~> 1.1.0"
   gem "html2haml", "1.0.1"
-  gem 'meta_request', '0.2.1'
+  gem 'meta_request', '0.2.2'
   gem 'quiet_assets', '1.0.2'
   gem "rvm-capistrano", '1.2.7'
 end
