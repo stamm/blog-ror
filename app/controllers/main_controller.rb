@@ -12,17 +12,13 @@ class MainController < ApplicationController
     end
     @posts = @posts.paginate page: params[:page], order: 'post_time desc',
                              per_page: 20
-
-    respond_to do |format|
-      format.html # posts.html.erb
-    end
   end
 
   def article
     @post = Post.find_by_url(params[:url]) || not_found
 
     if params[:comment]
-      @comment = create_comment
+      @comment = create_comment @post
       save_cookie @comment
     else
       @comment = Comment.new
@@ -35,10 +31,6 @@ class MainController < ApplicationController
     end
 
     @title = @post.title
-    respond_to do |format|
-      format.html
-      format.json { render json: @post }
-    end
   end
 
   def tags
@@ -47,8 +39,7 @@ class MainController < ApplicationController
 
 private
 
-  def create_comment
-    post = Post.published.find_by_url(params[:url])
+  def create_comment(post)
     if post
       comment_params = params[:comment].merge({
           ip: request.ip,
