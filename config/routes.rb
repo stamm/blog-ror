@@ -6,7 +6,6 @@ ZagirovName::Application.routes.draw do
 
   get "admin" => 'admin#index'
 
-  #resources :users
 
   controller :sessions do
     get 'login' => :new, as: 'login'
@@ -25,7 +24,7 @@ ZagirovName::Application.routes.draw do
 
 
   scope "/admin" do
-    resources :posts, :comments
+    resources :posts, :comments, :users
   end
 
   match "/:url" => "main#article", as: :article

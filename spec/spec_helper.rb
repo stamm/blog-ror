@@ -61,7 +61,7 @@ Spork.prefork do
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
-    config.infer_base_class_for_anonymous_controllers = false
+    config.infer_base_class_for_anonymous_controllers = true
     # Use the fail_fast option to tell RSpec to abort the run on first failure
     config.fail_fast = true
     # If set true set symbols without value to true
