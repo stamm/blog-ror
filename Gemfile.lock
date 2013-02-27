@@ -13,14 +13,6 @@ GIT
     rack-bug (0.3.0)
       rack (>= 1.0)
 
-GIT
-  remote: git://github.com/haml/haml.git
-  revision: ae3d08f9534d70af42146912c8c367b6eb043031
-  branch: stable
-  specs:
-    haml (4.0.1)
-      tilt
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -145,6 +137,8 @@ GEM
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
+    haml (4.0.1.rc.1)
+      tilt
     highline (1.6.15)
     hike (1.2.1)
     hpricot (0.8.6)
@@ -335,7 +329,7 @@ DEPENDENCIES
   guard-cucumber (= 1.3.2)
   guard-rspec (= 2.4.1)
   guard-spork (= 1.4.2)
-  haml (= 4.0.1)!
+  haml (= 4.0.1.rc.1)
   html2haml (= 1.0.1)
   jquery-rails (= 2.2.1)
   kaminari (= 0.14.1)
