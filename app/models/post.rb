@@ -21,16 +21,11 @@ class Post < ActiveRecord::Base
   has_many :comments
   belongs_to :user
   STATUS_TYPES = [ :draft, :publish, :archive ]
-  #STATUS_TYPES = [ 'test']
-  #attr_accessible :user_id, :content, :content_display, :post_time, :short_url, :status, :title, :url
-
-  #attr_accessible :tag_list, :post_time_string
 
   validates :title, :content, :post_time, :url, :status, presence: true
   validates :url, uniqueness: true
 
   before_save :convert_content
-  #before_save :convert_post_time
 
 
   scope :published, -> { where(:status => STATUS_TYPES.index(:publish) + 1) }
