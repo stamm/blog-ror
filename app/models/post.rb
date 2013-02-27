@@ -22,9 +22,9 @@ class Post < ActiveRecord::Base
   belongs_to :user
   STATUS_TYPES = [ :draft, :publish, :archive ]
   #STATUS_TYPES = [ 'test']
-  attr_accessible :user_id, :content, :content_display, :post_time, :short_url, :status, :title, :url
+  #attr_accessible :user_id, :content, :content_display, :post_time, :short_url, :status, :title, :url
 
-  attr_accessible :tag_list, :post_time_string
+  #attr_accessible :tag_list, :post_time_string
 
   validates :title, :content, :post_time, :url, :status, presence: true
   validates :url, uniqueness: true
@@ -34,6 +34,7 @@ class Post < ActiveRecord::Base
 
 
   scope :published, -> { where(:status => STATUS_TYPES.index(:publish) + 1) }
+  scope :ordered, -> { order 'post_time desc' }
 
   scope :scope_tag, lambda { |tag| joins(:tags).where('tags.name = ?', tag) }
 
@@ -69,7 +70,10 @@ class Post < ActiveRecord::Base
 
   def tag_list=(value)
     tag_names = value.split(/,\s+/)
-    self.tags = tag_names.map { |name| Tag.where('name = ?', name).first or Tag.create(name: name)}
+    self.tags = tag_names.map do |name|
+      parameters = ActionController::Parameters.new({name: name})
+      Tag.where('name = ?', name).first or Tag.create(parameters.permit(:name))
+    end
   end
 
   def tag_array

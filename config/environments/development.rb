@@ -37,4 +37,6 @@ ZagirovName::Application.configure do
 
   config.middleware.use "Rack::Bug",
       :secret_key => "asdfasndofasdn@$noasdf"
+
+  config.eager_load = false
 end

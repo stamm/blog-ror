@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order("created_at DESC")
+    @posts = Post.order("created_at DESC").page(params[:page]).per(40)
   end
 
 
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
 
     @post.post_time_string ||= l(Time.now, format: :russian)
     if @post.save
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    if @post.update_attributes(params[:post])
+    if @post.update_attributes(post_params)
       redirect_to @post, notice: 'Post was successfully updated.'
     else
       render action: "edit"
@@ -56,5 +56,13 @@ class PostsController < ApplicationController
     @post.destroy
 
     redirect_to posts_url
+  end
+
+
+private
+  def post_params
+    params.require(:post).permit(
+        :user_id, :content, :post_time, :short_url, :status, :title, :url,
+        :tag_list, :post_time_string)
   end
 end

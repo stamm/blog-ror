@@ -10,8 +10,7 @@ class MainController < ApplicationController
       @title += " with tag #{params[:tag]}"
       @posts = @posts.scope_tag(params[:tag])
     end
-    @posts = @posts.paginate page: params[:page], order: 'post_time desc',
-                             per_page: 20
+    @posts = @posts.ordered.page(params[:page]).per(20)
   end
 
   def article
@@ -41,16 +40,18 @@ private
 
   def create_comment(post)
     if post
-      comment_params = params[:comment].merge({
-          ip: request.ip,
-          status: Comment::get_status(:approve)
-      })
       comment = post.comments.build(comment_params)
+      comment.ip = request.ip
+      comment.status = Comment::get_status(:approve)
       if comment.valid? and verify_recaptcha(model: comment, message: I18n.t(:recaptcha_error))
         comment.save
       end
       comment
     end
+  end
+
+  def comment_params
+    params.require(:comment).permit(:author, :content, :email, :url)
   end
 
   def save_cookie(comment)

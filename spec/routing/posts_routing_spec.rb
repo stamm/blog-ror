@@ -7,9 +7,9 @@ describe PostsController do
     end
 
     it "routes to posts" do
-      expect(get("/")).to route_to("main#posts", page: 1)
+      expect(get("/")).to route_to("main#posts")
       expect(get("/posts/page/1")).to route_to("main#posts", page: "1")
-      expect(get("/tag/test")).to route_to("main#posts", page: 1, tag: "test")
+      expect(get("/tag/test")).to route_to("main#posts", page: "1", tag: "test")
       expect(get("/tag/test/1")).to route_to("main#posts", page: "1", tag: "test")
     end
 
