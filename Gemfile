@@ -24,7 +24,7 @@ end
 
 group :test do
   gem 'capybara', '2.0.2'
-  gem 'coveralls', '0.5.6', require: false
+  gem 'coveralls', '0.5.7', require: false
   gem 'cucumber-rails', '1.3.0'
   gem 'database_cleaner', '0.9.1', github: 'bmabey/database_cleaner', branch: 'master'
   gem 'factory_girl_rails', '4.2.1'
