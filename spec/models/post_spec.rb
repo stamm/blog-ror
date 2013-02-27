@@ -108,14 +108,18 @@ describe Post do
     end
     it 'published' do
       Post.published.should have(2).post
-      Post.published.should  == [@post1, @post2]
+      Post.published.should =~ [@post1, @post2]
     end
 
     it 'scope_tag' do
-      Post.scope_tag('tag1').should == [@post1]
-      Post.scope_tag('tag2').should == [@post1, @post2]
-      Post.scope_tag('tag3').should == [@post2, @post3]
-      Post.scope_tag('tag5').should == [@post4]
+      Post.scope_tag('tag1').should have(1).post
+      Post.scope_tag('tag1').should =~ [@post1]
+      Post.scope_tag('tag2').should have(2).post
+      Post.scope_tag('tag2').should =~ [@post1, @post2]
+      Post.scope_tag('tag3').should have(2).post
+      Post.scope_tag('tag3').should =~ [@post2, @post3]
+      Post.scope_tag('tag5').should have(1).post
+      Post.scope_tag('tag5').should =~ [@post4]
     end
 
     it 'combination published and scope_tag' do
