@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 group :development, :test do
   gem "capybara-webkit", "0.14.2"
   gem 'guard-rspec', '2.4.1'
-  gem 'guard-spork', '1.4.2'
+  gem 'guard-spork', '1.5.0'
   gem 'guard-cucumber', '1.3.2'
   gem 'rspec-rails', '2.13.0'
   gem 'spork', '0.9.2'
@@ -24,7 +24,7 @@ end
 
 group :test do
   gem 'capybara', '2.0.2'
-  gem 'coveralls', '0.5.7', require: false
+  gem 'coveralls', '0.5.8', require: false
   gem 'cucumber-rails', '1.3.0'
   gem 'database_cleaner', '0.9.1', github: 'bmabey/database_cleaner', branch: 'master'
   gem 'factory_girl_rails', '4.2.1'
