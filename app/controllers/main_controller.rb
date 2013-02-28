@@ -4,7 +4,7 @@ class MainController < ApplicationController
 
   # GET /posts/main
   def posts
-    @posts = Post.published
+    @posts = Post.published.includes(:tags)
     @title = 'All posts'
     if params[:tag]
       @title += " with tag #{params[:tag]}"
