@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :authorize
-
+  rescue_from ActionController::UnknownFormat, :with => :not_found
+  rescue_from ActionView::MissingTemplate, :with => :not_found
 
 private
 

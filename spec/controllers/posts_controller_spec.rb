@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe PostsController do
 
-  let!(:my_post) { build :post }
+  #let!(:my_post) { build :post }
   let!(:user) { build :user }
 
 
   describe "guest access" do
     before :each do
-      my_post.save
+      @my_post = create :post
     end
 
 
@@ -24,7 +24,7 @@ describe PostsController do
     %w{show edit}.each do |calltype|
       describe "GET ##{calltype}" do
         it "needing login" do
-          get calltype, id: my_post
+          get calltype, id: @my_post
           expect(response).to redirect_to("/login")
         end
       end
@@ -36,13 +36,13 @@ describe PostsController do
     before :each do
       user.save
       set_user_session user
-      my_post.save
+      @my_post = create :post
     end
 
     describe "GET #index" do
       it "assigns @posts" do
         get :index
-        expect(assigns(:posts)).to include my_post
+        expect(assigns(:posts)).to include @my_post
       end
       it "render the :index view" do
         get :index
@@ -52,11 +52,11 @@ describe PostsController do
 
     describe "GET #show" do
       it "assigns @post" do
-        get :show, id: my_post
-        expect(assigns(:post)).to eq my_post
+        get :show, id: @my_post
+        expect(assigns(:post)).to eq @my_post
       end
       it "render the :show view" do
-        get :show, id: my_post
+        get :show, id: @my_post
         expect(response).to render_template :show
       end
     end
@@ -78,9 +78,9 @@ describe PostsController do
 
     describe "POST #create" do
       context "with valid attributes" do
-        it "saves the new my_post in the database" do expect{
+        it "saves the new @my_post in the database" do expect{
           attributes = attributes_for(:post)
-          post(:create, post: attributes)
+          post :create, post: attributes
         }.to change(Post, :count).by(1)
         end
         it "redirects to the home page" do
@@ -109,11 +109,11 @@ describe PostsController do
 
     describe "GET #edit" do
       it "assigns @post" do
-        get :edit, id: my_post
-        expect(assigns(:post)).to eq my_post
+        get :edit, id: @my_post
+        expect(assigns(:post)).to eq @my_post
       end
       it "render the :edit view" do
-        get :edit, id: my_post
+        get :edit, id: @my_post
         expect(response).to render_template :edit
       end
     end
@@ -166,11 +166,11 @@ describe PostsController do
 
     describe'DELETE #destroy' do
       it "deletes the post" do expect{
-          delete :destroy, id: my_post
+          delete :destroy, id: @my_post
         }.to change(Post,:count).by(-1)
       end
       it "redirects to post#index" do
-        delete :destroy, id: my_post
+        delete :destroy, id: @my_post
         expect(response).to redirect_to posts_url
       end
     end
