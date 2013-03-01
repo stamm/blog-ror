@@ -1,19 +1,17 @@
 !!!
-%html(lang="ru")
+%html(lang='ru')
   %head
     %title= title
-    %meta(content= "IE=edge,chrome=1" http-equiv="X-UA-Compatible")/
-    %meta(content="G-94qq2Tf9OhT35Qjxp7v8sCpGjMycS2eGK6_Ge_3zk" name="google-site-verification")/
-    %meta(content="Загиров Рустам" name="author")/
+    %meta(content='IE=edge,chrome=1' http-equiv='X-UA-Compatible')/
+    %meta(content='G-94qq2Tf9OhT35Qjxp7v8sCpGjMycS2eGK6_Ge_3zk' name='google-site-verification')/
+    %meta(content='Загиров Рустам' name='author')/
     / Mobile viewport optimized: j.mp/bplateviewport
-    %meta(content="width=device-width, initial-scale=1.0" name="viewport")/
+    %meta(content='width=device-width, initial-scale=1.0' name='viewport')/
     = render 'layouts/stylesheets'
-    = javascript_include_tag "application", controller.controller_name
-    -#%script(src="http://code.jquery.com/jquery-migrate-1.0.0.js")
-    = content_for :javascripts
+    = render 'layouts/javascripts'
     = csrf_meta_tags
     /[if lt IE 9]
-      %script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+      %script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
   %body{class: controller.controller_name}
     = render 'layouts/header'
     .container

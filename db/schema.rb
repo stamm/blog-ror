@@ -9,50 +9,50 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220200344) do
+ActiveRecord::Schema.define(version: 20130220200344) do
 
-  create_table "comments", :force => true do |t|
-    t.text     "content",                    :null => false
-    t.integer  "status",     :default => 0,  :null => false
-    t.string   "author",     :default => "", :null => false
-    t.string   "email",      :default => "", :null => false
-    t.string   "url",        :default => "", :null => false
-    t.integer  "post_id",    :default => 0,  :null => false
-    t.string   "ip",         :default => "", :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+  create_table "comments", force: true do |t|
+    t.text     "content",                 null: false
+    t.integer  "status",     default: 0,  null: false
+    t.string   "author",     default: "", null: false
+    t.string   "email",      default: "", null: false
+    t.string   "url",        default: "", null: false
+    t.integer  "post_id",    default: 0,  null: false
+    t.string   "ip",         default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "posts", :force => true do |t|
-    t.string   "title",                                        :null => false
-    t.text     "content",                                      :null => false
-    t.text     "content_display",                              :null => false
-    t.integer  "status",          :limit => 1,                 :null => false
-    t.integer  "post_time",                    :default => 0,  :null => false
-    t.integer  "user_id",                      :default => 0,  :null => false
-    t.string   "url",                                          :null => false
-    t.string   "short_url",                    :default => "", :null => false
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+  create_table "posts", force: true do |t|
+    t.string   "title",                                  null: false
+    t.text     "content",                                null: false
+    t.text     "content_display",                        null: false
+    t.integer  "status",          limit: 1,              null: false
+    t.integer  "post_time",                 default: 0,  null: false
+    t.integer  "user_id",                   default: 0,  null: false
+    t.string   "url",                                    null: false
+    t.string   "short_url",                 default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
-  create_table "posts_tags", :force => true do |t|
-    t.integer "post_id", :default => 0, :null => false
-    t.integer "tag_id",  :default => 0, :null => false
+  create_table "posts_tags", force: true do |t|
+    t.integer "post_id", default: 0, null: false
+    t.integer "tag_id",  default: 0, null: false
   end
 
-  create_table "tags", :force => true do |t|
-    t.string  "name",                     :null => false
-    t.integer "frequency", :default => 0, :null => false
+  create_table "tags", force: true do |t|
+    t.string  "name",                  null: false
+    t.integer "frequency", default: 0, null: false
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "name",            :default => "", :null => false
-    t.string   "password_digest", :default => "", :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+  create_table "users", force: true do |t|
+    t.string   "name",            default: "", null: false
+    t.string   "password_digest", default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

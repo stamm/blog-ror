@@ -1,0 +1,6 @@
+= javascript_include_tag 'application'
+- if request.fullpath[0..6] == '/admin/'
+  = javascript_include_tag 'admin'
+- else
+  = javascript_include_tag controller.controller_name
+= content_for :javascripts

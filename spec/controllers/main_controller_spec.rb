@@ -5,7 +5,7 @@ describe MainController do
   before do
     Rails.application.routes.draw do
       get "posts" => "main#posts"
-      get "article" => "main#article"
+      match "/:url" => "main#article", as: :article, via: [:get, :post]
     end
   end
 
@@ -32,9 +32,11 @@ describe MainController do
         expect(assigns(:title)).to eq "All posts"
       end
       it "have only 20 posts" do
-        (1..22).each { create :post }
+        @posts = []
+        22.times { @posts << create(:post) }
         get :posts
         expect(assigns(:posts)).to have(20).items
+        @posts.each(&:destroy)
       end
     end
 
@@ -60,15 +62,17 @@ describe MainController do
       end
 
       it "have only 20 posts" do
-        (1..21).each { create :post, tag_list: '10posts' }
-        (1..10).each { create :post, tag_list: 'test1' }
+        @posts = []
+        21.times { @posts << create(:post, tag_list: '10posts') }
+        10.times { @posts << create(:post, tag_list: 'test1') }
         get :posts, tag: '10posts'
         expect(assigns(:posts)).to have(20).items
+        @posts.each(&:destroy)
       end
     end
 
     it "have order" do
-      (1..22).each { create :post, post_time: Random.rand(Time.now.to_i - 2.months.ago.to_i) + 2.months.ago.to_i }
+      22.times { create :post, post_time: Random.rand(Time.now.to_i - 2.months.ago.to_i) + 2.months.ago.to_i }
       get :posts
       posts = assigns(:posts)
       posts.first.post_time.should be > posts.last.post_time
@@ -81,28 +85,28 @@ describe MainController do
 
   describe "GET #article" do
     before :each do
-      my_post.url = 'test_url'
       my_post.save
     end
 
     it "assign @post" do
-      get :article, url: 'test_url'
+      get :article, url: my_post.url
       expect(assigns(:post)).to eq my_post
     end
 
-    it "assign @post" do
-      get :article, url: 'test_url'
+    it "assign @title" do
+      get :article, url: my_post.url
+      my_post.reload
       expect(assigns(:title)).to eq my_post.title
     end
 
     context "comment" do
       it "assign @comment" do
-        get :article, url: 'test_url'
+        get :article, url: my_post.url
         expect(assigns(:comment)).to be_a_new(Comment)
       end
       it "get comment data from cookie" do
         request.cookies['comment'] = 'stamm~test@example.com'
-        get :article, url: 'test_url'
+        get :article, url: my_post.url
         comment = assigns(:comment)
         expect(comment.author).to eq 'stamm'
         expect(comment.email).to eq 'test@example.com'
@@ -112,13 +116,12 @@ describe MainController do
 
   describe "POST #article" do
     before :each do
-      my_post.url = 'test_url'
       my_post.save
     end
     context 'add comment' do
       it 'valid' do
         attr = attributes_for(:comment)
-        post :article, url: 'test_url', comment: attr
+        get :article, {url: my_post.url, comment: attr}
         comment = assigns(:comment)
         expect(comment).to be_a(Comment)
         expect(comment.author).to eq attr[:author]

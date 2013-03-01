@@ -6,4 +6,4 @@
         %span{class: "hint"}
           = post.post_date
       .tags= post.tag_array.map { |tag| content_tag(:a, tag, class: 'tag', href: "/tag/#{tag}") }.join(', ').html_safe
-%p= will_paginate @posts, next_label: '→', previous_label: '←', :renderer => BootstrapPagination::Rails
+%p= paginate @posts
