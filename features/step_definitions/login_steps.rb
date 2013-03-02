@@ -1,4 +1,3 @@
-# encoding: utf-8
 Given /^a user visits the login page$/ do
   visit login_path
 end

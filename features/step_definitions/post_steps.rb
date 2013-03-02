@@ -1,4 +1,3 @@
-# encoding: utf-8
 Given /^I login as admin$/ do
   user = get_user
   visit login_path

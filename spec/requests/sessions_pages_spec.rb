@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'spec_helper'
 
 describe "Sessions page" do
@@ -11,14 +10,14 @@ describe "Sessions page" do
       user.password = user.name
       sign_in user
       current_path.should == login_path
-      should_not have_content(user.name)
+      should_not have_xpath("//ul[@class='nav']/li[2]/a", :text => user.name)
     end
 
 
     it "with valid information" do
       sign_in user
       current_path.should == admin_path
-      should have_content(user.name)
+      should have_xpath("//ul[@class='nav']/li[2]/a", :text => user.name)
     end
 
   end
@@ -28,7 +27,7 @@ describe "Sessions page" do
       sign_in user
       click_link t(:logout)
       current_path.should == root_path
-      should_not have_content(user.name)
+      should_not have_xpath("//ul[@class='nav']/li[2]/a", :text => user.name)
     end
   end
 
