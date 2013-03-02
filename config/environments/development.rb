@@ -29,4 +29,6 @@ ZagirovName::Application.configure do
       :secret_key => "asdfasndofasdn@$noasdf"
 
   config.eager_load = false
+
+  BetterErrors.editor='rubymine://open?url=file://%{file}&line=%{line}'
 end

@@ -9,54 +9,61 @@
 
 @import "_variables";
 
+body.main {
 
-h1 {
-  color: black;
-}
-
-a.tag {
-  color: $tag_color;
-}
-
-ul#tags li {
-  display: inline;
-}
-
-ol.comments {
-  list-style: none;
-
-  li.comment {
-    overflow: hidden;
-    position: relative;
-    padding-left: 60px;
-    padding-top: 20px;
-    border-top: 1px solid #C7C7C7;
-
-    .link {
-      display: block;
-    }
-    .date {
-      font-size: 70%;
-      color: #666;
-      display: block;
-    }
-    .content {
-      margin-top: 20px;
-    }
+  h1 {
+    color: black;
   }
 
-  li.first {
-    border: none;
+  a.tag {
+    color: $tag_color;
   }
 
-  .avatar {
-    position: absolute;
-    left: 0;
-    top: 20px;
+  ul#tags li {
+    display: inline;
   }
 
-}
+  ol.comments {
+    list-style: none;
 
-#comment_content {
-  height: 100px;
+    li.comment {
+      overflow: hidden;
+      position: relative;
+      padding-left: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #C7C7C7;
+
+      .link {
+        display: block;
+      }
+      .date {
+        font-size: 70%;
+        color: #666;
+        display: block;
+      }
+      .content {
+        margin-top: 20px;
+      }
+    }
+
+    li.first {
+      border: none;
+    }
+
+    .avatar {
+      position: absolute;
+      left: 0;
+      top: 20px;
+    }
+
+  }
+
+  #comment_content {
+    height: 100px;
+  }
+
+  #posts .hint {
+    font-size: 30%;
+    color: $hint_color;
+  }
 }

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe PostsController do
+describe Admin::PostsController do
   describe "routing" do
     it "routes to tags" do
       expect(get("/tags")).to route_to("main#tags")

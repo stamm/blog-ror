@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe PostsController do
+describe Admin::PostsController do
 
   subject { page }
 
@@ -15,16 +15,16 @@ describe PostsController do
   describe "GET #index" do
     it "show posts" do
       post.save
-      visit posts_path
+      visit admin_posts_path
       should have_content(post.title)
     end
   end
   describe "GET #edit" do
     it "editable" do
       post.save
-      visit posts_path
+      visit admin_posts_path
       click_link post.title
-      current_path.should == edit_post_path(post)
+      current_path.should == edit_admin_post_path(post)
       fill_in "Заголовок", with: 'Урей'
       click_button "Обновить Пост"
       post.reload

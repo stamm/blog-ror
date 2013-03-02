@@ -20,8 +20,8 @@ ZagirovName::Application.routes.draw do
   get "/tag/:tag" => "main#posts", page: '1'
   get "/tag/:tag/:page" => "main#posts"
 
-  scope "/admin" do
-    get '' => 'admin#index', as: 'admin'
+  namespace :admin do
+    get '' => 'admin#index'
     resources :comments, :users
     resources :posts do
       get 'page/:page', :action => :index, :on => :collection

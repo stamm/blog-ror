@@ -60,6 +60,11 @@ ru:
         invalid: 'не верное'
       models:
         comment:
+        post:
+          attributes:
+            url:
+              taken: 'занят, выберите другой'
+
 
 
   helpers:
@@ -71,3 +76,11 @@ ru:
     formats:
       russian: '%F %T'
 
+
+  views:
+    pagination:
+      first: "В начало"
+      last: "В конец"
+      previous: "←"
+      next: "→"
+      truncate: "…"

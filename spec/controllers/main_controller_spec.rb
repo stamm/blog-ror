@@ -14,18 +14,17 @@ describe MainController do
     Rails.application.reload_routes!
   end
 
-  let!(:my_post) { build :post }
 
   describe "GET #posts" do
     before :each do
-      my_post.save
+      @my_post = create :post
     end
-
 
     context "without tags" do
       it "assigns @posts" do
+        @my_post.update(post_time: Time.now.to_i + 10)
         get :posts
-        expect(assigns(:posts)).to include my_post
+        expect(assigns(:posts)).to include @my_post
       end
       it "assign @title" do
         get :posts
@@ -42,18 +41,18 @@ describe MainController do
 
     context "with tags" do
       before :each do
-        my_post.tag_list = 'test, yeap'
-        my_post.save
+        @my_post.tag_list = 'test, yeap'
+        @my_post.save
       end
 
       it "assigns @posts" do
         get :posts, tag: 'test'
-        expect(assigns(:posts)).to include my_post
+        expect(assigns(:posts)).to include @my_post
       end
 
       it "not assigns @posts" do
         get :posts, tag: 'test1'
-        expect(assigns(:posts)).not_to include my_post
+        expect(assigns(:posts)).not_to include @my_post
       end
 
       it "assign @title" do
@@ -72,7 +71,8 @@ describe MainController do
     end
 
     it "have order" do
-      22.times { create :post, post_time: Random.rand(Time.now.to_i - 2.months.ago.to_i) + 2.months.ago.to_i }
+      create :post, post_time: Time.now.to_i + 1
+      create :post, post_time: Time.now.to_i - 1
       get :posts
       posts = assigns(:posts)
       posts.first.post_time.should be > posts.last.post_time
@@ -85,28 +85,27 @@ describe MainController do
 
   describe "GET #article" do
     before :each do
-      my_post.save
+      @my_post = create :post
     end
-
     it "assign @post" do
-      get :article, url: my_post.url
-      expect(assigns(:post)).to eq my_post
+      get :article, url: @my_post.url
+      expect(assigns(:post)).to eq @my_post
     end
 
     it "assign @title" do
-      get :article, url: my_post.url
-      my_post.reload
-      expect(assigns(:title)).to eq my_post.title
+      get :article, url: @my_post.url
+      @my_post.reload
+      expect(assigns(:title)).to eq @my_post.title
     end
 
     context "comment" do
       it "assign @comment" do
-        get :article, url: my_post.url
+        get :article, url: @my_post.url
         expect(assigns(:comment)).to be_a_new(Comment)
       end
       it "get comment data from cookie" do
         request.cookies['comment'] = 'stamm~test@example.com'
-        get :article, url: my_post.url
+        get :article, url: @my_post.url
         comment = assigns(:comment)
         expect(comment.author).to eq 'stamm'
         expect(comment.email).to eq 'test@example.com'
@@ -116,23 +115,23 @@ describe MainController do
 
   describe "POST #article" do
     before :each do
-      my_post.save
+      @my_post = create :post
     end
     context 'add comment' do
       it 'valid' do
         attr = attributes_for(:comment)
-        get :article, {url: my_post.url, comment: attr}
+        get :article, {url: @my_post.url, comment: attr}
         comment = assigns(:comment)
         expect(comment).to be_a(Comment)
         expect(comment.author).to eq attr[:author]
         expect(comment.email).to eq attr[:email]
         #expect(request.cookies['comment']).to eq "#{attr[:author]}~#{attr[:email]}"
-        expect(response).to redirect_to(article_path(my_post.url))
+        expect(response).to redirect_to(article_path(@my_post.url))
         comment_db = Comment.last
         expect(comment_db.author).to eq attr[:author]
         expect(comment_db.email).to eq attr[:email]
-        expect(comment_db.post).to eq my_post
-        expect(my_post.comments).to eq [comment_db]
+        expect(comment_db.post).to eq @my_post
+        expect(@my_post.comments).to eq [comment_db]
       end
 
       describe 'valid' do

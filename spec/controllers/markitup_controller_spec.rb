@@ -5,14 +5,13 @@ describe MarkitupController do
   describe "guest access" do
     it "needing login" do
       post :preview, data: '__test__'
-      expect(response).to redirect_to("/login")
+      expect(response).to redirect_to(login_path)
     end
   end
 
   describe "admin access" do
-    let!(:user) { build :user }
     before :each do
-      user.save
+      user = create :user
       set_user_session user
     end
     it 'render text' do

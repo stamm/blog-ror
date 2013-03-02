@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PostsController do
+describe Admin::PostsController do
 
   #let!(:my_post) { build :post }
   let!(:user) { build :user }
@@ -16,7 +16,7 @@ describe PostsController do
       describe "GET ##{calltype}" do
         it "needing login" do
           get calltype
-          expect(response).to redirect_to("/login")
+          expect(response).to redirect_to(login_path)
         end
       end
     end
@@ -25,7 +25,7 @@ describe PostsController do
       describe "GET ##{calltype}" do
         it "needing login" do
           get calltype, id: @my_post
-          expect(response).to redirect_to("/login")
+          expect(response).to redirect_to(login_path)
         end
       end
     end
@@ -86,7 +86,7 @@ describe PostsController do
         it "redirects to the home page" do
           attributes = attributes_for(:post)
           post :create, post: attributes
-          expect(response).to redirect_to post_path(Post.last)
+          expect(response).to redirect_to admin_post_path(Post.last)
           end
       end
 
@@ -138,8 +138,8 @@ describe PostsController do
         end
         it "redirects to the updated post" do
           put :update, id: @post, post: attributes_for(:post)
-          response.should redirect_to @post
-          expect(response).to redirect_to @post
+          response.should redirect_to admin_post_path(@post)
+          expect(response).to redirect_to admin_post_path(@post)
           end
       end
 
@@ -171,7 +171,7 @@ describe PostsController do
       end
       it "redirects to post#index" do
         delete :destroy, id: @my_post
-        expect(response).to redirect_to posts_url
+        expect(response).to redirect_to admin_posts_url
       end
     end
   end
