@@ -26,7 +26,8 @@ describe Post do
 
 
     it { should have_many(:comments) }
-    xit { should have_and_belong_to_many(:tags) }
+    # todo: fix test
+    #xit { should have_and_belong_to_many(:tags) }
     #join_table(:posts_tags)
 
   end

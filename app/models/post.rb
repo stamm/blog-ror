@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
 
 
   scope :published, -> { where(:status => STATUS_TYPES.index(:publish) + 1) }
-  scope :ordered, -> { order 'post_time desc' }
+  scope :ordered, -> { order "post_time DESC, #{table_name}.id DESC" }
 
   scope :scope_tag, lambda { |tag| joins(:tags).where('tags.name = ?', tag) }
 

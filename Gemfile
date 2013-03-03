@@ -3,10 +3,8 @@ source 'https://rubygems.org'
 group :development, :test do
   gem 'capybara-webkit', '0.14.2'
   gem 'guard-rspec', '2.4.1'
-  gem 'guard-spork', '1.5.0'
   gem 'guard-cucumber', '1.3.2'
   gem 'rspec-rails', '2.13.0'
-  gem 'spork', '0.9.2'
 end
 
 group :development do
@@ -19,6 +17,7 @@ group :development do
   gem 'html2haml', '1.0.1'
   gem 'meta_request', '0.2.2'
   gem 'rvm-capistrano', '1.2.7'
+  #gem 'zeus', '0.13.2'
 end
 
 group :test do

@@ -22,8 +22,6 @@ describe MainController do
 
     context "without tags" do
       it "assigns @posts" do
-        # todo: remove this hack. Explain how database clean works
-        @my_post.update(post_time: Time.now.to_i + 10)
         get :posts
         expect(assigns(:posts)).to include @my_post
       end

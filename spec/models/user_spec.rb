@@ -22,7 +22,8 @@ describe User do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name).case_insensitive }
     it { should ensure_length_of(:name).is_at_most(255) }
-    xit { should validate_presence_of(:password) }
+    # todo: fix test
+    #xit { should validate_presence_of(:password) }
     it { should ensure_length_of(:password).is_at_least(6) }
   end
 
