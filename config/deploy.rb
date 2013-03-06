@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require 'capistrano_colors'
 
-#load 'deploy/assets'
+load 'deploy/assets'
 
 default_run_options[:pty] = true
 
@@ -49,7 +49,7 @@ set(:unicorn_pid) { "#{deploy_to}/shared/pids/unicorn.pid" }
 
 
 # Optional
-before "deploy",                 "deploy:assets:precompile"
+#before "deploy",                 "deploy:assets:precompile"
 before "deploy",                 "deploy:web:disable"
 before "deploy:stop",            "deploy:web:disable"
 
@@ -91,16 +91,16 @@ namespace :deploy do
     run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
   end
 
-  namespace :assets do
-    task :precompile, :roles => :web, :except => { :no_release => true } do
-      #from = source.next_revision(current_revision)
-      #if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
-        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} assets:precompile}
-      #else
-      #  logger.info "Skipping asset pre-compilation because there were no asset changes"
-      #end
-    end
-  end
+  #namespace :assets do
+  #  task :precompile, :roles => :web, :except => { :no_release => true } do
+  #    #from = source.next_revision(current_revision)
+  #    #if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+  #      run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} assets:precompile}
+  #    #else
+  #    #  logger.info "Skipping asset pre-compilation because there were no asset changes"
+  #    #end
+  #  end
+  #end
 
   namespace :web do
 
