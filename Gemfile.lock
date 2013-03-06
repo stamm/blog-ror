@@ -13,6 +13,18 @@ GIT
     rack-bug (0.3.0)
       rack (>= 1.0)
 
+GIT
+  remote: git://github.com/capistrano/capistrano.git
+  revision: 96a16ad3cac569237215f3c06553e49173a7ee01
+  ref: 96a16
+  specs:
+    capistrano (2.12.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,12 +71,6 @@ GEM
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.1.4)
-    capistrano (2.14.2)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
     capistrano-multiconfig (0.0.4)
@@ -314,7 +320,7 @@ DEPENDENCIES
   better_errors (= 0.7.0)
   binding_of_caller (= 0.7.1)
   bootstrap-sass (= 2.3.0.1)
-  capistrano (= 2.14.2)
+  capistrano!
   capistrano-ext (= 1.2.1)
   capistrano-multiconfig (= 0.0.4)
   capistrano-nc (= 0.0.2)
