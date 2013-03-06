@@ -78,7 +78,8 @@ namespace :deploy do
 
   desc "stop unicorn server"
   task :stop do
-    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+    # && [ -e /proc/$(cat #{unicorn_pid}) ]
+    run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
   end
 
 
