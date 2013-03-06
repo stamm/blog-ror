@@ -36,7 +36,7 @@ after "deploy:update", "deploy:cleanup"
 set :bundle_without, [:test, :development]
 
 
-set(:unicorn_conf) { "#{deploy_to}/current/config/unicorn.rb" }
+set(:unicorn_conf) { "config/unicorn.rb" }
 set(:unicorn_pid) { "#{deploy_to}/shared/pids/unicorn.pid" }
 
 
