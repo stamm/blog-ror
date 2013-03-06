@@ -67,7 +67,8 @@ after  "deploy",                 "deploy:cleanup"
 namespace :deploy do
   desc "restart unicorn server"
   task :restart do
-    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
+    # && [ -e /proc/$(cat #{unicorn_pid}) ]
+    run "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
   end
 
   desc "start unicorn server"
