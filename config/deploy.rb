@@ -26,7 +26,7 @@ set :use_sudo, false
 
 
 set :scm, :git
-set :scm_verbose, true
+set :scm_verbose, false
 set :deploy_via, :remote_cache
 set :branch, "master"
 set :keep_releases, 4
