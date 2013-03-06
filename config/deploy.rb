@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require 'capistrano_colors'
 
-#load 'deploy/assets'
+load 'deploy/assets'
 
 default_run_options[:pty] = true
 
