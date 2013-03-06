@@ -4,8 +4,7 @@ module LoginMacros
   end
 
   def sign_in(user)
-    visit root_path
-    click_link t(:login)
+    visit login_path
 
     within 'form' do
       fill_in t(:name), with: user.name

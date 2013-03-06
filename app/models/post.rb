@@ -33,9 +33,12 @@ class Post < ActiveRecord::Base
   scope :ordered, -> { order "post_time DESC, #{table_name}.id DESC" }
 
   scope :scope_tag, lambda { |tag|
-    tag_id = Tag.where(name: tag.downcase).select('id').first.id
-    none unless tag_id
-    joins(:posts_tags).where(posts_tags: {tag_id: tag_id})
+    tag = Tag.where(name: tag.downcase).select('id').first
+    if tag
+      joins(:posts_tags).where(posts_tags: {tag_id: tag.id})
+    else
+      none
+    end
   }
 
   def content_display

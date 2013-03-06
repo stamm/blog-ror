@@ -135,7 +135,7 @@ describe Post do
       subject.tag_list = tags.join(', ')
       #subject.tags =
       subject.tags.should_not be_empty
-      subject.tags.should have(2).tags
+      subject.tags.should have(2).items
       subject.tags.first.name.should == 'test1'
       subject.tags.second.name.should == 'test2'
       subject.tag_array.should == tags
