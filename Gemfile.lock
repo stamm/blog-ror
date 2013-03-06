@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/ai/capistrano.git
+  revision: b42c58e9026699f91a1664affa74486f60dc7fc8
+  branch: rails4
+  specs:
+    capistrano (2.14.1)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+
+GIT
   remote: git://github.com/bmabey/database_cleaner.git
   revision: 83d69e68e3d2b89d5060057e5debac565542c0d6
   branch: master
@@ -59,12 +71,6 @@ GEM
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.1.4)
-    capistrano (2.14.2)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
     capistrano-multiconfig (0.0.4)
@@ -91,7 +97,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.0)
+    coffee-script-source (1.6.1)
     colorize (0.5.8)
     coveralls (0.6.0)
       colorize
@@ -314,7 +320,7 @@ DEPENDENCIES
   better_errors (= 0.7.0)
   binding_of_caller (= 0.7.1)
   bootstrap-sass (= 2.3.0.1)
-  capistrano (= 2.14.2)
+  capistrano!
   capistrano-ext (= 1.2.1)
   capistrano-multiconfig (= 0.0.4)
   capistrano-nc (= 0.0.2)

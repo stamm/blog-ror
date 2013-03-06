@@ -12,7 +12,7 @@ group :development do
   #gem 'brakeman', '1.9.1'
   gem 'better_errors', '0.7.0'
   gem 'binding_of_caller', '0.7.1'
-  gem 'capistrano', '2.14.2'
+  gem 'capistrano', github: 'ai/capistrano', branch: 'rails4'
   gem 'capistrano_colors', '0.5.5'
   gem 'capistrano-nc', '0.0.2'
   gem 'capistrano-ext', '1.2.1'
