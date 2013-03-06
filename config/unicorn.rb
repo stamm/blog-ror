@@ -1,4 +1,4 @@
-deploy_to  = "#{__dir__}/../.."
+deploy_to  = "#{File.expand_path(File.dirname(File.dirname(__FILE__)))}/../.."
 rails_root = "#{deploy_to}/current"
 pid_file   = "#{deploy_to}/shared/pids/unicorn.pid"
 socket_file= "#{deploy_to}/shared/unicorn.sock"
