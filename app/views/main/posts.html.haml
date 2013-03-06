@@ -2,7 +2,7 @@
 %ul{id: "posts"}
   - @posts.each do |post|
     %li
-      %h2{class: "inline"}
+      %h3{class: "inline"}
         = link_to post.title, article_path(post.url)
         %span{class: "hint"}
           = post.post_date

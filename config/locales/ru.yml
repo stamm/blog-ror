@@ -34,6 +34,7 @@ ru:
   recaptcha_error: 'Ошибка в капче'
 
 
+  about: "Об авторе"
   about_me: 'О Загирове Рустаме'
 
   activerecord:

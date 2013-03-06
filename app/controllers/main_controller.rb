@@ -4,12 +4,15 @@ class MainController < ApplicationController
 
   # GET /posts/main
   def posts
-    @posts = Post.published.includes(:tags)
+    #
+    @posts = Post.published
     @title = 'All posts'
     if params[:tag]
       @title += " with tag #{params[:tag]}"
       @posts = @posts.scope_tag(params[:tag])
+    #else
     end
+    @posts.includes!(:tags)
     @posts = @posts.ordered.page(params[:page]).per(20)
   end
 

@@ -4,7 +4,7 @@ ZagirovName::Application.routes.draw do
 
   constraints :format => // do
     root to: 'main#posts'
-    get '/about' => 'static_pages#about'
+    get '/about' => 'static_pages#about', as: 'about'
     post '/markitup/preview' => 'markitup#preview'
 
 
@@ -27,7 +27,7 @@ ZagirovName::Application.routes.draw do
       get '/tags' => :tags
       get '/tag/:tag' => :posts, page: '1'
       get '/tag/:tag/:page' => :posts
-      match '/:url' => :article, as: :article, via: [:get, :post]
+      match '/:url' => :article, url: /[^\/]+/, as: :article, via: [:get, :post]
     end
   end
 end

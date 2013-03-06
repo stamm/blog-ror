@@ -1,0 +1,43 @@
+header {
+  margin:0 auto;
+  width: 940px;
+  nav {
+    margin: 5px 0;
+    padding: 0 0 0 10px;
+    ul {
+      font-size: 1.5em;
+      margin-left: -15px;
+    }
+    li {
+      display: inline;
+      margin: 0 15px;
+      :first-child {
+        margin-left: 0;
+      }
+      :first-child a{
+        padding-left: 0;
+      }
+      a.active{
+        color: #343434;
+      }
+    }
+    span,
+    a {
+      padding: 3px 15px 4px;
+      font-weight: bold;
+    }
+    span {
+      background: #722;
+      color: #fff
+    }
+    .find {
+      font-size: 1em;
+      float: right;
+      input {
+        font-size: 1em;
+      }
+    }
+  }
+
+}
+

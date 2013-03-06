@@ -1,45 +1,43 @@
-require "rvm/capistrano"
+require 'rvm/capistrano'
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require 'capistrano_colors'
 
+#load 'deploy/assets'
+
 default_run_options[:pty] = true
 
 set :application, "blog-ror"
-set :repository,  "git://github.com/Stamm/blog-ror.git"
+set :repository,  "git://github.com/stamm/blog-ror.git"
 
-set :stages,        %w(staging production)
-set :default_stage, "staging"
-set :branch,        "master"
+set :stages,        %w(staging production development)
+set :default_stage, 'development'
+set :branch,        'master'
 
 
-set :rails_env, "production"
 set :using_rvm, true
 set :rvm_type, :user
-set :rvm_ruby_string, 'ruby-1.9.3-p194@gemset'
+set :rvm_ruby_string, 'ruby-2.0.0-p0'
 # интеграция rvm с capistrano настолько хороша, что при выполнении cap deploy:setup установит себя и указанный в rvm_ruby_string руби.
 before 'deploy:setup', 'rvm:install_rvm', 'rvm:install_ruby'
 
 
-server "174.129.240.218", :web, :app
-set :user, 'www-data'
 set :use_sudo, false
 
 
 set :scm, :git
 set :scm_verbose, true
-#set :deploy_via, :remote_cache
+set :deploy_via, :remote_cache
 set :branch, "master"
 set :keep_releases, 4
-#set :deploy_to, "/var/www/#{application}"
 
 
 after "deploy:update", "deploy:cleanup"
 set :bundle_without, [:test, :development]
 
 
-set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
-set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set(:unicorn_conf) { "#{deploy_to}/current/config/unicorn.rb" }
+set(:unicorn_pid) { "#{deploy_to}/shared/pids/unicorn.pid" }
 
 
 ####################
@@ -117,3 +115,7 @@ namespace :log do
     end
   end
 end
+
+
+#set :ssh_option, { :forward_agent => true }
+#default_run_options[:shell] = 'bash -l'
