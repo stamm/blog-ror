@@ -26,6 +26,7 @@ module ZagirovName
     config.assets.version = '1.0.3'
 
     config.assets.precompile += %w(main.js main.css sessions.js sessions.css)
+    config.assets.precompile += %w(static_pages.js static_pages.css)
     config.assets.precompile += %w(admin.js admin.css)
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
