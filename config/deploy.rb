@@ -91,6 +91,14 @@ namespace :deploy do
     run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
   end
 
+  namespace :assets do
+    task :precompile, :roles => assets_role, :except => { :no_release => true } do
+      run <<-CMD.compact
+        cd -- #{latest_release.shellescape} &&
+        #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile
+      CMD
+    end
+  end
   #namespace :assets do
   #  task :precompile, :roles => :web, :except => { :no_release => true } do
   #    #from = source.next_revision(current_revision)
