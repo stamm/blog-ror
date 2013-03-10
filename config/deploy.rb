@@ -1,4 +1,4 @@
-require 'rvm/capistrano'
+#require 'rvm/capistrano'
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require 'capistrano_colors'
@@ -11,15 +11,15 @@ set :application, "blog-ror"
 set :repository,  "git://github.com/stamm/blog-ror.git"
 
 set :stages,        %w(staging production development)
-set :default_stage, 'development'
+#set :default_stage, 'development'
 set :branch,        'master'
 
 
 set :using_rvm, true
-set :rvm_type, :user
-set :rvm_ruby_string, 'ruby-2.0.0-p0'
+#set :rvm_type, :user
+#set :rvm_ruby_string, 'ruby-2.0.0-p0'
 # интеграция rvm с capistrano настолько хороша, что при выполнении cap deploy:setup установит себя и указанный в rvm_ruby_string руби.
-before 'deploy:setup', 'rvm:install_rvm', 'rvm:install_ruby'
+#before 'deploy:setup', 'rvm:install_rvm', 'rvm:install_ruby'
 
 
 set :use_sudo, false
