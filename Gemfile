@@ -10,7 +10,7 @@ end
 group :development do
   gem 'annotate', '2.5.0'
   #gem 'brakeman', '1.9.1'
-  gem 'better_errors', '0.7.0'
+  gem 'better_errors', '0.7.2'
   gem 'binding_of_caller', '0.7.1'
   #gem 'capistrano', '2.14.2'
   gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
@@ -27,7 +27,7 @@ end
 
 group :test do
   gem 'capybara', '2.0.2'
-  gem 'coveralls', '0.6.0', require: false
+  gem 'coveralls', '0.6.2', require: false
   gem 'cucumber-rails', '1.3.0', :require => false
   gem 'database_cleaner', '0.9.1', github: 'bmabey/database_cleaner', branch: 'master'
   gem 'factory_girl_rails', '4.2.1'
@@ -36,7 +36,7 @@ group :test do
   gem 'rb-fsevent', '0.9.3', require: false
   gem 'shoulda-matchers', '1.4.2'
   gem 'terminal-notifier-guard', '1.5.3'
-  gem 'timecop', '0.5.9.2'
+  gem 'timecop', '0.6.0'
 end
 
 group :assets do
@@ -57,7 +57,7 @@ gem 'email_validator', '1.3.0'
 gem 'haml', '4.0.1.rc.1'
 gem 'jquery-rails', '2.2.1'
 gem 'kaminari', '0.14.1'
-gem 'markitup-rails', '1.0.1'
+gem 'markitup-rails', '1.1.0'
 gem 'mysql2', '0.3.11'
 gem 'newrelic_rpm', '~>3.5'
 gem 'nokogiri', '1.5.6'
