@@ -36,7 +36,7 @@ group :test do
   gem 'rb-fsevent', '0.9.3', require: false
   gem 'shoulda-matchers', '1.4.2'
   gem 'terminal-notifier-guard', '1.5.3'
-  gem 'timecop', '0.6.0'
+  gem 'timecop', '0.6.1'
 end
 
 group :assets do
