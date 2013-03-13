@@ -1,10 +1,11 @@
 - if flash[:alert]
-    %p.error= flash[:alert]
+  %p.error= flash[:alert]
 = form_tag do
-    = label_tag :name, t(:name)
-    = text_field_tag :name, params[:name]
+  = label_tag :name, t(:name)
+  = text_field_tag :name, params[:name]
 
-    = label_tag :password, t(:password)
-    = password_field_tag :password, params[:password]
+  = label_tag :password, t(:password)
+  = password_field_tag :password, params[:password]
 
-    = submit_tag t(:login)
+  %br
+  = submit_tag t(:login)
