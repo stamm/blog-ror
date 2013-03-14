@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group :development, :test do
   gem 'capybara-webkit', '0.14.2'
-  gem 'guard-rspec', '2.5.0'
+  gem 'guard-rspec', '2.5.1'
   gem 'guard-cucumber', '1.3.2'
   gem 'rspec-rails', '2.13.0'
 end
