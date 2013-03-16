@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 group :development, :test do
   gem 'capybara-webkit', '0.14.2'
   gem 'guard-rspec', '2.5.1'
@@ -51,7 +52,7 @@ gem 'rails', '4.0.0.beta1'
 
 gem 'albino', '1.3.3'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'bootstrap-sass', '2.3.0.1'
+gem 'bootstrap-sass', '2.3.1.0'
 gem 'coderay', '1.0.9'
 gem 'email_validator', '1.3.0'
 gem 'haml', '4.0.1.rc.1'
