@@ -28,14 +28,14 @@ end
 
 group :test do
   gem 'capybara', '2.0.2'
-  gem 'coveralls', '0.6.2', require: false
+  gem 'coveralls', '0.6.3', require: false
   gem 'cucumber-rails', '1.3.0', :require => false
   gem 'database_cleaner', '0.9.1', github: 'bmabey/database_cleaner', branch: 'master'
   gem 'factory_girl_rails', '4.2.1'
   gem 'ffaker', '1.15.0'
   gem 'launchy', '2.2.0'
   gem 'rb-fsevent', '0.9.3', require: false
-  gem 'shoulda-matchers', '1.4.2'
+  gem 'shoulda-matchers', '1.5.2'
   gem 'terminal-notifier-guard', '1.5.3'
   gem 'timecop', '0.6.1'
 end
@@ -61,7 +61,7 @@ gem 'kaminari', '0.14.1'
 gem 'markitup-rails', '1.1.0'
 gem 'mysql2', '0.3.11'
 gem 'newrelic_rpm', '~>3.5'
-gem 'nokogiri', '1.5.6'
+gem 'nokogiri', '1.5.8'
 gem 'pg', '0.14.1'
 gem 'pygmentize', '0.0.3'
 gem 'quiet_assets', '1.0.2'
