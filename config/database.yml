@@ -1,12 +1,12 @@
 mysql: &mysql
   adapter: mysql2
-  username: zagirov.name
-  password: zagirov.name
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
 
 postgresql: &postgresql
   adapter: postgresql
-  username: postgres
-  password:
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
   min_messages: ERROR
 
 defaults: &defaults
@@ -42,4 +42,3 @@ production:
 old:
   <<: *defaults
   database: www.zagirov.name
-
