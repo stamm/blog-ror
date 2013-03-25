@@ -15,7 +15,7 @@ set :stages,        %w(staging production development)
 set :branch,        'master'
 
 
-set :using_rvm, true
+#set :using_rvm, true
 #set :rvm_type, :user
 #set :rvm_ruby_string, 'ruby-2.0.0-p0'
 # интеграция rvm с capistrano настолько хороша, что при выполнении cap deploy:setup установит себя и указанный в rvm_ruby_string руби.
@@ -89,8 +89,8 @@ namespace :deploy do
     # Здесь для примера вставлен только один конфиг с приватными данными - database.yml.
     # Обычно для таких вещей создают папку /srv/myapp/shared/config и кладут файлы туда.
     # При каждом деплое создаются ссылки на них в нужные места приложения.
-    run "rm -f #{current_release}/config/database.yml"
-    run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
+    run "rm -f #{current_release}/config/application.yml"
+    run "ln -s #{deploy_to}/shared/config/application.yml #{current_release}/config/application.yml"
   end
 
   namespace :assets do
