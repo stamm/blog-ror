@@ -9,8 +9,8 @@ matrix:
     - rvm: rbx-19mode
 env:
 #  - DB=sqlite
-  - DB=mysql SECRET_KEY_BASE=a MYSQL_USER=test MYSQL_PASSWORD=test
-  - DB=postgresql SECRET_KEY_BASE=a MYSQL_USER=test MYSQL_PASSWORD=test
+  - DB=mysql
+  - DB=postgresql
 before_install:
   - gem install bundler
 bundler_args: "--without development"
@@ -22,6 +22,7 @@ before_script:
   - mysql -uroot -e 'create database `zagirov_name_test`'
   - mysql -uroot -e 'GRANT ALL ON `zagirov_name_test`.* TO "test"@"localhost" IDENTIFIED BY "test"; FLUSH PRIVILEGES;'
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - cp config/application.yml.example config/application.yml
 
 script: "bundle exec rspec spec/"
 notifications:
