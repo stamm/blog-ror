@@ -77,22 +77,8 @@ describe Post do
     end
   end
 
-  describe 'convert_content' do
-    it 'convert_content' do
-      subject.content = '__test__'
-      subject.convert_content
-      subject.content_display.should == "<p><strong>test</strong></p>\n"
-    end
-    it 'call convert_content before save' do
-      subject.content = '__test__'
-      subject.save
-      subject.content_display.should == "<p><strong>test</strong></p>\n"
-    end
-    it 'content_display' do
-      subject.content = '__test__'
-      subject.content_display.should == "<p><strong>test</strong></p>\n"
-    end
-  end
+  it_should_behave_like 'content_display'
+
 
 
   describe 'scope' do
