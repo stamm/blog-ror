@@ -1,5 +1,5 @@
 %ol.comments
-  - @post.comments.each do |comment|
+  - @post.comments.approved.each do |comment|
     %li.comment{id: "c#{comment.id}"}
       %div.head
         %span.link

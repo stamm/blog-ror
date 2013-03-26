@@ -21,6 +21,7 @@ class Comment < ActiveRecord::Base
   validates :email, email: {message: I18n.t(:wrong_email)}
 
   scope :last_first, -> { order("created_at DESC") }
+  scope :approved, -> { where(status: 2) }
 
   def get_status
     STATUS_TYPES[status-1]
@@ -29,6 +30,4 @@ class Comment < ActiveRecord::Base
   def self.get_status(status)
     STATUS_TYPES.index(status) + 1
   end
-
-
 end
