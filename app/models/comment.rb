@@ -15,6 +15,7 @@
 #
 
 class Comment < ActiveRecord::Base
+  include ConvertContent
   STATUS_TYPES = [ :pending, :approve, :spam ]
   belongs_to :post
   validates :author, :email, :content, presence: true

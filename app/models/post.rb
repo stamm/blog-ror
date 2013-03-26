@@ -17,6 +17,7 @@
 
 class Post < ActiveRecord::Base
 
+  include ConvertContent
   has_and_belongs_to_many :tags
   has_many :comments
   has_many :posts_tags
@@ -25,9 +26,6 @@ class Post < ActiveRecord::Base
 
   validates :title, :content, :post_time, :url, :status, presence: true
   validates :url, uniqueness: true
-
-  before_save :convert_content
-
 
   scope :published, -> { where(:status => STATUS_TYPES.index(:publish) + 1) }
   scope :ordered, -> { order "post_time DESC, #{table_name}.id DESC" }
@@ -41,17 +39,7 @@ class Post < ActiveRecord::Base
     end
   }
 
-  def content_display
-    attr = self.read_attribute(:content_display)
-    return attr unless attr.blank?
-    convert_content
-  end
 
-
-  def convert_content
-    return if self.content.nil?
-    self.content_display = MarkdownRenderer.markdown self.content
-  end
 
 
   def post_date
