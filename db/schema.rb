@@ -21,22 +21,22 @@ ActiveRecord::Schema.define(version: 20130326092126) do
     t.string   "url",             default: "", null: false
     t.integer  "post_id",         default: 0,  null: false
     t.string   "ip",              default: "", null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "content_display",              null: false
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title",                        null: false
-    t.text     "content",                      null: false
-    t.text     "content_display",              null: false
-    t.integer  "status",                       null: false
-    t.integer  "post_time",       default: 0,  null: false
-    t.integer  "user_id",         default: 0,  null: false
-    t.string   "url",                          null: false
-    t.string   "short_url",       default: "", null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "title",                                  null: false
+    t.text     "content",                                null: false
+    t.text     "content_display",                        null: false
+    t.integer  "status",          limit: 1,              null: false
+    t.integer  "post_time",                 default: 0,  null: false
+    t.integer  "user_id",                   default: 0,  null: false
+    t.string   "url",                                    null: false
+    t.string   "short_url",                 default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "posts_tags", force: true do |t|
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 20130326092126) do
   create_table "users", force: true do |t|
     t.string   "name",            default: "", null: false
     t.string   "password_digest", default: "", null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
