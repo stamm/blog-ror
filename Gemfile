@@ -27,7 +27,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '2.0.2'
+  gem 'capybara', '2.0.3'
   gem 'coveralls', '0.6.3', require: false
   gem 'cucumber-rails', '1.3.0', :require => false
   gem 'database_cleaner', '0.9.1', github: 'bmabey/database_cleaner', branch: 'master'
@@ -63,7 +63,7 @@ gem 'markitup-rails', '1.1.0'
 gem 'mysql2', '0.3.11'
 #gem 'newrelic_rpm', '~>3.5'
 gem 'nokogiri', '1.5.9'
-gem 'pg', '0.14.1'
+gem 'pg', '0.15'
 gem 'pygmentize', '0.0.3'
 gem 'quiet_assets', '1.0.2'
 gem 'rack-bug', '0.3.0', require: 'rack/bug', github: 'brynary/rack-bug', branch: 'rails3'
