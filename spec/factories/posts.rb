@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :post do
-    title { Faker::Lorem.sentence }
+    sequence(:title) { |n| "#{Faker::Lorem.sentence} #{n}" }
     content "*content*"
     #content_display "<b>content</b>"
     status Post::STATUS_TYPES.index(:publish) + 1
