@@ -7,7 +7,8 @@ task parse: :environment do
   Old.establish_connection(configs["old"])
 
 
-  Post.delete_all
+  ActiveRecord::Base.connection.execute("TRUNCATE #{Post.table_name}")
+  ActiveRecord::Base.connection.execute("TRUNCATE #{Comment.table_name}")
 
   Old.connection.select_all('select * from tbl_post').each do |e|
     content = e["content"].gsub(/<code>(.*?)<\/code>/im,'```\1```')
@@ -18,9 +19,11 @@ task parse: :environment do
 
 
     sql = "SELECT t.name FROM tbl_tag AS t, tbl_post_tag AS pt WHERE pt.post_id = #{e['id']} AND t.id = pt.tag_id"
-    tag_list = Old.connection.select_all(sql).map{|row| row["name"]}.join(',')
+    tag_list = Old.connection.select_all(sql)
+      .map { |row| row['name'] }
+      .join(',')
 
-    Post.create(
+    post = Post.create(
         title:   e["title"],
         content: content,
         status:  e["status"],
@@ -30,6 +33,27 @@ task parse: :environment do
         short_url:  e["short_url"],
         tag_list: tag_list,
     )
+
+    sql = "SELECT * FROM tbl_comment WHERE post_id = #{e['id']} ORDER BY create_time ASC"
+    comments = Old.connection.select_all(sql)
+
+    comments.each do |row|
+      comment = post.comments.create(
+        content: row['content'],
+        status: row['status'],
+        status: row['status'],
+        author: row['author'],
+        email: row['email'],
+        url: row['url'].nil? ? '' : row['url'],
+        ip: row['ip'],
+        created_at: Time.at(row['create_time']),
+        updated_at: Time.at(row['create_time']),
+      )
+      #puts row['create_time']
+
+      #comment.update_at = Time.at row['create_time']
+      #comment.save
+    end
   end
 
   Tag.recount_frequency

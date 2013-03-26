@@ -41,4 +41,4 @@ production:
 # Old database on yii
 old:
   <<: *defaults
-  database: www.zagirov.name
+  database: www_zagirov_name

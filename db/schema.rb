@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -20,21 +21,21 @@ ActiveRecord::Schema.define(version: 20130220200344) do
     t.string   "url",        default: "", null: false
     t.integer  "post_id",    default: 0,  null: false
     t.string   "ip",         default: "", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title",                                  null: false
-    t.text     "content",                                null: false
-    t.text     "content_display",                        null: false
-    t.integer  "status",          limit: 1,              null: false
-    t.integer  "post_time",                 default: 0,  null: false
-    t.integer  "user_id",                   default: 0,  null: false
-    t.string   "url",                                    null: false
-    t.string   "short_url",                 default: "", null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "title",                        null: false
+    t.text     "content",                      null: false
+    t.text     "content_display",              null: false
+    t.integer  "status",                       null: false
+    t.integer  "post_time",       default: 0,  null: false
+    t.integer  "user_id",         default: 0,  null: false
+    t.string   "url",                          null: false
+    t.string   "short_url",       default: "", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "posts_tags", force: true do |t|
@@ -50,8 +51,8 @@ ActiveRecord::Schema.define(version: 20130220200344) do
   create_table "users", force: true do |t|
     t.string   "name",            default: "", null: false
     t.string   "password_digest", default: "", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end
