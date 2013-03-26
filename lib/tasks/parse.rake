@@ -9,6 +9,7 @@ task parse: :environment do
 
   ActiveRecord::Base.connection.execute("TRUNCATE #{Post.table_name}")
   ActiveRecord::Base.connection.execute("TRUNCATE #{Comment.table_name}")
+  ActiveRecord::Base.connection.execute("TRUNCATE #{PostsTag.table_name}")
 
   Old.connection.select_all('select * from tbl_post').each do |e|
     content = e["content"].gsub(/<code>(.*?)<\/code>/im,'```\1```')
