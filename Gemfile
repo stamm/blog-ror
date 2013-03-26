@@ -21,7 +21,7 @@ group :development do
   gem 'capistrano-multiconfig', '0.0.4'
   gem 'fuubar', '~> 1.1.0'
   gem 'html2haml', '1.0.1'
-  gem 'meta_request', '0.2.2'
+  gem 'meta_request', '0.2.3'
   gem 'rvm-capistrano', '1.2.7'
   #gem 'zeus', '0.13.2'
 end
