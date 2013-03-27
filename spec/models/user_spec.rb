@@ -79,7 +79,7 @@ describe User do
 
     before { subject.save }
 
-    let(:found_user) { User.find_by_name(subject.name) }
+    let(:found_user) { User.find_by(name: subject.name) }
     let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
     it "with valid password" do

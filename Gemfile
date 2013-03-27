@@ -46,8 +46,6 @@ group :assets do
   gem 'uglifier', '1.3.0'
 end
 
-
-#gem 'rails', '3.2.12'
 gem 'rails', '4.0.0.beta1'
 
 gem 'albino', '1.3.3'

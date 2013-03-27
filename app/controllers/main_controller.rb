@@ -17,7 +17,7 @@ class MainController < ApplicationController
   end
 
   def article
-    @post = Post.find_by_url(params[:url]) || not_found
+    @post = Post.find_by(url: params[:url]) || not_found
 
     if params[:comment]
       @comment = create_comment @post
