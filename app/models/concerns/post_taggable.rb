@@ -3,7 +3,7 @@ module PostTaggable
 
   included do
     scope :scope_tag, lambda { |tag|
-      tag = Tag.where(name: tag.downcase).select('id').first
+      tag = Tag.select('id').find_by(name: tag.downcase)
       if tag
         joins(:posts_tags).where(posts_tags: {tag_id: tag.id})
       else
