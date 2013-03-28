@@ -48,6 +48,7 @@ end
 
 gem 'rails', '4.0.0.beta1'
 
+gem 'activerecord-session_store', '0.0.1'
 gem 'albino', '1.3.3'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'bootstrap-sass', '2.3.1.0'

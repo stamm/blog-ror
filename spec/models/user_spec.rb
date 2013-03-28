@@ -86,9 +86,9 @@ describe User do
       should == found_user.authenticate(subject.password)
     end
 
-    it "with invalid password" do
-      should_not == user_for_invalid_password
-      user_for_invalid_password.should be_false
+    describe  "with invalid password" do
+      it { should_not == user_for_invalid_password }
+      it { user_for_invalid_password.should be_false }
     end
   end
 

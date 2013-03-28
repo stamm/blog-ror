@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130326092126) do
+ActiveRecord::Schema.define(version: 20130327070301) do
 
   create_table "comments", force: true do |t|
     t.text     "content",                      null: false
@@ -21,28 +21,38 @@ ActiveRecord::Schema.define(version: 20130326092126) do
     t.string   "url",             default: "", null: false
     t.integer  "post_id",         default: 0,  null: false
     t.string   "ip",              default: "", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.text     "content_display",              null: false
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title",                                  null: false
-    t.text     "content",                                null: false
-    t.text     "content_display",                        null: false
-    t.integer  "status",          limit: 1,              null: false
-    t.integer  "post_time",                 default: 0,  null: false
-    t.integer  "user_id",                   default: 0,  null: false
-    t.string   "url",                                    null: false
-    t.string   "short_url",                 default: "", null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "title",                        null: false
+    t.text     "content",                      null: false
+    t.text     "content_display",              null: false
+    t.integer  "status",                       null: false
+    t.integer  "post_time",       default: 0,  null: false
+    t.integer  "user_id",         default: 0,  null: false
+    t.string   "url",                          null: false
+    t.string   "short_url",       default: "", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "posts_tags", force: true do |t|
     t.integer "post_id", default: 0, null: false
     t.integer "tag_id",  default: 0, null: false
   end
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
 
   create_table "tags", force: true do |t|
     t.string  "name",                  null: false
@@ -52,8 +62,8 @@ ActiveRecord::Schema.define(version: 20130326092126) do
   create_table "users", force: true do |t|
     t.string   "name",            default: "", null: false
     t.string   "password_digest", default: "", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end
