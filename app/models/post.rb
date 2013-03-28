@@ -19,47 +19,22 @@ class Post < ActiveRecord::Base
 
   include ConvertContent
   include PostTime
-  has_and_belongs_to_many :tags
+  include PostTaggable
+
+  STATUS_TYPES = [ :draft, :publish, :archive ]
+
   has_many :comments
   has_many :posts_tags
+  has_and_belongs_to_many :tags
   belongs_to :user
-  STATUS_TYPES = [ :draft, :publish, :archive ]
+
+  scope :published, -> { where(status: STATUS_TYPES.index(:publish) + 1) }
+  scope :ordered, -> { order(post_time: :desc, id: :desc) }
 
   validates :title, :content, :post_time, :url, :status, presence: true
   validates :url, uniqueness: true
 
-  scope :published, -> { where(:status => STATUS_TYPES.index(:publish) + 1) }
-  scope :ordered, -> { order "post_time DESC, #{table_name}.id DESC" }
-
-  scope :scope_tag, lambda { |tag|
-    tag = Tag.where(name: tag.downcase).select('id').first
-    if tag
-      joins(:posts_tags).where(posts_tags: {tag_id: tag.id})
-    else
-      none
-    end
-  }
-
-  def tag_list
-    self.tags.map { |t| t.name }.join(', ')
-  end
-
-  def tag_list=(value)
-    tag_names = value.split(/\s*,\s*/)
-    self.tags = tag_names.map do |name|
-      parameters = ActionController::Parameters.new({name: name.downcase})
-      Tag.where('name = ?', name.downcase).first or Tag.create(parameters.permit(:name))
-    end
-  end
-
-  def tag_array
-    self.tags.map { |t| t.name }
-  end
-
-
-
   def get_status
     STATUS_TYPES[status-1]
   end
-
 end
