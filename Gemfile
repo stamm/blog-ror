@@ -35,7 +35,7 @@ group :test do
   gem 'ffaker', '1.15.0'
   gem 'launchy', '2.2.0'
   gem 'rb-fsevent', '0.9.3', require: false
-  gem 'shoulda-matchers', '1.5.4'
+  gem 'shoulda-matchers', '1.5.5'
   gem 'terminal-notifier-guard', '1.5.3'
   gem 'timecop', '0.6.1'
 end
