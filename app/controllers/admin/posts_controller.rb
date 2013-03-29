@@ -1,14 +1,14 @@
 class Admin::PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   # GET /posts
   def index
-    @posts = Post.order("created_at DESC").page(params[:page]).per(40)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(40)
   end
 
 
 
   # GET /posts/1
   def show
-    @post = Post.find(params[:id])
   end
 
   # GET /posts/new
@@ -18,7 +18,6 @@ class Admin::PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
   end
 
   # POST /posts
@@ -35,8 +34,6 @@ class Admin::PostsController < ApplicationController
 
   # PUT /posts/1
   def update
-    @post = Post.find(params[:id])
-
     if @post.update_attributes(post_params)
       redirect_to admin_post_url(@post), notice: 'Post was successfully updated.'
     else
@@ -46,7 +43,6 @@ class Admin::PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
 
     redirect_to admin_posts_url
@@ -54,6 +50,10 @@ class Admin::PostsController < ApplicationController
 
 
 private
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   def post_params
     params.require(:post).permit(
         :user_id, :content, :post_time, :short_url, :status, :title, :url,

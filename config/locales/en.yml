@@ -1,14 +1,86 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
-  home: 'Home'
   admin: 'Admin'
+  back: 'Back'
+  edit: 'Edit'
+  hello: 'Hello world'
+  home: 'Home'
+  login: 'Login'
+  logout: 'Logout'
+  update: 'Update'
+  show: 'Show'
+
+  name: 'Name'
+  password: 'Password'
+
+  draft: 'Draft'
+  publish: 'Publish'
+  archive: 'In archive'
+  #title: 'Заголовок'
+
+
   select_status: 'Select status'
 
-  posts:
-    form:
-      draft: 'Draft'
-      publish: 'Publish'
-      archive: 'In archive'
+  posts: 'Posts'
+  new_post: 'New post'
+
+
+  add_comment: 'Leave comment'
+  comments: 'Comments'
+
+  send: 'Send'
+
+  wrong_email: 'is wrong'
+
+
+  recaptcha_error: 'Error in captcha'
+
+  about: "About"
+  about_me: 'About Zagirov Rustam'
+
+  activerecord:
+    models:
+      post: 'Post'
+    attributes:
+      post:
+        title: 'Title'
+        content: 'Text'
+        status: 'Status'
+        post_time: 'Post time'
+        post_time_string: Post time
+        tag_list: 'Tags'
+        url: 'Url'
+      comment:
+        author: 'Name'
+        content: 'Text'
+      user:
+        name: 'Name'
+        password: 'Password'
+    errors:
+      models:
+        comment:
+        post:
+          attributes:
+            url:
+              taken: 'taken, choose another'
+
+
+
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
+
+  time:
+    formats:
+      russian: '%F %T'
+
+
+  views:
+    pagination:
+      first: "First"
+      last: "Last"
+      previous: "←"
+      next: "→"
+      truncate: "…"

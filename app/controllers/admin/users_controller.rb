@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
   # GET /users
   def index
     @users = User.all
@@ -6,7 +8,6 @@ class Admin::UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @user = User.where(id: params[:id])
   end
 
   # GET /users/new
@@ -16,36 +17,40 @@ class Admin::UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.where(id: params[:id])
   end
 
   # POST /users
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
 
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
   # PUT /users/1
   def update
-    @user = User.where(id: params[:id])
-
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
   # DELETE /users/1
   def destroy
-    @user = User.where(id: params[:id])
     @user.destroy
+    redirect_to admin_users_url
+  end
 
-    redirect_to users_url
+private
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :password, :password_confirmation)
   end
 end
