@@ -1,10 +1,10 @@
-desc "Parse from old blog"
+desc 'Parse from old blog'
 task parse: :environment do
   configs = ActiveRecord::Base.configurations
 
   class Old < ActiveRecord::Base
   end
-  Old.establish_connection(configs["old"])
+  Old.establish_connection(configs['old'])
 
 
   ActiveRecord::Base.connection.execute("TRUNCATE #{Post.table_name}")
@@ -12,7 +12,7 @@ task parse: :environment do
   ActiveRecord::Base.connection.execute("TRUNCATE #{PostsTag.table_name}")
 
   Old.connection.select_all('select * from tbl_post').each do |e|
-    content = e["content"].gsub(/<code>(.*?)<\/code>/im,'```\1```')
+    content = e['content'].gsub(/<code>(.*?)<\/code>/im,'```\1```')
     content.gsub!(/<code lang="([^"]+)">[\r\n]*(.*?)[\r\n]*<\/code>/im,'``` \1
 \2
 ```')
@@ -25,13 +25,13 @@ task parse: :environment do
       .join(',')
 
     post = Post.create(
-        title:   e["title"],
+        title:   e['title'],
         content: content,
-        status:  e["status"],
-        post_time:  e["post_time"],
-        user_id:  e["author_id"],
-        url:  e["url"],
-        short_url:  e["short_url"],
+        status:  e['status'],
+        post_time:  e['post_time'],
+        user_id:  e['author_id'],
+        url:  e['url'],
+        short_url:  e['short_url'],
         tag_list: tag_list,
     )
 
@@ -39,7 +39,7 @@ task parse: :environment do
     comments = Old.connection.select_all(sql)
 
     comments.each do |row|
-      comment = post.comments.create(
+      post.comments.create(
         content: row['content'],
         status: row['status'],
         status: row['status'],

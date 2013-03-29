@@ -15,7 +15,7 @@ describe Tag do
 
     it 'no empty' do
       Tag.create(name: 'rails', frequency: 2)
-      expect(subject.tags).to eq({"rails" => 2})
+      expect(subject.tags).to eq({'rails' => 2})
     end
   end
 
@@ -31,7 +31,7 @@ describe Tag do
       post2.save
       #expect(subject.count).to eq(3)
 
-      expect{subject.recount_frequency}.to change{subject.tags["rails"]}.from(0).to(2)
+      expect{subject.recount_frequency}.to change{subject.tags['rails']}.from(0).to(2)
       expect(subject.tags).to eq({'rails' => 2, 'debian' => 1, 'ubuntu' => 1})
     end
   end
