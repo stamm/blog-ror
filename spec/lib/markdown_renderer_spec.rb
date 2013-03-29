@@ -12,7 +12,7 @@ describe MarkdownRenderer do
 
   describe 'markdown' do
     it 'make markdown' do
-      MarkdownRenderer.markdown('## test').should == '<h2>test</h2>\n'
+      MarkdownRenderer.markdown('## test').should == "<h2>test</h2>\n"
       MarkdownRenderer.markdown('http://yandex.ru').should == "<p><a href=\"http://yandex.ru\">http://yandex.ru</a></p>\n"
     end
   end
