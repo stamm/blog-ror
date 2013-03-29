@@ -1,0 +1,27 @@
+%h1
+  Listing comments
+
+%table.table
+  %tr
+    %th №
+    %th= Comment.human_attribute_name(:author)
+    %th= Comment.human_attribute_name(:content)
+    %th= Comment.human_attribute_name(:status)
+    %th= Comment.human_attribute_name(:created_at)
+    %th= Comment.human_attribute_name(:ip)
+    %th
+  - @comments.each do |comment|
+    %tr
+      %td= link_to comment.id, edit_admin_comment_path(comment)
+      %td #{comment.author} <br/> #{comment.email}
+      %td= raw comment.content_display
+      %td= t(comment.get_status.to_s)
+      %td= comment.created_at.strftime('%Y-%m-%d')
+      %td= comment.ip
+      %td= link_to 'x', admin_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+%p= paginate @comments
+
+= link_to 'New Comment', new_admin_comment_path

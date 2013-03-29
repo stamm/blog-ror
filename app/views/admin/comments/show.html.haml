@@ -1,0 +1,14 @@
+%p#notice= notice
+
+%article
+  = content_tag :h1, @post.title
+  - tags = @post.tag_array.map { |tag| content_tag(:a, tag, class: 'tag', href: "/tag/#{tag}") }.join(', ').html_safe
+  %div.meta
+    =tags
+  = Date.strptime(@post.post_time.to_s, '%s').strftime('%Y-%m-%d')
+  = content_tag :div, @post.content_display.html_safe, class: 'content'
+
+  = tags
+
+= link_to t(:edit), edit_admin_post_path(@post)
+= link_to t(:back), admin_posts_path
