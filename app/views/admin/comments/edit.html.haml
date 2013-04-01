@@ -1,8 +1,8 @@
 %h1
-  Editing post
+  Editing comment
 
 = render 'form'
 
-= link_to t(:show), admin_post_path(@post)
+= link_to t(:show), admin_comment_path(@comment)
 |
-= link_to t(:back), admin_posts_path
+= link_to t(:back), admin_comments_path

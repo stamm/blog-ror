@@ -1,6 +1,9 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
+
+  all_posts: 'All posts'
+
   admin: 'Admin'
   back: 'Back'
   edit: 'Edit'
@@ -18,6 +21,10 @@ en:
   publish: 'Publish'
   archive: 'In archive'
   #title: 'Заголовок'
+
+  pending: 'Pending'
+  approve: 'Approve'
+  spam: 'Spam'
 
 
   select_status: 'Select status'
@@ -39,6 +46,9 @@ en:
   about: "About"
   about_me: 'About Zagirov Rustam'
 
+  listing_comments: 'Список комментариев'
+  mark_as_spam: 'Mark as spam'
+
   activerecord:
     models:
       post: 'Post'
@@ -54,6 +64,8 @@ en:
       comment:
         author: 'Name'
         content: 'Text'
+        status: 'Status'
+        created_at: 'Created at'
       user:
         name: 'Name'
         password: 'Password'

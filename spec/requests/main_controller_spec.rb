@@ -8,7 +8,7 @@ describe MainController do
       get '/'
       #Post.all.size.should == 1
       assigns(:posts).should include(post)
-      assigns(:title).should == "All posts"
+      assigns(:title).should == t('all_posts')
       response.should render_template("posts")
       expect(response.body).to include(post.title)
       expect(response.body).to include(post.post_date)

@@ -6,7 +6,7 @@ class MainController < ApplicationController
   def posts
     #
     @posts = Post.published
-    @title = 'All posts'
+    @title = t('all_posts')
     if params[:tag]
       @title += " with tag #{params[:tag]}"
       @posts = @posts.scope_tag(params[:tag])

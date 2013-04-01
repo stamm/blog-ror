@@ -21,14 +21,14 @@ class Post < ActiveRecord::Base
   include PostTime
   include PostTaggable
 
-  STATUS_TYPES = [ :draft, :publish, :archive ]
+  STATUS_TYPES = %i(draft publish archive)
 
   has_many :comments
   has_many :posts_tags
   has_and_belongs_to_many :tags
   belongs_to :user
 
-  scope :published, -> { where(status: STATUS_TYPES.index(:publish) + 1) }
+  scope :published, -> { where(status: self.get_status(:publish)) }
   scope :ordered, -> { order(post_time: :desc, id: :desc) }
 
   validates :title, :content, :post_time, :url, :status, presence: true
@@ -36,5 +36,9 @@ class Post < ActiveRecord::Base
 
   def get_status
     STATUS_TYPES[status-1]
+  end
+
+  def self.get_status(status)
+    STATUS_TYPES.index(status) + 1
   end
 end

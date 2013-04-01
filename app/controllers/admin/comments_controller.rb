@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :spam, :update, :destroy]
   def index
-    @comments = Comment.order(created_at: :desc).page(params[:page]).per(40)
+    @comments = Comment.not_spam.last_first.page(params[:page]).per(40)
   end
 
   def show
@@ -30,6 +30,11 @@ class Admin::CommentsController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+  def spam
+    @comment.set_spam
+    redirect_to admin_comments_url
   end
 
   def destroy

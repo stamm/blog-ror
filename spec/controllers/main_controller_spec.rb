@@ -27,7 +27,7 @@ describe MainController do
       end
       it "assign @title" do
         get :posts
-        expect(assigns(:title)).to eq "All posts"
+        expect(assigns(:title)).to eq t('all_posts')
       end
       it "have only 20 posts" do
         @posts = []
@@ -56,7 +56,7 @@ describe MainController do
 
       it "assign @title" do
         get :posts, tag: 'test'
-        expect(assigns(:title)).to eq "All posts with tag test"
+        expect(assigns(:title)).to eq t('all_posts') + " with tag test"
       end
 
       it "have only 20 posts" do

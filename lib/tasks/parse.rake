@@ -40,6 +40,7 @@ task parse: :environment do
 
     comments.each do |row|
       post.comments.create(
+        id: row['id'],
         content: row['content'],
         status: row['status'],
         status: row['status'],

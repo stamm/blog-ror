@@ -16,16 +16,24 @@
 
 class Comment < ActiveRecord::Base
   include ConvertContent
-  STATUS_TYPES = [ :pending, :approve, :spam ]
+  STATUS_TYPES = %i(pending approve spam)
   belongs_to :post
   validates :author, :email, :content, presence: true
   validates :email, email: {message: I18n.t(:wrong_email)}
 
-  scope :last_first, -> { order("created_at DESC") }
-  scope :approved, -> { where(status: 2) }
+  scope :last_first, -> { order('created_at' => :desc) }
+  scope :approved, -> { where(status: self.get_status(:approve)) }
+  scope :not_spam, -> { where.not(status: self.get_status(:spam)) }
 
   def get_status
     STATUS_TYPES[status-1]
+  end
+
+  %i(approve spam).each do |val|
+    define_method "set_#{val}" do
+      self.status = self.class.get_status(val)
+      save
+    end
   end
 
   def self.get_status(status)

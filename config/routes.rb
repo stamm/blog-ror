@@ -1,12 +1,8 @@
 ZagirovName::Application.routes.draw do
-  #mount Markitup::Rails::Engine, at: 'markitup', as: 'markitup'
-
-
   constraints :format => // do
     root to: 'main#posts'
     get '/about' => 'static_pages#about', as: 'about'
     post '/markitup/preview' => 'markitup#preview'
-
 
     controller :sessions do
       get 'login' => :new
@@ -16,9 +12,15 @@ ZagirovName::Application.routes.draw do
 
     namespace :admin do
       get '' => 'admin#index'
-      resources :comments, :users
+      resources :users
+      resources :comments do
+        member do
+          put 'spam' => 'comments#spam', as: :spam
+          put 'approve' => 'comments#approve', as: :approve
+        end
+      end
       resources :posts do
-        get 'page/:page', :action => :index, :on => :collection
+        get 'page/:page', action: :index, on: :collection
       end
     end
 
