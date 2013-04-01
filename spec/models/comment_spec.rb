@@ -22,4 +22,19 @@ describe Comment do
     end
   end
 
+  describe 'singles method' do
+    before {
+      subject.status = Comment.get_status(:pending)
+      subject.save
+    }
+    it 'set spam' do
+      subject.set_spam
+      expect(subject.status).to eq Comment.get_status(:spam)
+    end
+    it 'set approve' do
+      subject.set_approve
+      expect(subject.status).to eq Comment.get_status(:approve)
+    end
+  end
+
 end
