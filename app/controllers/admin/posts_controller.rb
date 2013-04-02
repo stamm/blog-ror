@@ -14,10 +14,12 @@ class Admin::PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new post_time: Time.now.to_i
+    5.times { @post.assets.build }
   end
 
   # GET /posts/1/edit
   def edit
+    5.times { @post.assets.build }
   end
 
   # POST /posts

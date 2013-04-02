@@ -22,7 +22,7 @@ module ZagirovName
     # Enable the asset pipeline
     config.assets.enabled = true
     # the default prefix is 'assets'
-    config.assets.prefix = 'assets/manifest.json'
+    #config.assets.prefix = 'assets/manifest.json'
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0.3'
 

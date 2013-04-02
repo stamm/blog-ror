@@ -27,6 +27,9 @@ class Post < ActiveRecord::Base
   has_many :posts_tags
   has_and_belongs_to_many :tags
   belongs_to :user
+  has_many :assets, dependent: :destroy
+  accepts_nested_attributes_for :assets, allow_destroy: true
+
 
   scope :published, -> { where(status: self.get_status(:publish)) }
   scope :ordered, -> { order(post_time: :desc, id: :desc) }
