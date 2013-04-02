@@ -21,7 +21,8 @@ module ZagirovName
     config.active_support.escape_html_entities_in_json = true
     # Enable the asset pipeline
     config.assets.enabled = true
-
+    # the default prefix is 'assets'
+    config.assets.prefix = 'assets/manifest.json'
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0.3'
 
