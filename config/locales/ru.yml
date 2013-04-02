@@ -2,6 +2,7 @@ ru:
 
   all_posts: 'Все посты'
 
+  title_base: 'Блог'
   admin: 'Админка'
   back: 'Назад'
   edit: 'Изменить'

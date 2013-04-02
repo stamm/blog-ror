@@ -4,6 +4,8 @@ en:
 
   all_posts: 'All posts'
 
+  title_base: 'Blog'
+
   admin: 'Admin'
   back: 'Back'
   edit: 'Edit'
