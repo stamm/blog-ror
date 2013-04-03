@@ -130,5 +130,12 @@ describe Post do
     end
   end
 
+  describe 'attachment' do
+    it 'remove empty assets' do
+      5.times { subject.assets.build }
+      subject.save
+      expect(subject.assets.size).to eq 0
+    end
+  end
 
 end

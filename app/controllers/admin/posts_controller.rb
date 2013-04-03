@@ -59,6 +59,7 @@ private
   def post_params
     params.require(:post).permit(
         :user_id, :content, :post_time, :short_url, :status, :title, :url,
-        :tag_list, :post_time_string)
+        :tag_list, :post_time_string,
+        assets_attributes: [:id, :image, :_destroy])
   end
 end

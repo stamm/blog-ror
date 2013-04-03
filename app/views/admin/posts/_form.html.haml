@@ -32,17 +32,13 @@
     = f.label :url
     %br/
     = f.text_field :url
-  .newPaperclipFiles
-    = @post.assets.size
-    - f.fields_for :assets do |asset|
-      = asset.inspect
+  .paperclip_files
+    = f.fields_for :assets do |asset|
       - if asset.object.new_record?
-        = asset.file_field :image
-  .existingPaperclipFiles
-    - f.fields_for :assets do |asset|
-      - unless asset.object.new_record?
+        = raw asset.file_field :image
+      - else
         .thumbnail
           = link_to( image_tag(asset.object.image.url(:thumb)), asset.object.image.url(:original) )
-          = asset.check_box :_delete
+          = asset.check_box :_destroy
   .actions
     = f.submit

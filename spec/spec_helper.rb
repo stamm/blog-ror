@@ -23,6 +23,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'ffaker'
+require 'paperclip/matchers'
 
 I18n.default_locale = :ru
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -41,6 +42,7 @@ RSpec.configure do |config|
 
   config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
+  config.include Paperclip::Shoulda::Matchers
 
   config.include LoginMacros
 

@@ -99,3 +99,9 @@ ru:
       previous: "←"
       next: "→"
       truncate: "…"
+  number:
+    human:
+      storage_units:
+        format: '%u%n'
+        units:
+          byte: 'байт'

@@ -37,6 +37,20 @@ class Post < ActiveRecord::Base
   validates :title, :content, :post_time, :url, :status, presence: true
   validates :url, uniqueness: true
 
+  before_validation :check_assets
+
+  def check_assets
+    self.assets.each do |asset|
+      unless asset.image.file?
+        if asset.new_record?
+          self.assets.delete(asset)
+        else
+          asset.destroy
+        end
+      end
+    end
+  end
+
   def get_status
     STATUS_TYPES[status-1]
   end
