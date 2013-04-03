@@ -9,7 +9,7 @@ describe "Static pages" do
     visit about_path
     should have_content 'Загиров Рустам'
     should have_content 'Сертифицированный специалист'
-      expect(first('title').native.text).to eq "Zagirov | О Загирове Рустаме"
+      expect(first('title').native.text).to eq "Блог | О Загирове Рустаме"
       #should have_xpath "//title" , text: "Zagirov | О Загирове Рустаме"
       #should have_selector('title', text: "Zagirov | О Загирове Рустаме" )
     should have_selector 'h1', text: 'Загиров Рустам — веб-программист'

@@ -10,7 +10,7 @@ describe ApplicationHelper do
 
     it "should include the base title" do
       @title = "foo"
-      expect(title).to match(/^Zagirov/)
+      expect(title).to match(/^#{t('title_base')}/)
     end
   end
 
