@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   validates :author, :email, :content, presence: true
   validates :email, email: {message: I18n.t(:wrong_email)}
 
-  scope :last_first, -> { order('created_at' => :desc) }
+  scope :last_first, -> { order(created_at: :desc) }
   scope :approved, -> { where(status: self.get_status(:approve)) }
   scope :not_spam, -> { where.not(status: self.get_status(:spam)) }
 
