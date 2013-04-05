@@ -11,7 +11,7 @@ end
 group :development do
   gem 'annotate', '2.5.0'
   #gem 'brakeman', '1.9.1'
-  gem 'better_errors', '0.7.2'
+  gem 'better_errors', '0.8.0'
   gem 'binding_of_caller', '0.7.1'
   gem 'capistrano', '2.14.2'
   gem 'capistrano_colors', '0.5.5'
