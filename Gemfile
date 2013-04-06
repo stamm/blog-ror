@@ -35,7 +35,7 @@ group :test do
   gem 'ffaker', '1.15.0'
   gem 'launchy', '2.2.0'
   gem 'rb-fsevent', '0.9.3', require: false
-  gem 'shoulda-matchers', '1.5.6'
+  gem 'shoulda-matchers', '2.0.0'
   gem 'terminal-notifier-guard', '1.5.3'
   gem 'timecop', '0.6.1'
 end
@@ -55,7 +55,7 @@ gem 'bootstrap-sass', '2.3.1.0'
 gem 'coderay', '1.0.9'
 gem 'email_validator', '1.4.0'
 gem 'figaro', '0.6.3'
-gem 'haml', '4.0.1'
+gem 'haml', '4.0.2'
 gem 'jquery-rails', '2.2.1'
 gem 'kaminari', '0.14.1'
 gem 'markitup-rails', '1.1.0'
