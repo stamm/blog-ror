@@ -28,7 +28,7 @@ end
 
 group :test do
   gem 'capybara', '2.0.3'
-  gem 'coveralls', '0.6.4', require: false
+  gem 'coveralls', '0.6.5', require: false
   gem 'cucumber-rails', '1.3.0', :require => false
   gem 'database_cleaner', '1.0.0.RC1'
   gem 'factory_girl_rails', '4.2.1'
@@ -63,7 +63,7 @@ gem 'mysql2', '0.3.11'
 #gem 'newrelic_rpm', '~>3.5'
 gem 'nokogiri', '1.5.9'
 gem 'paperclip', '3.4.1'
-gem 'pg', '0.15'
+gem 'pg', '0.15.1'
 gem 'pygmentize', '0.0.3'
 gem 'quiet_assets', '1.0.2'
 gem 'rails_bootstrap_navbar', '0.1.5beta'
