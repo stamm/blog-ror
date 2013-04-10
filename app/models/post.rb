@@ -35,7 +35,7 @@ class Post < ActiveRecord::Base
   scope :ordered, -> { order(post_time: :desc, id: :desc) }
 
   validates :title, :content, :post_time, :url, :status, presence: true
-  validates :url, uniqueness: true
+  validates :url, uniqueness: true, exclusion: {in: %w[login logout admin about]}
 
   before_validation :check_assets
 
@@ -53,6 +53,10 @@ class Post < ActiveRecord::Base
 
   def get_status
     STATUS_TYPES[status-1]
+  end
+
+  def to_param
+    url
   end
 
   def self.get_status(status)
