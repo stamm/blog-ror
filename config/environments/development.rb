@@ -23,9 +23,10 @@ ZagirovName::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
-
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.sass.debug_info = true
+  config.sass.line_comments = false # source maps don't get output if this is true
 
   config.middleware.use "Rack::Bug",
       :secret_key => "asdfasndofasdn@$noasdf"
