@@ -46,8 +46,8 @@ group :assets do
   gem 'uglifier', '2.1.1'
 end
 
-#gem 'rails', '4.0.0.rc1'
-gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.0.rc1'
+#gem 'rails', github: 'rails/rails'
 
 gem 'activerecord-session_store', '0.0.1'
 gem 'albino', '1.3.3'
