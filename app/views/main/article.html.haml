@@ -57,6 +57,6 @@
     = f.label :content
     = f.text_area :content, size: '10x20'
   %div.field
-    = recaptcha_tags
+    = recaptcha_tags(display: {theme: 'clean'} )
   %div.actions
     = f.submit t(:send)
