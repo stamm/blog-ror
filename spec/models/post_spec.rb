@@ -138,4 +138,52 @@ describe Post do
     end
   end
 
+  describe 'search' do
+    before do
+      Post.delete_all
+      @time = Time.now.to_i
+      @post1 = create(:post, status: 2, content: 'stamm hello', post_time: @time - 2)
+      @post2 = create(:post, status: 2, content: 'stamm goodbye', post_time: @time)
+      @post3 = create(:post, status: 2, content: 'stalin hello', post_time: @time + 2)
+    end
+
+    context 'search by content' do
+      it do
+        result = Post.search('hello')
+        expect(result).to have(2).items
+        expect(result).to eq [@post3.id, @post1.id]
+      end
+
+      it do
+        result = Post.search('stalin')
+        expect(result).to have(1).items
+        expect(result).to eq [@post3.id]
+      end
+
+      it do
+        result = Post.search('goodbye')
+        expect(result).to have(1).items
+        expect(result).to eq [@post2.id]
+      end
+    end
+
+    context 'search by title' do
+      before do
+        @post4 = create(:post, status: 2, content: 'stamm goodbye', title: 'hello title', post_time: @time-3)
+      end
+      it do
+        result = Post.search('hello')
+        expect(result).to have(3).items
+        expect(result).to eq [@post3.id, @post1.id, @post4.id]
+      end
+
+      it do
+        result = Post.search('title')
+        expect(result).to have(1).items
+        expect(result).to eq [@post4.id]
+      end
+    end
+
+  end
+
 end

@@ -20,6 +20,7 @@ class Post < ActiveRecord::Base
   include ConvertContent
   include PostTime
   include PostTaggable
+  include PostSearch
 
   STATUS_TYPES = %i(draft publish archive)
 
