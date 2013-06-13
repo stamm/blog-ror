@@ -16,7 +16,7 @@
 
 class Comment < ActiveRecord::Base
   include ConvertContent
-  STATUS_TYPES = %i(pending approve spam)
+  STATUS_TYPES = %i(unknown pending approve spam)
   belongs_to :post
   validates :author, :email, :content, presence: true
   validates :email, email: {message: I18n.t(:wrong_email)}
@@ -26,7 +26,7 @@ class Comment < ActiveRecord::Base
   scope :not_spam, -> { where.not(status: self.get_status(:spam)) }
 
   def get_status
-    STATUS_TYPES[status-1]
+    STATUS_TYPES[status]
   end
 
   %i(approve spam).each do |val|
@@ -37,6 +37,6 @@ class Comment < ActiveRecord::Base
   end
 
   def self.get_status(status)
-    STATUS_TYPES.index(status) + 1
+    STATUS_TYPES.index(status)
   end
 end

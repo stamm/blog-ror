@@ -10,7 +10,7 @@ describe Comment do
   describe 'status' do
     it "get status id" do
       Comment::STATUS_TYPES.to_enum.with_index(1).each do |elem, i|
-        expect(Comment.get_status(elem)).to eq i
+        expect(Comment.get_status(elem)).to eq i-1
       end
     end
 

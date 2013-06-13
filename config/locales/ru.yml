@@ -21,6 +21,7 @@ ru:
   archive: 'В архиве'
   #title: 'Заголовок'
 
+  unknown: 'Неизвестный'
   pending: 'Не проверен'
   approve: 'Проверен'
   spam: 'Спам'

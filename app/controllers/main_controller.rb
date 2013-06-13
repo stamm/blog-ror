@@ -45,7 +45,8 @@ private
     if post
       comment = post.comments.build(comment_params)
       comment.ip = request.ip
-      comment.status = Comment::get_status(:approve)
+      status = comment.url.empty? ? :approve : :pending
+      comment.status = Comment::get_status(status)
       if comment.valid? and verify_recaptcha(model: comment, message: I18n.t(:recaptcha_error))
         comment.save
       end
@@ -66,7 +67,7 @@ private
 
   def get_cookie(comment)
     if cookies[:comment]
-      comment.author, comment.email = cookies[:comment].split('~')
+      comment.author, comment.email = cookies[:comment].split '~', 2
     end
   end
 
