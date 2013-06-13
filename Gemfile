@@ -22,6 +22,7 @@ group :development do
   gem 'html2haml', '1.0.1'
   gem 'meta_request', '0.2.6'
   gem 'rack-bug', '0.3.0', require: 'rack/bug', github: 'brynary/rack-bug', branch: 'rails3'
+  gem 'spring', '0.0.9'
   #gem 'rvm-capistrano', '1.2.7'
   #gem 'zeus', '0.13.2'
 end
