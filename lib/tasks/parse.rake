@@ -4,6 +4,7 @@ task parse: :environment do
 
   class Old < ActiveRecord::Base
   end
+
   Old.establish_connection(configs['old'])
 
 
@@ -19,7 +20,10 @@ task parse: :environment do
     content.gsub!('~~~', '```')
 
 
-    sql = "SELECT t.name FROM tbl_tag AS t, tbl_post_tag AS pt WHERE pt.post_id = #{e['id']} AND t.id = pt.tag_id"
+    sql = "SELECT t.name
+    FROM tbl_tag AS t, tbl_post_tag AS pt
+    WHERE pt.post_id = #{e['id']}
+    AND t.id = pt.tag_id"
     tag_list = Old.connection.select_all(sql)
       .map { |row| row['name'] }
       .join(',')
