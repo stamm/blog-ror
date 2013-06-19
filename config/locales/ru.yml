@@ -2,6 +2,8 @@ ru:
 
   all_posts: 'Все посты'
 
+  search: 'Поиск'
+
   title_base: 'Блог'
   admin: 'Админка'
   back: 'Назад'

@@ -4,16 +4,8 @@ class MainController < ApplicationController
 
   # GET /posts/main
   def posts
-    #
-    @posts = Post.published
-    @title = t('all_posts')
-    if params[:tag]
-      @title += " with tag #{params[:tag]}"
-      @posts = @posts.scope_tag(params[:tag])
-    #else
-    end
-    @posts.includes!(:tags)
-    @posts = @posts.ordered.page(params[:page]).per(20)
+    @posts = get_posts params
+    @title = get_title params
   end
 
   def article
@@ -37,6 +29,18 @@ class MainController < ApplicationController
 
   def tags
     @tags = Tag.all
+  end
+
+  def search
+    @search_string = params['q']
+    @title = "#{t('search')}: #{@search_string}"
+    ids = Post.search @search_string
+    @posts = Post
+      .scope_ordered_ids(ids)
+      .includes!(:tags)
+      .ordered
+      .page(params[:page])
+      .per(20)
   end
 
 private
@@ -71,4 +75,21 @@ private
     end
   end
 
+  def get_posts(params)
+    posts = Post.published
+    if params[:tag]
+      posts = posts.scope_tag(params[:tag])
+    end
+    posts.includes!(:tags)
+    posts = posts.ordered.page(params[:page]).per(20)
+    posts
+  end
+
+  def get_title(params)
+    title = t('all_posts')
+    if params[:tag]
+      title += " with tag #{params[:tag]}"
+    end
+    title
+  end
 end

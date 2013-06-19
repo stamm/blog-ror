@@ -60,12 +60,12 @@ describe MainController do
       end
 
       it "have only 20 posts" do
-        @posts = []
-        21.times { @posts << create(:post, tag_list: '10posts') }
-        10.times { @posts << create(:post, tag_list: 'test1') }
+        posts = []
+        21.times { posts << create(:post, tag_list: '10posts') }
+        10.times { posts << create(:post, tag_list: 'test1') }
         get :posts, tag: '10posts'
         expect(assigns(:posts)).to have(20).items
-        @posts.each(&:destroy)
+        posts.each(&:destroy)
       end
     end
 

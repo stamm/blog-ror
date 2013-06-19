@@ -1,10 +1,1 @@
--#- cache ('main_page') do
-%ul{id: "posts"}
-  - @posts.each do |post|
-    %li
-      %h3{class: "inline"}
-        = link_to post.title, article_path(post.url)
-        %span{class: "hint"}
-          = post.post_date
-      .tags= post.tag_array.map { |tag| content_tag(:a, tag, class: 'tag', href: "/tag/#{tag}") }.join(', ').html_safe
-%p= paginate @posts
+= render 'posts'

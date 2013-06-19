@@ -139,6 +139,7 @@ describe Post do
   end
 
   describe 'search' do
+
     before do
       Post.delete_all
       @time = Time.now.to_i
@@ -184,6 +185,12 @@ describe Post do
       end
     end
 
+    context 'scope' do
+      it do
+        result = Post.scope_ordered_ids([@post1.id, @post3.id, @post2.id])
+        expect(result).to eq [@post1, @post3, @post2]
+      end
+    end
   end
 
 end

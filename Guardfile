@@ -15,6 +15,8 @@ guard 'rspec', spring: true, all_on_start: false, all_after_pass: false do
     spec/acceptance/#{m[1]}_spec.rb
     )
   }
+  watch(%r{^app/models/(.+)\.rb$})                    { |m| "spec/models/#{m[1]}_spec.rb" }
+  watch(%r{^app/models/concerns/.+\.rb$})             { "spec/models" }
   watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
   watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }

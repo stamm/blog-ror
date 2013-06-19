@@ -29,6 +29,8 @@ ZagirovName::Application.routes.draw do
       get '/tags' => :tags
       get '/tag/:tag' => :posts, page: '1'
       get '/tag/:tag/:page' => :posts
+      get '/search' => :search
+      get '/search/page/:page' => :search
       match '/:url' => :article, url: /[^\/]+/, as: :article, via: [:get, :post]
     end
   end

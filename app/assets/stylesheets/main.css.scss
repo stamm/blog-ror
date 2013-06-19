@@ -11,6 +11,14 @@
 
 body.main {
 
+  .container {
+    padding-left: 50px;
+  }
+
+  ul#posts {
+    margin-left: 0;
+  }
+
   h1 {
     color: black;
   }
