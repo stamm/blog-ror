@@ -5,8 +5,15 @@ module PostSearch
   included do
     scope :scope_ordered_ids, lambda { |ids|
       if ids
-        where(id: ids)
-          .order("FIELD (id, #{ids.join ', '})")
+        adapter = ActiveRecord::Base.configurations[Rails.env]['adapter']
+        if adapter == 'mysql2'
+          where(id: ids)
+            .order("FIELD (id, #{ids.join ', '})")
+        elsif adapter == 'postgresql'
+          condition = ids.map { |v| "id != #{v}" }.join(', ')
+          where(id: ids)
+            .order(condition)
+        end
       else
         none
       end
