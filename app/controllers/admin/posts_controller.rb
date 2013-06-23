@@ -5,8 +5,6 @@ class Admin::PostsController < ApplicationController
     @posts = Post.order(created_at: :desc).page(params[:page]).per(40)
   end
 
-
-
   # GET /posts/1
   def show
   end
@@ -28,18 +26,20 @@ class Admin::PostsController < ApplicationController
 
     @post.post_time_string ||= l(Time.now, format: :russian)
     if @post.save
-      redirect_to admin_post_url(@post), notice: 'Post was successfully created.'
+      redirect_to admin_post_url(@post),
+                  notice: 'Post was successfully created.'
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
   # PUT /posts/1
   def update
     if @post.update_attributes(post_params)
-      redirect_to admin_post_url(@post), notice: 'Post was successfully updated.'
+      redirect_to admin_post_url(@post),
+                  notice: 'Post was successfully updated.'
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
@@ -50,8 +50,8 @@ class Admin::PostsController < ApplicationController
     redirect_to admin_posts_url
   end
 
+  private
 
-private
   def set_post
     @post = Post.find(params[:id])
   end

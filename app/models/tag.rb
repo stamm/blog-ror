@@ -11,7 +11,10 @@ class Tag < ActiveRecord::Base
   has_and_belongs_to_many :posts
 
   def self.tags
-    Tag.all.inject({}){ |set, t| set[t.name] = t.frequency; set }
+    Tag.all.reduce({}) do |set, tag|
+      set[tag.name] = tag.frequency
+      set
+    end
   end
 
   def self.recount_frequency

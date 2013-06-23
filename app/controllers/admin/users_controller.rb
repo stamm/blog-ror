@@ -45,7 +45,8 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_url
   end
 
-private
+  private
+
   def set_user
     @user = User.find(params[:id])
   end

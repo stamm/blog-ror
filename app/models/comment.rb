@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
   STATUS_TYPES = %i(unknown pending approve spam)
   belongs_to :post
   validates :author, :email, :content, presence: true
-  validates :email, email: {message: I18n.t(:wrong_email)}
+  validates :email, email: { message: I18n.t(:wrong_email) }
 
   scope :last_first, -> { order(created_at: :desc) }
   scope :approved, -> { where(status: self.get_status(:approve)) }

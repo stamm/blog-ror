@@ -11,13 +11,7 @@ class MainController < ApplicationController
   def article
     @post = Post.find_by(url: params[:url]) || not_found
 
-    if params[:comment]
-      @comment = create_comment @post
-      save_cookie @comment
-    else
-      @comment = Comment.new
-      get_cookie @comment
-    end
+    @comment = add_comment(params)
 
     unless @comment.new_record?
       redirect_to article_path(@post.url)
@@ -43,17 +37,15 @@ class MainController < ApplicationController
       .per(20)
   end
 
-private
+  private
 
   def create_comment(post)
     if post
       comment = post.comments.build(comment_params)
-      comment.ip = request.ip
-      status = comment.url.empty? ? :approve : :pending
-      comment.status = Comment::get_status(status)
-      if comment.valid? and verify_recaptcha(model: comment, message: I18n.t(:recaptcha_error))
-        comment.save
-      end
+      status = Comment.get_status(comment.url.empty? ? :approve : :pending)
+      comment.assign_attributes(ip: request.ip, status: status)
+      recaptcha_opts = { model: comment, message: I18n.t(:recaptcha_error) }
+      comment.save if comment.valid? && verify_recaptcha(recaptcha_opts)
       comment
     end
   end
@@ -65,7 +57,7 @@ private
   def save_cookie(comment)
     cookies[:comment] = {
         value: comment.author + '~' + comment.email,
-        expires: Time.now + 31536000
+        expires: Time.now + 31_536_000
     }
   end
 
@@ -77,9 +69,7 @@ private
 
   def get_posts(params)
     posts = Post.published
-    if params[:tag]
-      posts = posts.scope_tag(params[:tag])
-    end
+    posts = posts.scope_tag(params[:tag]) if params[:tag]
     posts.includes!(:tags)
     posts = posts.ordered.page(params[:page]).per(20)
     posts
@@ -87,9 +77,18 @@ private
 
   def get_title(params)
     title = t('all_posts')
-    if params[:tag]
-      title += " with tag #{params[:tag]}"
-    end
+    title += " with tag #{params[:tag]}" if params[:tag]
     title
+  end
+
+  def add_comment(params)
+    if params[:comment]
+      comment = create_comment @post
+      save_cookie comment
+    else
+      comment = Comment.new
+      get_cookie comment
+    end
+    comment
   end
 end

@@ -3,7 +3,6 @@ class MarkdownRenderer < Redcarpet::Render::HTML
     CodeRay.highlight(code, language, { css: :class }, :div)
   end
 
-
   def self.markdown(text)
 
     render = MarkdownRenderer.new filter_html: true, hard_wrap: true
@@ -15,9 +14,7 @@ class MarkdownRenderer < Redcarpet::Render::HTML
         lax_html_blocks: true,
         superscript: true
     }
-
     markdown_to_html = Redcarpet::Markdown.new render, options
-
     markdown_to_html.render(text).html_safe
   end
 end

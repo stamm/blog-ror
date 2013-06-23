@@ -31,7 +31,6 @@ class Post < ActiveRecord::Base
   has_many :assets, dependent: :destroy
   accepts_nested_attributes_for :assets, allow_destroy: true
 
-
   scope :published, -> { where(status: self.get_status(:publish)) }
   scope :ordered, -> { order(post_time: :desc, id: :desc) }
 
@@ -53,7 +52,7 @@ class Post < ActiveRecord::Base
   end
 
   def get_status
-    STATUS_TYPES[status-1]
+    STATUS_TYPES[status - 1]
   end
 
   def self.get_status(status)

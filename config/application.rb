@@ -2,12 +2,14 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# Assets should be precompiled for production (so we don't need the gems loaded then)
+# Assets should be precompiled for production
+# (so we don't need the gems loaded then)
 Bundler.require(:default, Rails.env)
 
 module ZagirovName
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
+    # Settings in config/environments/* take precedence over those specified
+    # here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
@@ -22,7 +24,7 @@ module ZagirovName
     # Enable the asset pipeline
     config.assets.enabled = true
     # the default prefix is 'assets'
-    #config.assets.prefix = 'assets/manifest.json'
+    # config.assets.prefix = 'assets/manifest.json'
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0.3'
 

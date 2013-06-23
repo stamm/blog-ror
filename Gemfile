@@ -18,11 +18,12 @@ group :development do
   gem 'capistrano-nc', '0.0.2'
   gem 'capistrano-ext', '1.2.1'
   gem 'capistrano-multiconfig', '0.0.4'
+  gem 'guard-rubocop', '0.0.4'
   gem 'fuubar', '~> 1.1.0'
   gem 'html2haml', '1.0.1'
   gem 'meta_request', '0.2.6'
   gem 'rack-bug', '0.3.0', require: 'rack/bug', github: 'brynary/rack-bug', branch: 'rails3'
-  gem 'spring', '0.0.9'
+  gem 'spring', '0.0.10'
   #gem 'rvm-capistrano', '1.2.7'
   #gem 'zeus', '0.13.2'
 end
@@ -30,7 +31,7 @@ end
 group :test do
   gem 'capybara', '2.1.0'
   gem 'coveralls', '0.6.7', require: false
-  gem 'cucumber-rails', '1.3.0', :require => false
+  gem 'cucumber-rails', '1.3.1', require: false, github: 'cucumber/cucumber-rails', branch: :master_rails4_test
   gem 'database_cleaner', '1.0.1'
   gem 'factory_girl_rails', '4.2.1'
   gem 'ffaker', '1.16.1'
@@ -62,7 +63,7 @@ gem 'slim'
 gem 'haml', '4.0.3'
 gem 'jquery-rails', '3.0.1'
 gem 'kaminari', '0.14.1'
-gem 'markitup-rails', '1.1.0'
+gem 'markitup-rails', '1.1.1'
 gem 'mysql2', '0.3.11'
 #gem 'newrelic_rpm', '~>3.5'
 gem 'nokogiri', '1.6.0'
@@ -74,4 +75,4 @@ gem 'rails_bootstrap_navbar', '0.1.5beta'
 gem 'recaptcha', '0.3.5', require: 'recaptcha/rails'
 gem 'redcarpet', '2.3.0'
 gem 'RedCloth', '4.2.9'
-gem 'unicorn', '4.6.2'
+gem 'unicorn', '4.6.3'

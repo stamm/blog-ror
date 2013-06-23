@@ -18,7 +18,8 @@ class Admin::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to admin_comment_url(@comment), notice: 'Comment was successfully created.'
+      redirect_to admin_comment_url(@comment),
+                  notice: 'Comment was successfully created.'
     else
       render action: 'new'
     end
@@ -26,7 +27,8 @@ class Admin::CommentsController < ApplicationController
 
   def update
     if @comment.update_attributes(comment_params)
-      redirect_to admin_comment_url(@comment), notice: 'Comment was successfully updated.'
+      redirect_to admin_comment_url(@comment),
+                  notice: 'Comment was successfully updated.'
     else
       render action: 'edit'
     end
@@ -43,8 +45,8 @@ class Admin::CommentsController < ApplicationController
     redirect_to admin_comments_url
   end
 
-
   private
+
   def set_comment
     @comment = Comment.find(params[:id])
   end

@@ -1,5 +1,6 @@
 ZagirovName::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
+  # Settings specified here will take precedence overthose
+  # in config/application.rb
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -17,8 +18,8 @@ ZagirovName::Application.configure do
   config.active_support.deprecation = :log
 
   # Only use best-standards-support built into browsers
-  #config.action_dispatch.best_standards_support = :builtin
-  #Raise an error on page load if there are pending migrations
+  # config.action_dispatch.best_standards_support = :builtin
+  # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
 
   # Do not compress assets
@@ -26,12 +27,12 @@ ZagirovName::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.sass.debug_info = true
-  config.sass.line_comments = false # source maps don't get output if this is true
+  # source maps don't get output if this is true
+  config.sass.line_comments = false
 
-  config.middleware.use "Rack::Bug",
-      :secret_key => "asdfasndofasdn@$noasdf"
+  config.middleware.use 'Rack::Bug', secret_key: 'asdfasndofasdn@$noasdf'
 
   config.eager_load = false
 
-  BetterErrors.editor='rubymine://open?url=file://%{file}&line=%{line}'
+  BetterErrors.editor = 'rubymine://open?url=file://%{file}&line=%{line}'
 end
