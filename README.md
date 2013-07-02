@@ -3,3 +3,8 @@
 My first project on Ruby on Rails. Of course this is blog.
 
 Don't use this code. This code smell bad =)
+
+
+Install on mac os x 10.8.3:
+ bundle config build.mysql2 --with-mysql-config=/usr/local/bin/mysql_config
+ sudo ln -s /usr/local/Cellar/mysql/5.5.20/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib

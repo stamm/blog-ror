@@ -18,10 +18,10 @@ group :development do
   gem 'capistrano-nc', '0.0.2'
   gem 'capistrano-ext', '1.2.1'
   gem 'capistrano-multiconfig', '0.0.4'
-  gem 'guard-rubocop', '0.0.4'
+  gem 'guard-rubocop', '0.1.0'
   gem 'fuubar', '~> 1.1.0'
   gem 'html2haml', '1.0.1'
-  gem 'meta_request', '0.2.6'
+  gem 'meta_request', '0.2.7'
   gem 'rack-bug', '0.3.0', require: 'rack/bug', github: 'brynary/rack-bug', branch: 'rails3'
   gem 'spring', '0.0.10'
   #gem 'rvm-capistrano', '1.2.7'
@@ -43,12 +43,12 @@ group :test do
 end
 
 group :assets do
-  gem 'sass-rails',   '4.0.0.rc2'
+  gem 'sass-rails',   '4.0.0'
   gem 'coffee-rails', '4.0.0'
   gem 'uglifier', '2.1.1'
 end
 
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '4.0.0'
 #gem 'rails', github: 'rails/rails'
 
 gem 'activerecord-session_store', '0.0.1'
@@ -58,12 +58,12 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'carrierwave'
 gem 'coderay', '1.0.9'
 gem 'email_validator', '1.4.0'
-gem 'figaro', '0.6.4'
+gem 'figaro', '0.7.0'
 gem 'slim'
 gem 'haml', '4.0.3'
 gem 'jquery-rails', '3.0.1'
 gem 'kaminari', '0.14.1'
-gem 'markitup-rails', '1.1.1'
+gem 'markitup-rails', '1.1.3'
 gem 'mysql2', '0.3.11'
 #gem 'newrelic_rpm', '~>3.5'
 gem 'nokogiri', '1.6.0'
